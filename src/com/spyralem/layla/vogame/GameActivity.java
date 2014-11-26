@@ -112,9 +112,9 @@ public class GameActivity extends Activity {
         gridGame.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         		//editT=(EditText) findViewById(R.id.edit_nPlayer);
-        		Toast.makeText(GameActivity.this, "Pos "+position, Toast.LENGTH_LONG).show();
+        		//Toast.makeText(GameActivity.this, "Pos "+position, Toast.LENGTH_LONG).show();
         		//Toast.makeText(getApplicationContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
-        		//Toast.makeText(GameActivity.this, "hkgjhghjgjh "+position, Toast.LENGTH_SHORT).show();
+        		Toast.makeText(GameActivity.this, "hkgjhghjgjh "+position, Toast.LENGTH_SHORT).show();
         		//butText.setText("haha"); 
 			}
 		});
