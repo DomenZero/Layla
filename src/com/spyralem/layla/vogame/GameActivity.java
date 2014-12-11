@@ -12,9 +12,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 //import android.content.DialogInterface.OnClickListener;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -45,12 +47,19 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class GameActivity extends Activity {
 
 	Button butOver;
 	Button butUp;
+	//fur Test
+	protected static final String EXTRA_RES_ID = "POS";
+	
+	private ArrayList<Integer> mThumbIdsFlowers = new ArrayList<Integer>(
+			Arrays.asList(101,100,110,111));
 	
 	String[] data={"Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10", "Level 0"};
 	String[] playerItems={"Fel-x","Nigarin", "Veta", "Max"};
@@ -307,205 +316,33 @@ public class GameActivity extends Activity {
 
 	public void setupViews() {
         gridGame=(GridView) findViewById(R.id.gridGame);
-        gridGame.setAdapter(new PlayerAdapter(this));
+        gridGame.setAdapter(new GridAdapter(this,mThumbIdsFlowers));
         registerForContextMenu(gridGame);
+        
+     // Set an setOnItemClickListener on the GridView
+     		gridGame.setOnItemClickListener(new OnItemClickListener() {
+     			public void onItemClick(AdapterView<?> parent, View v,
+     					int position, long id) {
+     				
+     				//Create an Intent to start the ImageViewActivity
+     				Intent intent = new Intent(GameActivity.this,
+     						AdapterViewActivity.class);
+     				
+     				// Add the ID of the thumbnail to display as an Intent Extra
+     				intent.putExtra(EXTRA_RES_ID, (int) id);
+     				
+     				// Start the ImageViewActivity
+     				startActivity(intent);
+     			}
+     		});
+        
         
         editT=(EditText) findViewById(R.id.edit_nPlayer);
         butUp=(Button) findViewById(R.id.butUp);
         butOver=(Button) findViewById(R.id.butOver);
         
 	}
-//	
-//	static class ViewHolder{
-//		public EditText editText;
-//	}
-//	//Create Adapter
-	public class PlayerAdapter extends BaseAdapter
-	{
-		private Context context;
-		private int r, g, b;
 
-		//color
-		private int[] colors=new int[]{0x30FF0000, 0x300000FF};
-		
-		public PlayerAdapter(Context c)
-		{
-			context=c;
-		}
-
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return nPlayer;
-		}
-		
-		@Override
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
-
-		@Override
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
-		
-		//spinner selected
-		private int getIndex(Spinner spinner,String myString){
-			int index=0;
-			
-			for(int i=0;i<spinner.getCount();i++){
-				if(spinner.getItemAtPosition(i).equals(myString)){
-					index=i;
-				}
-			}
-			return index;
-		}
-		
-		
-		@Override
-		public View getView(final int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			
-			LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			
-			//View grView;
-			
-			//little
-			View grView=convertView;
-
-			
-			if (convertView==null) {
-				
-				grView=new View(context);
-				grView=inflater.inflate(R.layout.gameitem, null);
-				
-				TextView textView=(TextView) grView.findViewById(R.id.itemText);
-				textView.setText("Player " +position );
-			    textView.setTextColor(Color.parseColor("#7000D4"));
-				
-		    	//EditText editText=(EditText) grView.findViewById(R.id.itemEdit);
-		    	
-		    	//Автозаполнение, подсказка ввода
-				
-				ArrayAdapter<String> editAdapter=new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, data);
-				
-				
-				editText=(AutoCompleteTextView) grView.findViewById(R.id.itemEdit);
-				editText.setThreshold(4);
-				editText.setAdapter(editAdapter);
-				
-				editText.setOnItemClickListener(new OnItemClickListener() {
-					public void onItemClick(AdapterView<?> editAd, View v, int position, long id){
-
-						
-						Toast.makeText(context, (CharSequence)editAd.getItemAtPosition(position), Toast.LENGTH_LONG).show();
-					}			
-				});
-			    
-			    /*** Spinner create ***/
-				ArrayList<String> allLevel=new ArrayList<String>();
-		    	//ArrayAdapter<String> levelAdapter=new ArrayList<String>();
-		    	for (int i = 0; i < data.length; i++) {
-		    		allLevel.add(data[i]);        		
-		    	}
-		    	levelSpinner=(Spinner) grView.findViewById(R.id.level);
-		    	ArrayAdapter<String> levelAdapter=new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,allLevel);
-		    	levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		    	
-		    	levelSpinner.setAdapter(levelAdapter);
-		    	//e
-		    	levelSpinner.setSelection(getIndex(levelSpinner,"Level 1"));
-
-		    	levelSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-		    		
-		    		@Override
-		    		public void onItemSelected(AdapterView<?> adapter, View v, int position, long id){
-		    			String item=adapter.getItemAtPosition(position).toString();
-		    			
-		    			if (item=="Level 10"){
-		    				Toast.makeText(GameActivity.this, " "+item+" "+editText.getText().toString(), Toast.LENGTH_SHORT).show();	
-		            		DatabaseRating.init(GameActivity.this);
-		            		Log.d("Insert: ", "Inserting...");
-		            		
-		            		//DatabaseRating.addUserData(new UserRatingData("LaylaTest",1,"Best"));
-		            		DatabaseRating.addUserData(new UserRatingData(editText.getText().toString(),1,"In Level"));
-		    				
-		    			}
-		    		}
-		    		@Override
-		    		public void onNothingSelected(AdapterView<?> adapter){
-		    			
-		    		}
-				});
-
-		    	
-
-				//color
-				Random rnd=new Random();
-				r=rnd.nextInt(255+position);
-				g=rnd.nextInt(255+position);
-				b=rnd.nextInt(255+position);
-				grView.setBackgroundColor(Color.rgb(r, g, b));
-				
-//				levelSpinner.setOnClickListener(new Button.OnClickListener(){
-//		        	@Override
-//		        	public void onClick(View click){
-//		        		if (levelSpinner.getSelectedItemPosition()==8)
-//		        			Toast.makeText(GameActivity.this, " "+position, Toast.LENGTH_SHORT).show();
-//		        	}
-//		        });
-//				int col_i=1;
-//				//position/2==1 - row; position%2==1 - col
-//				if(position==0){
-//					col_i=0;
-//				}
-//				if(position==1){
-//					col_i=1;
-//				}
-//				int colorPos=position%colors.length;
-//				grView.setBackgroundColor(colors[col_i]);
-				
-//				editText.setOnClickListener(new OnClickListener() {
-//					
-//			        //find_and_mod()
-//
-//					
-//					@Override
-//					public void onClick(View v) {
-//						// TODO Auto-generated method stub
-////						CharSequence constraint=editText.getText();
-////						editAdapter.getFilter().filter(constraint);
-////						editText.showDropDown();
-//						Toast.makeText(GameActivity.this, " "+position, Toast.LENGTH_LONG).show();
-//												
-//					}
-//				});
-//				
-
-				textView.setOnClickListener(new OnClickListener() {
-//					
-					@Override
-					public void onClick(View v) {
-//						// TODO Auto-generated method stub
-						//grView.setC
-						Toast.makeText(GameActivity.this, " "+position, Toast.LENGTH_SHORT).show();//textView.setBackgroundColor(Color.parseColor("#7000D4"));
-					}
-				});
-				
-				
-			}else{
-				
-				grView=(View) convertView;
-			
-			}
-			
-			return grView;
-		}
-		
-		
-	}
 	
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
