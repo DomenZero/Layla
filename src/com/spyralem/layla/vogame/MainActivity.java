@@ -66,7 +66,7 @@ public class MainActivity extends Activity
     		@Override
     		public void onClick(View arg0){
     			
-    			Intent intent=new Intent(context, GameActivity.class);
+    			Intent intent=new Intent(context, NumPlayerActivity.class);
     			startActivity(intent);
     		//	db=new DatabaseRating(this, "dbLayla", null, 1);
     		//	SQLiteDatabase sdb;

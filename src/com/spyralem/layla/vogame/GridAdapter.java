@@ -84,22 +84,22 @@ public class GridAdapter extends BaseAdapter
 		//View grView;
 		
 		//little
-		//View grView=convertView;
-		View grView=(View) convertView;
+		View grView=convertView;
+		//View grView=(View) convertView;
 		
-		//if (convertView==null) {
-//		if (grView==null) {
-//			
-//			grView=new View(context);
-//			grView=inflater.inflate(R.layout.gameitem, null);
-//			
-//			TextView textView=(TextView) grView.findViewById(R.id.itemText);
-//			textView.setText("Player " +position );
-//		    textView.setTextColor(Color.parseColor("#7000D4"));
-//			
-//	    	//EditText editText=(EditText) grView.findViewById(R.id.itemEdit);
-//	    	
-//	    	//Автозаполнение, подсказка ввода
+		if (convertView==null) {
+		//if (grView==null) {
+			
+			grView=new View(context);
+			grView=inflater.inflate(R.layout.gameitem, null);
+			
+			TextView textView=(TextView) grView.findViewById(R.id.itemText);
+			textView.setText("Player " +position );
+		    textView.setTextColor(Color.parseColor("#7000D4"));
+			
+	    	//EditText editText=(EditText) grView.findViewById(R.id.itemEdit);
+	    	
+	    	//Автозаполнение, подсказка ввода
 //			
 //			ArrayAdapter<String> editAdapter=new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, data);
 //			
@@ -205,13 +205,13 @@ public class GridAdapter extends BaseAdapter
 //				}
 //			});
 //			
-//			
-//		}else{
-//			
-//			grView=(View) convertView;
-//		
-//		}
-//		
+			
+		}else{
+			
+			grView=(View) convertView;
+		
+		}
+		
 		return grView;
 	}
 	

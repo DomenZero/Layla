@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_settings2"
+        android:icon="@drawable/ic_menu_help"
+        android:title="@string/menu_settings"/>
+    <item
+        android:id="@+id/menu_rating2"
+        android:icon="@drawable/ic_menu_help"
+        android:title="@string/menu_rating"/>
+    <item
+        android:id="@+id/menu_play2"
+        android:icon="@drawable/ic_menu_help"
+        android:title="@string/menu_play">
+        <menu>
+            <item
+                android:id="@+id/hello_world2"
+                android:title="@string/hello_world"/>
+        </menu>
+    </item>    
+
+</menu>

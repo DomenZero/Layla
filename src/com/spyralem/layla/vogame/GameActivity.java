@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.spyralem.layla.model.UserRatingData;
+import com.spyralem.layla.vogame.GridAdapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,6 +27,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewDebug.IntToString;
@@ -270,7 +272,33 @@ public class GameActivity extends Activity {
 //			menu.add(Menu.NONE,i,i,menuItems[i]);
 //		}
 //	}
+	/*** Punkt 1. Menu ***/
+	// Create Options Menu
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.top_menu, menu);
+		return true;
+	}
 	
+	// Process clicks on Options Menu items
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_settings2:
+			Toast.makeText(getApplicationContext(), "you've been helped",
+					Toast.LENGTH_SHORT).show();
+			return true;
+		case R.id.menu_rating2:
+			Toast.makeText(getApplicationContext(), "you've been helped more",
+					Toast.LENGTH_SHORT).show();
+			return true;
+		case R.id.menu_play2:
+			return true;
+		default:
+			return false;
+		}
+	}
 	
 	/*** Void Context menu position ***/
 	public void onCreateContextMenu(ContextMenu menu, View v,
@@ -286,6 +314,7 @@ public class GameActivity extends Activity {
 		}
 	}
 	
+
 	//menu position selected
 	@Override
 	public boolean onContextItemSelected(MenuItem item){
@@ -341,13 +370,6 @@ public class GameActivity extends Activity {
         butUp=(Button) findViewById(R.id.butUp);
         butOver=(Button) findViewById(R.id.butOver);
         
-	}
-
-	
-	
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main_menu, menu);
-		return true;
 	}
 	
 	private void settingsGrid() {

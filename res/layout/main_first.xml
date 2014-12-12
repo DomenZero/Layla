@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout 
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="50dp" 
+        android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/hello_text"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textSize="20sp"
+                android:text="Please, select num Player's"/>
+            <Button
+                android:id="@+id/butOver"
+                android:layout_width="150dp" 
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Start" />
+   
+    </LinearLayout>
+    
+    <RelativeLayout  
+        android:id="@+id/center"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" 
+        android:layout_below="@+id/header"
+        >
+    <ViewFlipper
+    android:id="@+id/view_flipper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/include2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        layout="@layout/first" >
+    </include>
+
+    <include
+        android:id="@+id/include1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        layout="@layout/second" >
+    </include>
+    
+    </ViewFlipper>
+    
+    </RelativeLayout>
+    
+</RelativeLayout>
+
