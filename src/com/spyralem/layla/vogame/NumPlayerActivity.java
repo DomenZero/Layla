@@ -1,13 +1,19 @@
 package com.spyralem.layla.vogame;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class NumPlayerActivity extends Activity {
@@ -15,7 +21,10 @@ public class NumPlayerActivity extends Activity {
 	private TextView mTextView1, mTextView2;
 	private int mCurrentLayoutState, mCount;
 	private GestureDetector mGestureDetector;
+	private Button butStart;
+	protected static final String EXTRA_RES_NUM = "NUM";
 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,8 +57,26 @@ public class NumPlayerActivity extends Activity {
 						return true;
 					}
 				});
+		addListenerOnButton();
 	}
 
+    public void addListenerOnButton(){
+    	final Context context=this;
+    	butStart=(Button) findViewById(R.id.butStart);
+    	butStart.setOnClickListener(new OnClickListener() {
+    		@Override
+    		public void onClick(View arg0){
+    			Intent intent=new Intent(context, GameActivity.class);
+    			Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
+    			intent.putExtra(EXTRA_RES_NUM, mCount);
+    			
+    			onStop();
+    			onDestroy();
+    			startActivity(intent);
+    		}
+    	});
+    }
+    
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		return mGestureDetector.onTouchEvent(event);

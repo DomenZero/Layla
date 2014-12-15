@@ -22,7 +22,7 @@
                 android:textSize="20sp"
                 android:text="Please, select num Player's"/>
             <Button
-                android:id="@+id/butOver"
+                android:id="@+id/butStart"
                 android:layout_width="150dp" 
                 android:layout_height="wrap_content"
                 android:gravity="right"

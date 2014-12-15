@@ -35,19 +35,27 @@ public class GridAdapter extends BaseAdapter
 	
 	private List<Integer> mThumbIds;
 
+	private int numP;
 	//color
 	private int[] colors=new int[]{0x30FF0000, 0x300000FF};
 	
-	public GridAdapter(Context c, List<Integer> ids)
+//	public GridAdapter(Context c, List<Integer> ids)
+//	{
+//		context=c;
+//		this.mThumbIds = ids;
+//	}
+
+	public GridAdapter(Context c, List<Integer> ids, Integer num)
 	{
 		context=c;
 		this.mThumbIds = ids;
+		numP=num;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 4;
+		return numP;
 	}
 	
 	@Override
@@ -81,10 +89,10 @@ public class GridAdapter extends BaseAdapter
 		
 		LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		//View grView;
+		View grView;
 		
 		//little
-		View grView=convertView;
+		//View grView=convertView;
 		//View grView=(View) convertView;
 		
 		if (convertView==null) {

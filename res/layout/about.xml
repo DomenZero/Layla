@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/TextView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListViewActivity" >
+    <Button
+        android:id="@+id/EnterPays_addAtomPayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_game_txt" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/EnterPays_addPayment"
+        android:drawableLeft="@android:drawable/ic_input_add" />
+    
+    <ListView
+        android:id="@+id/EnterPays_atomPaysList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/listitem"
+        android:layout_below="@+id/EnterPays_addAtomPayment" >
 
+    </ListView>
 </LinearLayout>

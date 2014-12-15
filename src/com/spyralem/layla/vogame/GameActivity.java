@@ -78,7 +78,8 @@ public class GameActivity extends Activity {
 	int spinnum[]=new int [11];
 	String[] sspinnum={};
 	
-	int nPlayer=4;
+	int num;
+	//int nPlayer=4;
 	TextView butText;
 
 
@@ -91,6 +92,7 @@ public class GameActivity extends Activity {
         setContentView(R.layout.game);    
         /***WorkingSave***/
         
+
 
 
         setupViews();
@@ -134,8 +136,14 @@ public class GameActivity extends Activity {
         	@Override
 			public void onClick(View click){
 //        		//butText=(TextView) findViewById(R.id.butText);
-        		nPlayer=Integer.parseInt(editT.getText().toString());
-        		Toast.makeText(GameActivity.this, "Please. Click 'Enter' "+nPlayer, Toast.LENGTH_LONG).show();
+        		//Act II
+                Intent intent=getIntent();
+                int nPlayer=intent.getIntExtra("NUM", num);
+               
+                Toast.makeText(GameActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+                //--
+        		//nPlayer=Integer.parseInt(editT.getText().toString());
+        		//Toast.makeText(GameActivity.this, "Please. Click 'Enter' "+nPlayer, Toast.LENGTH_LONG).show();
 
         		//Toast.makeText(GameActivity.this, nPlayer, Toast.LENGTH_LONG).show();
 //        		Toast.makeText(GameActivity.this, "onSaveInstanceState\n "+"save ="+editT.getText().toString(), Toast.LENGTH_LONG).show();
@@ -344,8 +352,15 @@ public class GameActivity extends Activity {
 	/***Setup Views ***/
 
 	public void setupViews() {
+        //Act II
+        Intent intent=getIntent();
+        int nPlayer=intent.getIntExtra("NUM", num);
+       
+        Toast.makeText(GameActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+        //--
+        
         gridGame=(GridView) findViewById(R.id.gridGame);
-        gridGame.setAdapter(new GridAdapter(this,mThumbIdsFlowers));
+        gridGame.setAdapter(new GridAdapter(this,mThumbIdsFlowers,nPlayer));
         registerForContextMenu(gridGame);
         
      // Set an setOnItemClickListener on the GridView
