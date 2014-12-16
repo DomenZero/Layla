@@ -98,7 +98,6 @@ public final class R {
     public static final class string {
         public static final int EnterPays_TextView_ZeroValue=0x7f06000d;
         public static final int EnterPays_addPayment=0x7f06000e;
-        public static final int EnterPays_atomPay_nameHint=0x7f06000c;
         public static final int about_game_txt=0x7f060006;
         public static final int action_settings=0x7f060009;
         public static final int app_name=0x7f060000;
@@ -110,6 +109,7 @@ public final class R {
         public static final int menu_play=0x7f060001;
         public static final int menu_rating=0x7f060003;
         public static final int menu_settings=0x7f060002;
+        public static final int nameHint=0x7f06000c;
         public static final int title_activity_settings=0x7f060007;
     }
 }

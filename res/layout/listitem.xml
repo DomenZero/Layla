@@ -10,7 +10,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="2"
         android:gravity="center_vertical"
-        android:hint="@string/EnterPays_atomPay_nameHint"
+        android:hint="@string/nameHint"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
@@ -21,7 +21,11 @@
         android:gravity="center"
         android:inputType="numberDecimal"
         android:text="@string/EnterPays_TextView_ZeroValue"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <ImageButton
         android:id="@+id/atomPay_removePay"

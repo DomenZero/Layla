@@ -66,7 +66,9 @@ public class NumPlayerActivity extends Activity {
     	butStart.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View arg0){
-    			Intent intent=new Intent(context, GameActivity.class);
+    			
+    			//Intent intent=new Intent(context, GameActivity.class);
+    			Intent intent=new Intent(context, AboutActivity.class);
     			Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
     			intent.putExtra(EXTRA_RES_NUM, mCount);
     			

@@ -19,7 +19,7 @@
     <string name="input_pname">Input Player Name</string>
     <string name="edit_nplayer">Input Number Player</string>
     
-    <string name="EnterPays_atomPay_nameHint">nazwa platnosci</string>
+    <string name="nameHint">Input Player Name</string>
     <string name="EnterPays_TextView_ZeroValue">0</string>
     <string name="EnterPays_addPayment">Add Payment</string>
 

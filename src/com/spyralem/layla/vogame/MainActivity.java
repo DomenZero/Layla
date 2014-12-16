@@ -100,8 +100,11 @@ public class MainActivity extends Activity
     }
     public void onClickAbout(View v)
     {
+    	onStop();
+    	onDestroy();
     	Intent myintent=new Intent(MainActivity.this, AboutActivity.class);
 		//myintent.putExtra("key", value);
+    	
     	MainActivity.this.startActivity(myintent);
     	
     }
