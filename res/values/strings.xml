@@ -22,6 +22,6 @@
     <string name="nameHint">Input Player Name</string>
     <string name="EnterPays_TextView_ZeroValue">0</string>
     <string name="EnterPays_addPayment">Add Payment</string>
-
+    <string name="EnterPays_startGame">Start Game</string>
     
 </resources>

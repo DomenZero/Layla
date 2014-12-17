@@ -2,10 +2,12 @@ package com.spyralem.layla.managelist;
 
 import java.util.List;
 
+import com.spyralem.layla.vogame.AboutActivity;
 import com.spyralem.layla.vogame.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 
@@ -73,6 +76,7 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				holder.atomPayment.setName(s.toString());
+
 			}
 
 			@Override
@@ -102,4 +106,7 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 			public void afterTextChanged(Editable s) { }
 		});
 	}
+	
+
+
 }

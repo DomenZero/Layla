@@ -28,4 +28,5 @@ public class DataListAdapterSet implements Serializable {
 	public void setValue(double value) {
 		this.value = value;
 	}
+
 }

@@ -94,7 +94,20 @@ public class AboutActivity extends Activity {
 		}
 		
 
+		//write in file
+		public void Save_Data(){
+			Log.d("Save", "Save List");
+			
+			try{
+				writeListToFile();
+			}catch (Exception e){
+				Log.d("Save", "Save process have any error");
+			}
+		}
 		
+		public void writeListToFile() {
+			
+		}
 		
 		@Override
 		protected void onSaveInstanceState(Bundle outState){
