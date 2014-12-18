@@ -8,6 +8,7 @@ public class DataListAdapterSet implements Serializable {
 	private String name = "";
 	private double value = 0;
 
+
 	public DataListAdapterSet(String name, double value) {
 		this.setName(name);
 		this.setValue(value);
@@ -27,6 +28,10 @@ public class DataListAdapterSet implements Serializable {
 
 	public void setValue(double value) {
 		this.value = value;
+	}
+	
+	public long getItemId(int position) {
+		return position;
 	}
 
 }
