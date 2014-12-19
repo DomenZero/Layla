@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ListViewActivity" >
     <Button
-        android:id="@+id/EnterPays_addAtomPayment"
+        android:id="@+id/EnterPlayers_addPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:text="@string/EnterPays_addPayment"
+        android:text="@string/EnterPlayers_addPPlayers"
         android:drawableLeft="@android:drawable/ic_input_add" />
     
     <ListView
-        android:id="@+id/EnterPays_atomPaysList"
+        android:id="@+id/EnterPlayers_PlayersList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/listitem"
-        android:layout_below="@+id/EnterPays_addAtomPayment" >
+        android:layout_below="@+id/EnterPlayers_addPlayers" >
 
     </ListView>
     
@@ -29,10 +29,10 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/EnterPays_StartGame"
+        android:id="@+id/EnterPlayers_StartGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/EnterPays_startGame"
+        android:text="@string/EnterPlayers_startGame"
         android:drawableLeft="@android:drawable/ic_media_play"/>
      
     </RelativeLayout>

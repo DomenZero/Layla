@@ -65,7 +65,7 @@ public class NumPlayerActivity extends Activity {
     	butStart=(Button) findViewById(R.id.butStart);
     	butStart.setOnClickListener(new OnClickListener() {
     		@Override
-    		public void onClick(View arg0){
+    		public void onClick(View v){
     			
     			//Intent intent=new Intent(context, GameActivity.class);
     			Intent intent=new Intent(context, AboutActivity.class);

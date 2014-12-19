@@ -31,16 +31,16 @@ public final class R {
         public static final int ic_menu_help=0x7f020001;
     }
     public static final class id {
-        public static final int EnterPays_StartGame=0x7f080004;
-        public static final int EnterPays_addAtomPayment=0x7f080001;
-        public static final int EnterPays_atomPaysList=0x7f080002;
+        public static final int EnterPlayers_PlayersList=0x7f080002;
+        public static final int EnterPlayers_StartGame=0x7f080004;
+        public static final int EnterPlayers_addPlayers=0x7f080001;
         public static final int LinearLayout1=0x7f080000;
         public static final int LinearLayout2=0x7f080003;
         public static final int TextView1=0x7f08001a;
         public static final int action_settings=0x7f08002a;
         public static final int atomPay_name=0x7f080017;
-        public static final int atomPay_removePay=0x7f080019;
-        public static final int atomPay_value=0x7f080018;
+        public static final int atomPay_removePay=0x7f080018;
+        public static final int atomPay_savePay=0x7f080019;
         public static final int butOver=0x7f08000c;
         public static final int butStart=0x7f080021;
         public static final int butText=0x7f080012;
@@ -98,9 +98,10 @@ public final class R {
         public static final int top_menu=0x7f070002;
     }
     public static final class string {
-        public static final int EnterPays_TextView_ZeroValue=0x7f06000d;
-        public static final int EnterPays_addPayment=0x7f06000e;
-        public static final int EnterPays_startGame=0x7f06000f;
+        /**      <string name="EnterPays_TextView_ZeroValue">0</string> 
+         */
+        public static final int EnterPlayers_addPPlayers=0x7f06000d;
+        public static final int EnterPlayers_startGame=0x7f06000e;
         public static final int about_game_txt=0x7f060006;
         public static final int action_settings=0x7f060009;
         public static final int app_name=0x7f060000;

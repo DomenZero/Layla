@@ -20,8 +20,8 @@
     <string name="edit_nplayer">Input Number Player</string>
     
     <string name="nameHint">Input Player Name</string>
-    <string name="EnterPays_TextView_ZeroValue">0</string>
-    <string name="EnterPays_addPayment">Add Payment</string>
-    <string name="EnterPays_startGame">Start Game</string>
+<!--     <string name="EnterPays_TextView_ZeroValue">0</string> -->
+    <string name="EnterPlayers_addPPlayers">Add Player</string>
+    <string name="EnterPlayers_startGame">Start Game</string>
     
 </resources>

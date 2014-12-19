@@ -5,6 +5,7 @@ import java.util.List;
 import com.spyralem.layla.vogame.AboutActivity;
 import com.spyralem.layla.vogame.R;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -39,27 +40,47 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 		this.items = items;
 	}
 
+	// Return the data item at position
+	@Override
+	public DataListAdapterSet getItem(int position) {
+		return items.get(position);
+	}
+	
+	// Return the number of items in the Adapter
+	@Override
+	public int getCount() {
+		return items.size();
+	}
+
+	public long getItemID(int position) {
+		return position;
+	}
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		View row = convertView;
-		AtomPaymentHolder holder = null;
+		PlayersHolder holder = null;
 
 		LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 		row = inflater.inflate(layoutResourceId, parent, false);
 
-		holder = new AtomPaymentHolder();
-		holder.atomPayment = items.get(position);
+		holder = new PlayersHolder();
+		holder.infoPlayers = getItem(position);
 		holder.removePaymentButton = (ImageButton)row.findViewById(R.id.atomPay_removePay);
-		holder.removePaymentButton.setTag(holder.atomPayment);
+		holder.removePaymentButton.setTag(holder.infoPlayers);
 		
+		//-------
+		holder.addPaymentButton = (ImageButton)row.findViewById(R.id.atomPay_savePay);
+		holder.addPaymentButton.setTag(holder.infoPlayers);
+		//-------
 		
 		holder.name = (TextView)row.findViewById(R.id.atomPay_name);
 		setNameTextChangeListener(holder,position, row);
 
 		
-		holder.value = (TextView)row.findViewById(R.id.atomPay_value);
-		setValueTextListeners(holder);
+//		holder.value = (TextView)row.findViewById(R.id.atomPay_value);
+//		setValueTextListeners(holder);
 
 		
 		row.setTag(holder);
@@ -68,37 +89,26 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 		return row;
 	}
 	
-	private void setupItem(AtomPaymentHolder holder) {
-		holder.name.setText(holder.atomPayment.getName());
-		holder.value.setText(String.valueOf(holder.atomPayment.getValue()));
+	private void setupItem(PlayersHolder holder) {
+		holder.name.setText(holder.infoPlayers.getName());
+		//holder.value.setText(String.valueOf(holder.infoPlayers.getValue()));
 	}
 
-	public static class AtomPaymentHolder {
-		DataListAdapterSet atomPayment;
+	public static class PlayersHolder {
+		DataListAdapterSet infoPlayers;
 		TextView name;
-		TextView value;
+		//TextView value;
 		ImageButton removePaymentButton;
+		ImageButton addPaymentButton;
 	}
 	
-	private void startButtonListener(final AtomPaymentHolder holder) {
-		
-		holder.removePaymentButton.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-	}
-	
-	private void setNameTextChangeListener(final AtomPaymentHolder holder, final int position, View row) {
+	private void setNameTextChangeListener(final PlayersHolder holder, final int position, View row) {
 		
 		holder.name.addTextChangedListener(new TextWatcher() {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				holder.atomPayment.setName(s.toString());
+				holder.infoPlayers.setName(s.toString());
 
 			}
 
@@ -126,39 +136,39 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 //		});
 		
 	}
-
-	private void setValueTextListeners(final AtomPaymentHolder holder) {
-		holder.value.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				try{
-					holder.atomPayment.setValue(Double.parseDouble(s.toString()));
-				}catch (NumberFormatException e) {
-					Log.e(LOG_TAG, "error reading double value: " + s.toString());
-				}
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
-			@Override
-			public void afterTextChanged(Editable s) { }
-		});
-	}
+//
+//	private void setValueTextListeners(final AtomPaymentHolder holder) {
+//		holder.value.addTextChangedListener(new TextWatcher() {
+//
+//			@Override
+//			public void onTextChanged(CharSequence s, int start, int before, int count) {
+//				try{
+//					holder.atomPayment.setValue(Double.parseDouble(s.toString()));
+//				}catch (NumberFormatException e) {
+//					Log.e(LOG_TAG, "error reading double value: " + s.toString());
+//				}
+//			}
+//
+//			@Override
+//			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+//
+//			@Override
+//			public void afterTextChanged(Editable s) { }
+//		});
+//	}
 	
-	//------------------------------------
-	private void getValueTextListeners(final AtomPaymentHolder holder) {
-		holder.value.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				Log.e(LOG_TAG, "!!!!!!!!!!!!!!! " + holder.value.toString());
-				return false;
-			}
-		});
-		}
+//	//------------------------------------
+//	private void getValueTextListeners(final PlayersHolder holder) {
+//		holder.value.setOnTouchListener(new OnTouchListener() {
+//			
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				// TODO Auto-generated method stub
+//				Log.e(LOG_TAG, "!!!!!!!!!!!!!!! " + holder.value.toString());
+//				return false;
+//			}
+//		});
+//		}
 
 
 }
