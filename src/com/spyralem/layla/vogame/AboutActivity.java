@@ -178,9 +178,9 @@ public class AboutActivity extends Activity {
 	    			Toast.makeText(AboutActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
 	    			intent.putExtra(EXTRA_RES_NUM, savePlayers);
 	    			
-	    			onStop();
-	    			onDestroy();
-	    			startActivity(intent);
+//	    			onStop();
+//	    			onDestroy();
+//	    			startActivity(intent);
 
 					
 //					//Act IV запуск стартовой формы
@@ -214,7 +214,7 @@ public class AboutActivity extends Activity {
 						//temp = temp+Character.toString((char)c);
 						text.append(line);
 						text.append('\n');
-						savePlayers++;
+						//savePlayers++;
 					}
 					Log.e(LOG_TAG, "Text: " + text);
 					}
