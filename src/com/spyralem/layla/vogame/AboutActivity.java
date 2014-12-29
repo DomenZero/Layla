@@ -174,13 +174,15 @@ public class AboutActivity extends Activity {
 					//Read_Data
 					Save_Data(fName);
 					//Start GameActivity
-	    			Intent intent=new Intent(context, GameActivity.class);
+	    			//Intent intent=new Intent(context, GameActivity.class);
+					Intent intent=new Intent(context, FragmentGameActivity.class);
 	    			Toast.makeText(AboutActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
 	    			intent.putExtra(EXTRA_RES_NUM, savePlayers);
 	    			
-//	    			onStop();
-//	    			onDestroy();
-//	    			startActivity(intent);
+	    			
+	    			onStop();
+	    			onDestroy();
+	    			startActivity(intent);
 
 					
 //					//Act IV запуск стартовой формы
@@ -189,7 +191,7 @@ public class AboutActivity extends Activity {
 //	    			onDestroy();
 //	    			Intent intent=new Intent(context, AboutActivity.class);
 //	    			startActivity(intent);
-
+	    			
 				}
 			});
 		}
