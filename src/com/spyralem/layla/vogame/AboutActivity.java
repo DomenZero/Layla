@@ -28,9 +28,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.spyralem.layla.managelist.DataListAdapter;
 import com.spyralem.layla.managelist.DataListAdapterSet;
+import com.spyralem.layla.model.PlayersData;
+import com.spyralem.layla.model.UserRatingData;
 import com.spyralem.layla.vogame.FileManager;
 
 import android.view.Menu;
@@ -107,6 +110,13 @@ public class AboutActivity extends Activity {
 				//OutputStreamWriter fOut=(fName, AboutActivity.MODE_PRIVATE);
 				OutputStreamWriter fOut=new OutputStreamWriter(openFileOutput(fName, AboutActivity.MODE_APPEND));
 				//fOut.write(pString.getBytes());
+				/*** Start open database ***/
+        		DatabaseRating.init(AboutActivity.this);
+        		Log.d("Insert: ", "Inserting...");
+        		
+        		DatabaseRating.addPlayersData(new PlayersData(pString,1,"Color"));
+        		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
+        		/*** End Open Database ***/
 				fOut.write(pString);
 				fOut.write('\n');
 				fOut.close();
@@ -179,6 +189,7 @@ public class AboutActivity extends Activity {
 	    			Toast.makeText(AboutActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
 	    			intent.putExtra(EXTRA_RES_NUM, savePlayers);
 	    			
+
 	    			
 	    			onStop();
 	    			onDestroy();

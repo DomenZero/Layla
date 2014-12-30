@@ -2,6 +2,7 @@ package com.spyralem.layla.vogame;
 
 import java.util.List;
 
+import com.spyralem.layla.model.PlayersData;
 import com.spyralem.layla.model.UserRatingData;
 
 import android.app.Activity;
@@ -19,33 +20,49 @@ public class RatingActivity extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
+		
+		
+//		DatabaseRating.init(this);
+//		super.onCreate(savedInstanceState);
+//        setContentView(R.layout.rating);
+//		
+//        Log.d("Insert: ", "Inserting...");
+//		DatabaseRating.addPlayersData(new PlayersData("LaylaOnlyTest",1,"Color"));
+//		
+//		Log.d("Reading: ","Reading All data");
+//		List<PlayersData> data=DatabaseRating.getAllPlayersData();
+//		
+//		for (PlayersData dt:data){
+//			String log="Id: "+dt.getID()+" ,Name: "+dt.getUserName()+" ,Level: "+dt.getUserLevel()+" ,Color: "+dt.getUserColor();
+//			Log.d("Name: ", log);
+//		}
         //Intent intent=getIntent();
-        //value = intent.getStringExtra("key");
-		/**super.onCreate(savedInstanceState);
-        setContentView(R.layout.game);
-        
-        int USER_ROWS=4;
-        int USER_COLUMNS=4;
-        
-        TableLayout tableLayout=(TableLayout) findViewById(R.id.tableLayout);
-        
-        for (int i = 0; i < USER_ROWS; i++) {
-			
-        	TableRow tableRow=new TableRow(this);
-        	tableRow.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-        			LayoutParams.WRAP_CONTENT));
-        	//tableRow.setBackgroundResource(R.drawable.ic_launcher);
-        	
-        	for (int j = 0; j < USER_COLUMNS; j++) {
-				ImageView imageView=new ImageView(this);
-				imageView.setImageResource(R.drawable.ic_launcher);
-				
-				tableRow.addView(imageView,j);
-        		
-			}
-        	tableLayout.addView(tableRow, i);
-        	
-		}**/
+//        //value = intent.getStringExtra("key");
+//		/**super.onCreate(savedInstanceState);
+//        setContentView(R.layout.game);
+//        
+//        int USER_ROWS=4;
+//        int USER_COLUMNS=4;
+//        
+//        TableLayout tableLayout=(TableLayout) findViewById(R.id.tableLayout);
+//        
+//        for (int i = 0; i < USER_ROWS; i++) {
+//			
+//        	TableRow tableRow=new TableRow(this);
+//        	tableRow.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+//        			LayoutParams.WRAP_CONTENT));
+//        	//tableRow.setBackgroundResource(R.drawable.ic_launcher);
+//        	
+//        	for (int j = 0; j < USER_COLUMNS; j++) {
+//				ImageView imageView=new ImageView(this);
+//				imageView.setImageResource(R.drawable.ic_launcher);
+//				
+//				tableRow.addView(imageView,j);
+//        		
+//			}
+//        	tableLayout.addView(tableRow, i);
+//        	
+//		}**/
 	
 		DatabaseRating.init(this);
 		super.onCreate(savedInstanceState);

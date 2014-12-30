@@ -3,6 +3,7 @@ package com.spyralem.layla.vogame;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.spyralem.layla.model.PlayersData;
 import com.spyralem.layla.model.UserRatingData;
 
 import android.annotation.SuppressLint;
@@ -25,21 +26,26 @@ public class DatabaseRating {
 		
 	//create database
 	private static final String DATABASE_NAME="dbLayla.db";
-	private static final int DATABASE_VERSION=1;
+	private static final int DATABASE_VERSION=2;
 	
 	//create table
 	private static final String RATING_TABLE="rating";
+	private static final String PLAYERS_TABLE="players";
 	
-	//table fields
+	//table Rating fields
 	private static final String ID_COLUMN="_id";
 	private static final String USER_NAME_COLUMN="user_name";
 	private static final String USER_RATING_COLUMN="user_rating";
 	private static final String USER_STATUS_COLUMN="user_status";
 	
-	private static final String[] ALL_TABLES = { RATING_TABLE };
+	//table Players fields
+	private static final String USER_LEVEL_COLUMN="user_level";
+	private static final String USER_COLOR_COLUMN="user_color";
+		
+	private static final String[] ALL_TABLES = { RATING_TABLE, PLAYERS_TABLE };
 	private static DataBaseHelper DBHelper=null;
 	
-	//table syntax create
+	//table Rating syntax create
 	private static final String RATING_CREATE="create table rating" +
 			"( _id integer primary key autoincrement," +
 			"user_name text not null, " +
@@ -47,6 +53,14 @@ public class DatabaseRating {
 			"user_status text not null" +
 			");";
 
+	//table Players syntax create
+	private static final String PLAYERS_CREATE="create table players" +
+			"( _id integer primary key autoincrement," +
+			"user_name text not null, " +
+			"user_level integer, " +
+			"user_color text not null" +
+			");";
+	
 	/*** Init DB ***/
 	public static void init(Context context) {
 		// TODO Auto-generated method stub
@@ -69,6 +83,7 @@ public class DatabaseRating {
 				Log.i(LOG_TAG, "New create");	
 			try{
 					db.execSQL(RATING_CREATE);
+					db.execSQL(PLAYERS_CREATE);
 					
 			} catch (Exception exception){
 				if (DEBUG) 
@@ -81,12 +96,12 @@ public class DatabaseRating {
 			// TODO Auto-generated method stub
 			if (DEBUG) {
 				//rec in log
-				Log.w(LOG_TAG, "Upgrading database from version"+oldVersion
+				Log.w(LOG_TAG, "Upgrading database from version "+oldVersion
 						+"to"+newVersion+"...");		
 				}
 			//del old version
 			for (String table:ALL_TABLES) {
-				db.execSQL("DROP TABLE IF EXISTS"+table);
+				db.execSQL("DROP TABLE IF EXISTS "+table);
 			}
 			onCreate(db);
 		}
@@ -114,6 +129,24 @@ public class DatabaseRating {
 		db.insert(RATING_TABLE, null, values);
 		db.close();	
 	}
+	
+	/*** Players Data func ***/
+	public static void addPlayersData(PlayersData uData) {
+		
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=open();
+		
+		String name=sqlEscapeString(uData.getUserName());
+		Integer level=sqlEscapeInteger(uData.getUserLevel());
+		String color=sqlEscapeString(uData.getUserColor());
+		ContentValues values=new ContentValues();
+		values.put(USER_NAME_COLUMN, name);
+		values.put(USER_LEVEL_COLUMN, level);
+		values.put(USER_COLOR_COLUMN, color);
+		db.insert(PLAYERS_TABLE, null, values);
+		db.close();	
+	}
 
 	/*** Get All User Rating Data ***/
 	public static List<UserRatingData> getAllUserData(){
@@ -137,6 +170,30 @@ public class DatabaseRating {
 		return contactList;
 	}
 	
+
+	/*** Get All Players Data ***/
+	public static List<PlayersData> getAllPlayersData(){
+		List<PlayersData> contactList=new ArrayList<PlayersData>();
+		String selectQuery="SELECT *FROM "+PLAYERS_TABLE;
+		
+		final SQLiteDatabase db=open();
+		Cursor cursor=db.rawQuery(selectQuery, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				PlayersData data=new PlayersData();
+				data.setID(Integer.parseInt(cursor.getString(0)));
+				data.setUserName(cursor.getString(1));
+				data.setUserLevel(Integer.parseInt(cursor.getString(2)));
+				data.setUserColor(cursor.getString(3));
+				
+				contactList.add(data);
+			} while (cursor.moveToNext());
+		}
+		return contactList;
+	}
+	
+
 	/*** return Integer ***/
 	private static Integer sqlEscapeInteger(Integer anyInteger) {
 		// TODO Auto-generated method stub

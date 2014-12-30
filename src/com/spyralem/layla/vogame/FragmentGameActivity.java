@@ -1,17 +1,33 @@
 package com.spyralem.layla.vogame;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.xml.sax.DTDHandler;
+
+import com.spyralem.layla.model.PlayersData;
+import com.spyralem.layla.model.UserRatingData;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.spyralem.layla.model.UserRatingData;
 import com.spyralem.layla.vogame.FragmentGamePlayers.ListSelectionListener;
 
 public class FragmentGameActivity extends Activity implements ListSelectionListener{
@@ -25,10 +41,59 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 
+		/***Test Permanento)))***/
+		DatabaseRating.init(this);
+		super.onCreate(savedInstanceState);
+        setContentView(R.layout.rating);
+		
+		//Input data in table
+		//Log.d("Insert: ", "Inserting...");
+		//DatabaseRating.addUserData(new UserRatingData("Layla",1,"Best"));
+		
+//		//Reading All contacts
+		Log.d("Reading: ","Reading All data");
+		List<PlayersData> data=DatabaseRating.getAllPlayersData();
+		int kol=0;
+		for (PlayersData dt:data) {
+			String log=" Id: "+dt.getID()+" User Name: "+dt.getUserName()+" Level: "+dt.getUserLevel()+" Color: "+dt.getUserColor();
+			Log.d("User Name", log);
+			kol++;
+//   		 	TextView textView=(TextView)findViewById(R.id.teView);
+//   		 	textView.setText(" Id: "+dt.getID()+" User Name: "+dt.getUserName()+" Rating: "+dt.getUserRating()+" Status: "+dt.getUserStatus());
+		}
+		 int USER_ROWS=4;
+	     int USER_COLUMNS=4;
+	        
+	     //variable
+	     ArrayList<String> strings=new ArrayList<String>();
+	     String[] arrmas=new String[kol]; 
+	     int counter=0;
+
+	     for (PlayersData dt:data) {
+	     //for (int i = 0; i < USER_ROWS; i++) {
+	    	 TableRow tableRow=new TableRow(this);
+	    	 tableRow.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+	    			 LayoutParams.WRAP_CONTENT));
+	    	 //tableRow.setBackgroundResource(R.drawable.ic_launcher);	    	 
+	        //In massiv Title	
+	    	 for (int j = 0; j < 1; j++) {
+	    		 strings.add(dt.getUserName());	        		
+	    		 Log.d("User Name", dt.getUserName());
+	    		 if(counter<arrmas.length){
+	    			 arrmas[counter]=dt.getUserName();
+	    			 counter++;
+	    		 }
+	    	 
+	    	 }
+	    	 
+	        	
+	    // }
+		}
+		/***EndT***/
 		// Get the string arrays with the titles and qutoes
-		TitleArray = getResources().getStringArray(R.array.Titles);
+		//TitleArray = getResources().getStringArray(R.array.Titles);
+		TitleArray = arrmas;
 		QuoteArray = getResources().getStringArray(R.array.Quotes);
 		
 		setContentView(R.layout.fragmentgame_main);
