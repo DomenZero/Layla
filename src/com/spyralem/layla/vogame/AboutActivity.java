@@ -83,13 +83,47 @@ public class AboutActivity extends Activity {
 		}
 
 		public void removeAtomPayOnClickHandler(View v) {
-			DataListAdapterSet itemToRemove = (DataListAdapterSet)v.getTag();
+			DataListAdapterSet itemToDel = (DataListAdapterSet)v.getTag();
+
+			pString="";
 			
 			//Act III —табилизаци€ изменени€ параметра nPlayer на форме
 			nPlayer--;
-			Toast.makeText(AboutActivity.this, "ClickActivity 2="+itemToRemove, Toast.LENGTH_LONG).show();
+			Toast.makeText(AboutActivity.this, "ClickActivity 2="+itemToDel.getName(), Toast.LENGTH_LONG).show();
+			//itemToRemove.getName();
+			//pString=pString+" "+itemToSave.getName();
 			
-			adapter.remove(itemToRemove);
+			pString=itemToDel.getName();
+			
+			//add Players in file
+			//if (nPlayer==0){
+			try{
+				//OutputStreamWriter fOut=(fName, AboutActivity.MODE_PRIVATE);
+				OutputStreamWriter fOut=new OutputStreamWriter(openFileOutput(fName, AboutActivity.MODE_APPEND));
+				//fOut.write(pString.getBytes());
+				/*** Start open database ***/
+        		DatabaseRating.init(AboutActivity.this);
+        		Log.d("deliting: ", "deliting...");
+        		
+        		DatabaseRating.delPlayersData(pString);
+        		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
+        		/*** End Open Database ***/
+				fOut.write(pString);
+				fOut.write('\n');
+				fOut.close();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+			//}
+			//
+			adapter.remove(itemToDel);
+//			DataListAdapterSet itemToRemove = (DataListAdapterSet)v.getTag();
+//			
+//			//Act III —табилизаци€ изменени€ параметра nPlayer на форме
+//			nPlayer--;
+//			Toast.makeText(AboutActivity.this, "ClickActivity 2="+itemToRemove, Toast.LENGTH_LONG).show();
+//			
+//			adapter.remove(itemToRemove);
 		}
 
 		public void saveAtomPayOnClickHandler(View v) {
@@ -165,7 +199,6 @@ public class AboutActivity extends Activity {
 					//Act III —табилизаци€ изменени€ параметра nPlayer на форме
 					nPlayer++;
 					Toast.makeText(AboutActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
-					
 					
 					adapter.insert(new DataListAdapterSet("", 0), 0);
 

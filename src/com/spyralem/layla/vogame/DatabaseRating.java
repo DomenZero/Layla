@@ -130,7 +130,7 @@ public class DatabaseRating {
 		db.close();	
 	}
 	
-	/*** Players Data func ***/
+	/*** Players Data insert function ***/
 	public static void addPlayersData(PlayersData uData) {
 		
 		//Open DB Read/Write
@@ -145,6 +145,27 @@ public class DatabaseRating {
 		values.put(USER_LEVEL_COLUMN, level);
 		values.put(USER_COLOR_COLUMN, color);
 		db.insert(PLAYERS_TABLE, null, values);
+		db.close();	
+	}
+	
+	/*** Players Data del function ***/
+	public static void delPlayersData(String rowName) {
+		
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=open();
+		
+//		String name=sqlEscapeString(uData.getUserName());
+//		Integer level=sqlEscapeInteger(uData.getUserLevel());
+//		String color=sqlEscapeString(uData.getUserColor());
+//		
+//		ContentValues values=new ContentValues();
+//		values.put(USER_NAME_COLUMN, name);
+//		values.put(USER_LEVEL_COLUMN, level);
+//		values.put(USER_COLOR_COLUMN, color);
+		db.delete(PLAYERS_TABLE, USER_NAME_COLUMN+"="+rowName, null);
+		//all string delete
+		//db.delete(PLAYERS_TABLE, null, null);
 		db.close();	
 	}
 
