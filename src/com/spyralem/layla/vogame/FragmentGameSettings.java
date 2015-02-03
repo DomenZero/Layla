@@ -58,6 +58,7 @@ public class FragmentGameSettings extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		mQuoteView = (TextView) getActivity().findViewById(R.id.quoteView);
 		mQuoteArrLen = FragmentGameActivity.QuoteArray.length;
+
 	}
 
 	@Override

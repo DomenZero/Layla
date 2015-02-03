@@ -1,8 +1,11 @@
 package com.spyralem.layla.vogame;
 
+import com.spyralem.layla.model.PlayersData;
+
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -71,6 +74,8 @@ public class FragmentGamePlayers extends ListFragment{
 
 		// Indicates the selected item has been checked
 		getListView().setItemChecked(pos, true);
+		
+
 		
 		// Inform the QuoteViewerActivity that the item in position pos has been selected
 		mListener.onListSelection(pos);

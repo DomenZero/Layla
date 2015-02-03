@@ -112,6 +112,10 @@ public class DatabaseRating {
 		return DBHelper.getWritableDatabase();
 	}
 	
+	private static synchronized SQLiteDatabase read() throws SQLException{
+		return DBHelper.getReadableDatabase();
+	}
+	
 	/*** UserRating Data func ***/
 	public static void addUserData(UserRatingData uData) {
 		
@@ -148,26 +152,140 @@ public class DatabaseRating {
 		db.close();	
 	}
 	
-	/*** Players Data del function ***/
+	/*** Players Data update function ***/
+//	public static int updatePlayersData_byID(String name, Integer level, String color, int id) {
+//		
+//		//Open DB Read/Write
+//		
+//		final SQLiteDatabase db=open();
+//		
+//		ContentValues values=new ContentValues();
+//		
+//		//values.put(USER_NAME_COLUMN, name);
+//		values.put(USER_LEVEL_COLUMN, level);
+//		//values.put(USER_COLOR_COLUMN, color);
+//		
+//		return db.update(PLAYERS_TABLE, values, ID_COLUMN+"= ?"+id, null);
+//		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+//	}
+
+	/*** Players Data update function ***/
+	public int updatePlayersData_byID(PlayersData uData) {
+		
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=open();
+		
+		ContentValues values=new ContentValues();
+		
+		//values.put(USER_NAME_COLUMN, name);
+		values.put(USER_NAME_COLUMN, uData.getUserName());
+		values.put(USER_LEVEL_COLUMN, uData.getUserLevel());
+		values.put(USER_COLOR_COLUMN, uData.getUserColor());
+		//values.put(USER_COLOR_COLUMN, color);
+		
+		return db.update(PLAYERS_TABLE, values, ID_COLUMN+"= ?", new String []{String.valueOf(uData.getID())});
+		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+	}
+
+	/*** Players Data getting single contact 02/02***/
+	public static String getPlayer(int id) {
+		SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ String.valueOf(id)};
+		String selectQuery="SELECT "+USER_NAME_COLUMN+" FROM "+PLAYERS_TABLE+" WHERE "+ID_COLUMN+"=?";
+		
+		Cursor c=db.rawQuery(selectQuery, pin);
+//		
+//		PlayersData data=new PlayersData();
+//		data.setID(Integer.parseInt(c.getString(0)));
+		
+		c.moveToFirst();
+		//String index=String.valueOf(c.getColumnIndex(USER_NAME_COLUMN));
+		//return index;//c.getString(c.getColumnIndex(id));
+		int index=c.getColumnIndex(USER_NAME_COLUMN);
+		return c.getString(index);
+		
+		//		SQLiteDatabase db=read();
+//		
+//		Cursor cursor=db.query(PLAYERS_TABLE, new String[] {ID_COLUMN, 
+//				USER_NAME_COLUMN, USER_LEVEL_COLUMN, USER_COLOR_COLUMN}, ID_COLUMN+"=?", new String[] {String.valueOf(id)},
+//				null, null, null, null);
+//		if(cursor!=null)
+//			cursor.moveToFirst();
+//	
+//		
+//		return data;
+//		
+	}
+//	
+	/*** 02/03 ***/
+//	public String getPlayer(int id) {
+//		SQLiteDatabase db=read();
+//		
+//		String[] 
+//		
+//		
+//		return c.getString(index);
+//	
+//	}
+	
+	/*** Players Data update function ***/
+//
+//	public static void updatePlayersData_byID(PlayersData uData) {
+//		
+//		//Open DB Read/Write
+//		
+//		final SQLiteDatabase db=open();
+//		
+//		ContentValues values=new ContentValues();
+//		
+//		//values.put(USER_NAME_COLUMN, name);
+//		values.put(USER_NAME_COLUMN, uData.getUserName());
+//		values.put(USER_LEVEL_COLUMN, uData.getUserLevel());
+//		values.put(USER_COLOR_COLUMN, uData.getUserColor());
+//		//values.put(USER_COLOR_COLUMN, color);
+//		
+//		db.update(PLAYERS_TABLE, values, ID_COLUMN+"= ?", new String []{String.valueOf(uData.getID())});
+//		db.close();
+//		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+//	}
+//	
+	/*** Players Data getting function ***/
+	public static int getPlayersData() {
+		
+		String countQuery="SELECT * FROM "+PLAYERS_TABLE;
+		//Open DB Read/Write
+			
+		final SQLiteDatabase db=open();
+		
+		Cursor cursor=db.rawQuery(countQuery, null);
+		cursor.close();
+		
+		//return any count
+		return cursor.getCount();
+	}
+	
+	/*** Players Data del function by Name ***/
 	public static void delPlayersData(String rowName) {
 		
 		//Open DB Read/Write
 		
 		final SQLiteDatabase db=open();
 		
-//		String name=sqlEscapeString(uData.getUserName());
-//		Integer level=sqlEscapeInteger(uData.getUserLevel());
-//		String color=sqlEscapeString(uData.getUserColor());
-//		
-//		ContentValues values=new ContentValues();
-//		values.put(USER_NAME_COLUMN, name);
-//		values.put(USER_LEVEL_COLUMN, level);
-//		values.put(USER_COLOR_COLUMN, color);
 		db.delete(PLAYERS_TABLE, USER_NAME_COLUMN+"="+rowName, null);
-		//all string delete
-		//db.delete(PLAYERS_TABLE, null, null);
 		db.close();	
 	}
+	// Players Data del function by ID
+	public static void delPlayersData_byID(int id) {
+		
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=open();
+		db.delete(PLAYERS_TABLE, ID_COLUMN+"="+id, null );
+		db.close();	
+	}
+	
 
 	/*** Get All User Rating Data ***/
 	public static List<UserRatingData> getAllUserData(){
@@ -232,5 +350,7 @@ public class DatabaseRating {
 		}
 		return anyReturn;
 	}
+
+
 
 }

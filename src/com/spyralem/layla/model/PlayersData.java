@@ -47,22 +47,22 @@ public class PlayersData {
 		this._user_name=name;
 	}
 	
-	//getting USER RATING
+	//getting USER LEVEL
 	public Integer getUserLevel() {
 		return this._user_level;		
 	}
 	
-	//setting USER RATING
+	//setting USER LEVEL
 	public void setUserLevel(Integer level){
 		this._user_level=level;
 	}
 	
-	//getting USER STATUS
+	//getting USER COLOR
 	public String getUserColor() {
 		return this._user_color;		
 	}
 	
-	//setting USER STATUS
+	//setting USER COLOR
 	public void setUserColor(String color){
 		this._user_color=color;
 	}

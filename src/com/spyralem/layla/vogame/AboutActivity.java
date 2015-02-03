@@ -148,7 +148,8 @@ public class AboutActivity extends Activity {
         		DatabaseRating.init(AboutActivity.this);
         		Log.d("Insert: ", "Inserting...");
         		
-        		DatabaseRating.addPlayersData(new PlayersData(pString,1,"Color"));
+        		DatabaseRating.addPlayersData(new PlayersData(pString,4,"Color"));
+        		
         		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
         		/*** End Open Database ***/
 				fOut.write(pString);
@@ -195,14 +196,12 @@ public class AboutActivity extends Activity {
 				
 				@Override
 				public void onClick(View v) {
-					
+						
 					//Act III —табилизаци€ изменени€ параметра nPlayer на форме
 					nPlayer++;
 					Toast.makeText(AboutActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
 					
 					adapter.insert(new DataListAdapterSet("", 0), 0);
-
-				
 
 				}
 			});

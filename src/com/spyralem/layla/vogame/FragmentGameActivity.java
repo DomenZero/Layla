@@ -11,7 +11,9 @@ import com.spyralem.layla.model.UserRatingData;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,11 +36,13 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 
 	public static String[] TitleArray;
 	public static String[] QuoteArray;
+	
 	private final FragmentGamePlayers mTitlesFragment = new FragmentGamePlayers();
 	private final FragmentGameSettings mDetailsFragment = new FragmentGameSettings();
 	public static final int UNSELECTED = -1;
 	private FragmentManager mFragmentManager;
 
+	public static Integer[] IDArray;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -67,7 +71,11 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 	        
 	     //variable
 	     ArrayList<String> strings=new ArrayList<String>();
-	     String[] arrmas=new String[kol]; 
+	     String[] arrmas=new String[kol];
+	     String[] levelmas=new String[kol];
+	     
+	     Integer[] idmas=new Integer[kol];
+	     
 	     int counter=0;
 
 	     for (PlayersData dt:data) {
@@ -82,6 +90,8 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 	    		 Log.d("User Name", dt.getUserName());
 	    		 if(counter<arrmas.length){
 	    			 arrmas[counter]=dt.getUserName();
+	    			 levelmas[counter]=/*dt.getUserName();//*/String.valueOf(dt.getUserLevel());
+	    			 idmas[counter]=dt.getID();
 	    			 counter++;
 	    		 }
 	    	 
@@ -94,7 +104,11 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		// Get the string arrays with the titles and qutoes
 		//TitleArray = getResources().getStringArray(R.array.Titles);
 		TitleArray = arrmas;
-		QuoteArray = getResources().getStringArray(R.array.Quotes);
+		
+		QuoteArray = levelmas;
+		
+		IDArray = idmas;
+		//QuoteArray = getResources().getStringArray(R.array.Quotes);
 		
 		setContentView(R.layout.fragmentgame_main);
 
@@ -117,6 +131,20 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 	@Override
 	public void onListSelection(int index) {
 
+		//01/28 Test BD Update
+		Log.d("Update: ", "ing..."+index+" to ");
+
+		//02/03
+		//String ttt=getPlayer(index);
+
+		String log=" Id: "+DatabaseRating.getPlayer(IDArray[index]);//dt.getID()+" User Name: "+dt.getUserName()+" Level: "+dt.getUserLevel()+" Color: "+dt.getUserColor();
+		Log.d("User Name", log);
+//		DatabaseRating db=new DatabaseRating();
+//		db.updatePlayersData_byID(new PlayersData("Layla",1,"Best"));
+		//DatabaseRating.getPlayer(index);
+		//DatabaseRating.getPlayer(index);
+		//____________________
+		
 		// If the QuoteFragment has not been added, add it now
 		if (!mDetailsFragment.isAdded()) {
 		
@@ -135,14 +163,19 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 			
 			// Force Android to execute the committed FragmentTransaction
 			mFragmentManager.executePendingTransactions();
+
+
+			
 		}
 		
 		if (mDetailsFragment.getShownIndex() != index) {
 
 			// Tell the QuoteFragment to show the quote string at position index
+			
 			mDetailsFragment.showQuoteAtIndex(index);
 		
 		}
+		
 	}
 
 	@Override
