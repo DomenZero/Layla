@@ -26,7 +26,7 @@ public class DatabaseRating {
 		
 	//create database
 	private static final String DATABASE_NAME="dbLayla.db";
-	private static final int DATABASE_VERSION=2;
+	private static final int DATABASE_VERSION=4;
 	
 	//create table
 	private static final String RATING_TABLE="rating";
@@ -170,21 +170,29 @@ public class DatabaseRating {
 //	}
 
 	/*** Players Data update function ***/
-	public int updatePlayersData_byID(PlayersData uData) {
+	public void updatePlayersData_byID(String nameval, String levelval, String color, int id) {
 		
 		//Open DB Read/Write
 		
-		final SQLiteDatabase db=open();
+		final SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ String.valueOf(id)};
 		
 		ContentValues values=new ContentValues();
 		
-		//values.put(USER_NAME_COLUMN, name);
-		values.put(USER_NAME_COLUMN, uData.getUserName());
-		values.put(USER_LEVEL_COLUMN, uData.getUserLevel());
-		values.put(USER_COLOR_COLUMN, uData.getUserColor());
-		//values.put(USER_COLOR_COLUMN, color);
+		//uData.setUserLevel(7);
 		
-		return db.update(PLAYERS_TABLE, values, ID_COLUMN+"= ?", new String []{String.valueOf(uData.getID())});
+		//values.put(USER_NAME_COLUMN, name);
+		values.put(USER_NAME_COLUMN, nameval);
+		values.put(USER_LEVEL_COLUMN, levelval);
+		values.put(USER_COLOR_COLUMN, color);
+		//values.put(USER_COLOR_COLUMN, color);
+//		
+//		String[] any=new String[1];
+//		any[0]=uData.getUserName();
+		
+		db.update(PLAYERS_TABLE, values, ID_COLUMN+" like ?", pin);
+		db.close();
 		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
 	}
 

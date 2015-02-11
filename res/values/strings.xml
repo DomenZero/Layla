@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Vo game</string>
+    <string name="app_name">Layla game</string>
     <string name="menu_play">Play</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_rating">Rating</string>
@@ -29,9 +29,9 @@
     
     
     <string name="activity_item">ActivityAction</string>
-    <string name="secondary_item">SecondaryQuoteAction</string>
-    <string name="quote_item">QuoteAction</string>
-    <string name="title_item">TitleAction</string>
+    <string name="secondary_item">SecondarySettingsAction</string>
+    <string name="quote_item">SettingsAction</string>
+    <string name="title_item">PlayersAction</string>
        
 
     <string-array name="Titles">

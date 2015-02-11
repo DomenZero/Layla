@@ -14,7 +14,7 @@
         android:id="@+id/TextView1" />
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/menu_play" />
     <Button

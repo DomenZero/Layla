@@ -5,12 +5,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/quoteView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dip"
-        android:textSize="32sp" >
-    </TextView>
+<!--     <TextView -->
+<!--         android:id="@+id/quoteView" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:padding="5dip" -->
+<!--         android:textSize="32sp" > -->
+<!--     </TextView> -->
 
+    <RelativeLayout
+    
+    android:id="@+id/playerFlipscrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout 
+        android:id="@+id/playerFlipheader"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="50dp" 
+        android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/playerFlipquoteView"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textSize="20sp"
+                android:text="Please, select num Player's"/>
+            <Button
+                android:id="@+id/playerFlipbutStart"
+                android:layout_width="150dp" 
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Start" />
+            
+            
+                <RelativeLayout  
+        android:id="@+id/playerFlipcenter"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" 
+        android:layout_below="@+id/header"
+        >
+    <ViewFlipper
+    android:id="@+id/playerFlipview_flipper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/playerFlipinclude2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        layout="@layout/first" >
+    </include>
+
+    <include
+        android:id="@+id/playerFlipinclude1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        layout="@layout/second" >
+    </include>
+    
+    </ViewFlipper>
+    
+    </RelativeLayout>
+   
+    </LinearLayout>
+    
+
+    
+</RelativeLayout>
 </LinearLayout>

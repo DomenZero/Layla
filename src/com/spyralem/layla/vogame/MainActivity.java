@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
@@ -41,21 +42,17 @@ public class MainActivity extends Activity
 	}
     public void addListenerOnButton(){
     	final Context context=this;
-    	button1=(Button) findViewById(R.id.button1);
-    	button1.setOnClickListener(new OnClickListener() {
-    		@Override
-    		public void onClick(View arg0){
-    			Intent intent=new Intent(context, AboutActivity.class);
-    			startActivity(intent);
-    		}
-    	});
+
     	
     	button4=(Button) findViewById(R.id.button4);
     	button4.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View arg0){
-    			Intent intent=new Intent(context, GameActivity.class);
+//    			Intent intent=new Intent(context, GameActivity.class);
+//    			startActivity(intent);
+    			Intent intent=new Intent(context, FragmentGameActivity.class);
     			startActivity(intent);
+    			
     		}
     	});
     	
@@ -80,6 +77,15 @@ public class MainActivity extends Activity
     		@Override
     		public void onClick(View arg0){
     			Intent intent=new Intent(context, RatingActivity.class);
+    			startActivity(intent);
+    		}
+    	});
+    	
+    	button1=(Button) findViewById(R.id.button1);
+    	button1.setOnClickListener(new OnClickListener() {
+    		@Override
+    		public void onClick(View arg0){
+    			Intent intent=new Intent(context, AboutActivity.class);
     			startActivity(intent);
     		}
     	});
