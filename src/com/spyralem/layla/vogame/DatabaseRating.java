@@ -26,7 +26,7 @@ public class DatabaseRating {
 		
 	//create database
 	private static final String DATABASE_NAME="dbLayla.db";
-	private static final int DATABASE_VERSION=4;
+	private static final int DATABASE_VERSION=5;
 	
 	//create table
 	private static final String RATING_TABLE="rating";

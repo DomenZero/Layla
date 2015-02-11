@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ScrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-<!--     <TextView -->
-<!--         android:id="@+id/quoteView" -->
-<!--         android:layout_width="match_parent" -->
-<!--         android:layout_height="match_parent" -->
-<!--         android:padding="5dip" -->
-<!--         android:textSize="32sp" > -->
-<!--     </TextView> -->
-
-    <RelativeLayout
-    
-    android:id="@+id/playerFlipscrollView1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:orientation="vertical"  >
     
     <LinearLayout 
         android:id="@+id/playerFlipheader"
@@ -39,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="Start" />
-            
+     </LinearLayout>
             
                 <RelativeLayout  
         android:id="@+id/playerFlipcenter"
@@ -58,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        layout="@layout/first" >
+        layout="@layout/fragmentgame_settings_first" >
     </include>
 
     <include
@@ -66,16 +53,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        layout="@layout/second" >
+        layout="@layout/fragmentgame_settings_second" >
     </include>
     
     </ViewFlipper>
     
     </RelativeLayout>
-   
-    </LinearLayout>
-    
+  
 
     
 </RelativeLayout>
-</LinearLayout>

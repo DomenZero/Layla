@@ -57,7 +57,7 @@ public class FragmentGameSettings extends Fragment {
 		
 		//02/09
 		//mTextView1.setText(String.valueOf(2));
-		//mTextView1.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
+		mTextView1.setText(String.valueOf(FragmentGameActivity.QuoteArray[mCurrIdx]));
 		final GestureDetector gesture = new GestureDetector(getActivity(),
 				new GestureDetector.SimpleOnGestureListener() {
 					@Override
@@ -100,7 +100,7 @@ public class FragmentGameSettings extends Fragment {
 					}
 				});
 		
-		mQuoteView.setOnTouchListener(new View.OnTouchListener() {
+		mTextView1.setOnTouchListener(new View.OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
