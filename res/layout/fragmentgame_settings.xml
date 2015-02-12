@@ -4,7 +4,8 @@
     android:id="@+id/ScrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"  >
+    android:orientation="vertical" 
+    android:background="@drawable/game_fone_fr_settings" >
     
     <LinearLayout 
         android:id="@+id/playerFlipheader"
@@ -20,12 +21,12 @@
                 android:minHeight="40dp"
                 android:textSize="20sp"
                 android:text="Please, select num Player's"/>
-            <Button
-                android:id="@+id/playerFlipbutStart"
-                android:layout_width="150dp" 
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Start" />
+<!--             <Button -->
+<!--                 android:id="@+id/playerFlipbutStart" -->
+<!--                 android:layout_width="150dp"  -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:gravity="right" -->
+<!--                 android:text="Start" /> -->
      </LinearLayout>
             
                 <RelativeLayout  

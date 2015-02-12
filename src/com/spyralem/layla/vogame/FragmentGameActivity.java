@@ -85,6 +85,12 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 	@Override
 	public void onListSelection(int index) {
 
+
+
+//		//02/12 clear Fragment
+//		mFragmentManager.popBackStack(null, mFragmentManager.POP_BACK_STACK_INCLUSIVE);
+//		mDetailsFragment.showQuoteAtIndex(index);
+		
 		//01/28 Test BD Update
 		Log.d("Update: ", "ing..."+index+" to ");
 
@@ -110,15 +116,19 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		//DatabaseRating.getPlayer(index);
 		//____________________
 		
-		// If the QuoteFragment has not been added, add it now
+		// If the SettingsFragment has not been added, add it now
 		if (!mDetailsFragment.isAdded()) {
+			
 		
 			// Start a new FragmentTransaction
 			FragmentTransaction fragmentTransaction = mFragmentManager
 					.beginTransaction();
+		
 			
 			// Add the QuoteFragment to the layout
 			fragmentTransaction.add(R.id.quote_fragment_container, mDetailsFragment);
+			
+			
 			
 			// Add this FragmentTransaction to the backstack
 			fragmentTransaction.addToBackStack(null);
@@ -133,10 +143,13 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 			
 		}
 		
+		
+		
 		if (mDetailsFragment.getShownIndex() != index) {
 
 			// Tell the QuoteFragment to show the quote string at position index
 			
+
 			mDetailsFragment.showQuoteAtIndex(index);
 		
 		}
@@ -160,6 +173,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
 		switch (item.getItemId()) {
 		case R.id.activity_menu_item:
 
@@ -168,12 +182,15 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 					"This action provided by the QuoteViewerActivity "+howindex, Toast.LENGTH_SHORT)
 					.show();
 			
-			//02/06 определение номера игрока в листе Следует добавить запись из левел поля
-			//обновление, верхнее меню
-			DatabaseRating db=new DatabaseRating();
-			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), TitleArray[howindex], "Color", IDArray[howindex]);
-			mainWindow();
+//			//02/06 определение номера игрока в листе Следует добавить запись из левел поля
+//			//обновление, верхнее меню
+//			DatabaseRating db=new DatabaseRating();
+//			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), TitleArray[howindex], "Color", IDArray[howindex]);
+//			mainWindow();
 			
+//			//02/12 update
+//			mFragmentManager.popBackStack(null, mFragmentManager.POP_BACK_STACK_INCLUSIVE);
+//			mDetailsFragment.showQuoteAtIndex(index);
 			// return value true indicates that the menu click has been handled
 			return true;
 		

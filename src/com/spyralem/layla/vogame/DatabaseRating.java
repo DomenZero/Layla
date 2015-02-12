@@ -26,7 +26,7 @@ public class DatabaseRating {
 		
 	//create database
 	private static final String DATABASE_NAME="dbLayla.db";
-	private static final int DATABASE_VERSION=5;
+	private static final int DATABASE_VERSION=7;
 	
 	//create table
 	private static final String RATING_TABLE="rating";
@@ -169,6 +169,31 @@ public class DatabaseRating {
 //		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
 //	}
 
+	/*** UserRating Data update function ***/
+	public void updateUserRatingData_byID(String name, String rating, String status, int id) {
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ String.valueOf(id)};
+		
+		ContentValues values=new ContentValues();
+		
+		//uData.setUserLevel(7);
+		
+		//values.put(USER_NAME_COLUMN, name);
+		values.put(USER_NAME_COLUMN, name);
+		values.put(USER_RATING_COLUMN, rating);
+		values.put(USER_STATUS_COLUMN, status);
+		//values.put(USER_COLOR_COLUMN, color);
+//		
+//		String[] any=new String[1];
+//		any[0]=uData.getUserName();
+		
+		db.update(RATING_TABLE, values, ID_COLUMN+" like ?", pin);
+		db.close();
+		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+	}
 	/*** Players Data update function ***/
 	public void updatePlayersData_byID(String nameval, String levelval, String color, int id) {
 		
@@ -194,6 +219,22 @@ public class DatabaseRating {
 		db.update(PLAYERS_TABLE, values, ID_COLUMN+" like ?", pin);
 		db.close();
 		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+	}
+	
+	/*** User Rating Data getting single contact 02/12***/
+	public static Integer getUserRating(String name) {
+		SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ name};
+		String selectQuery="SELECT "+USER_NAME_COLUMN+" FROM "+RATING_TABLE+" WHERE "+USER_NAME_COLUMN+"=?";
+		
+		Cursor c=db.rawQuery(selectQuery, pin);
+	
+		c.moveToFirst();
+		//String index=String.valueOf(c.getColumnIndex(USER_NAME_COLUMN));
+		//return index;//c.getString(c.getColumnIndex(id));
+		int index=c.getColumnIndex(USER_NAME_COLUMN);
+		return index;
 	}
 
 	/*** Players Data getting single contact 02/02***/

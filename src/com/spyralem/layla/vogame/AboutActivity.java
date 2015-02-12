@@ -106,6 +106,8 @@ public class AboutActivity extends Activity {
         		Log.d("deliting: ", "deliting...");
         		
         		DatabaseRating.delPlayersData(pString);
+//        		DatabaseRating.delPlayersData_byID(1);
+//        		DatabaseRating.delPlayersData_byID(1);
         		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
         		/*** End Open Database ***/
 				fOut.write(pString);
@@ -148,7 +150,7 @@ public class AboutActivity extends Activity {
         		DatabaseRating.init(AboutActivity.this);
         		Log.d("Insert: ", "Inserting...");
         		
-        		DatabaseRating.addPlayersData(new PlayersData(pString,4,"Color"));
+        		DatabaseRating.addPlayersData(new PlayersData(pString,1,"Color"));
         		
         		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
         		/*** End Open Database ***/

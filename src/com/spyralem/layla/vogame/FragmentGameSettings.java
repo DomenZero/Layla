@@ -1,5 +1,8 @@
 package com.spyralem.layla.vogame;
 
+import com.spyralem.layla.model.PlayersData;
+import com.spyralem.layla.model.UserRatingData;
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,9 +35,9 @@ public class FragmentGameSettings extends Fragment {
 	//02/05/2015
 	private ViewFlipper mFlipper;
 	private TextView mTextView1, mTextView2;
-	private int mCurrentLayoutState, mCount;
+	private int mCurrentLayoutState=0, mCount=0;
 	private GestureDetector mGestureDetector;
-	private Button butStart;
+	//private Button butStart;
 
 
 	
@@ -48,17 +51,30 @@ public class FragmentGameSettings extends Fragment {
 		if (newIndex < 0 || newIndex >= mQuoteArrLen)
 			return;
 		mCurrIdx = newIndex;
-		mQuoteView.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
-		
-		
+		//mQuoteView.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
+		mQuoteView.setText("Player №"+(newIndex+1)+"   Name: "+FragmentGameActivity.TitleArray[mCurrIdx]);
+		mCount=Integer.parseInt(FragmentGameActivity.QuoteArray[mCurrIdx]);
 		//02/06 Завершающая стадия редактирования Фрагмента для Бэта
-		butStart.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
-		addListenerOnButton();
+	//	butStart.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
+//		addListenerOnButton();
 		
 		//02/09
 		//mTextView1.setText(String.valueOf(2));
-		mTextView1.setText(String.valueOf(FragmentGameActivity.QuoteArray[mCurrIdx]));
-		final GestureDetector gesture = new GestureDetector(getActivity(),
+		mCurrentLayoutState = 0;
+		
+		//02/12 update level
+//		mFlipper.invalidate();
+//		
+//		//mTextView2.setText(String.valueOf(mCount));
+//		switchLayoutStateIn(mCount);
+
+//		switchLayoutStateOut(mCount-1);
+//		switchLayoutStateTo(mCurrentLayoutState);
+		mTextView2.setText(String.valueOf(mCount));
+		mTextView1.setText(String.valueOf(mCount));//String.valueOf(FragmentGameActivity.QuoteArray[mCurrIdx]));//FragmentGameActivity.QuoteArray[mCurrIdx]));
+		
+		mGestureDetector = new GestureDetector(getActivity(),
+		//final GestureDetector gesture = new GestureDetector(getActivity(),
 				new GestureDetector.SimpleOnGestureListener() {
 					@Override
 					public boolean onDown(MotionEvent e){
@@ -73,66 +89,155 @@ public class FragmentGameSettings extends Fragment {
 						final int SWIPE_MIN_DISTANCE=120;
 						final int SWIPE_MAX_OFF_PATH=250;
 						final int SWIPE_THRESHOLD_VELOCITY=200;
-						try{
+//						try{
 							if(Math.abs(e1.getY()-e2.getY())>SWIPE_MAX_OFF_PATH)
 								return false;
 							if(e1.getX()-e2.getX()>SWIPE_MIN_DISTANCE && Math.abs(velocityX)>SWIPE_THRESHOLD_VELOCITY){
+								mCurrentLayoutState = mCurrentLayoutState == 0 ? 1
+										: 0;
+								switchLayoutStateTo(mCurrentLayoutState);
 								Log.i("gesture","Right to Left!");
 							}else if(e2.getX()-e1.getX()>SWIPE_MIN_DISTANCE && Math.abs(velocityX)>SWIPE_THRESHOLD_VELOCITY){
+								mCurrentLayoutState = mCurrentLayoutState == 0 ? 1
+										: 0;
+								switchLayoutStateOut(mCurrentLayoutState);
 								Log.i("gesture","Left to Right");
 							}		
-						} catch (Exception e){
-							
-						}
-						return super.onFling(e1, e2, velocityX, velocityY);
-//						if (velocityX < -10.0f) {
-//							mCurrentLayoutState = mCurrentLayoutState == 0 ? 1
-//									: 0;
-//						//	switchLayoutStateTo(mCurrentLayoutState);
+//						} catch (Exception e){
+//							
 //						}
-//						else
-//						if (mCount>0 & velocityX > 10.0f) {
-//							mCurrentLayoutState = mCurrentLayoutState == 0 ? 1
-//									: 0;
-//							//switchLayoutStateOut(mCurrentLayoutState);
-//							}
-//						return true;
+
+						return true;//super.onFling(e1, e2, velocityX, velocityY);
 					}
 				});
 		
-		mTextView1.setOnTouchListener(new View.OnTouchListener() {
+		mFlipper.setOnTouchListener(new View.OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				return gesture.onTouchEvent(event);
+			//	return gesture.onTouchEvent(event);
+				return mGestureDetector.onTouchEvent(event);
+				
 			}
+			
+
+			
+			
 		});
 	}
 
-	//button "Save" Listener
-	public void addListenerOnButton(){
-    	butStart.setOnClickListener(new OnClickListener() {
-    		@Override
-    		public void onClick(View v){
-    			Log.d("SaveClick: ", "saving..."+mQuoteView.getText());//+index+" to ");
+	public void switchLayoutStateIn(int switchIn) {
+		mCurrentLayoutState = switchIn;
+		mFlipper.setInAnimation(inFromRightAnimation());
+		mFlipper.setOutAnimation(outToLeftAnimation());
+		mTextView1.setText(String.valueOf(mCount));
 
-    			//True Update Settings
-//    			DatabaseRating db=new DatabaseRating();
+		mFlipper.showNext();
+	}
+	
+	
+	public void switchLayoutStateTo(int switchTo) {
+		mCurrentLayoutState = switchTo;
+
+//		mFlipper.setInAnimation(inFromRightAnimation());
+//		mFlipper.setOutAnimation(outToLeftAnimation());
+
+		mCount++;
+
+		if (switchTo == 0) {
+			mTextView1.setText(String.valueOf(mCount));
+		} else {
+			mTextView2.setText(String.valueOf(mCount));
+		}
+
+		mFlipper.showNext();
+	}
+	
+	public void switchLayoutStateOut(int switchOut) {
+		mCurrentLayoutState = switchOut;
+
+//		mFlipper.setInAnimation(inFromLeftAnimation());
+//		mFlipper.setOutAnimation(outToRightAnimation());
+
+		mCount--;
+		
+		if (switchOut == 0) {
+			mTextView1.setText(String.valueOf(mCount));
+		} else {
+			mTextView2.setText(String.valueOf(mCount));
+		}
+
+		mFlipper.showPrevious();
+	}
+
+	private Animation inFromRightAnimation() {
+		Animation inFromRight = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, +1.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f);
+		inFromRight.setDuration(500);
+		inFromRight.setInterpolator(new LinearInterpolator());
+		return inFromRight;
+	}
+
+	private Animation outToLeftAnimation() {
+		Animation outtoLeft = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, -1.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f);
+		outtoLeft.setDuration(500);
+		outtoLeft.setInterpolator(new LinearInterpolator());
+		return outtoLeft;
+	}
+	
+	//
+	private Animation inFromLeftAnimation() {
+		Animation inFromLeft = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, -1.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f);
+		inFromLeft.setDuration(500);
+		inFromLeft.setInterpolator(new LinearInterpolator());
+		return inFromLeft;
+	}
+
+	private Animation outToRightAnimation() {
+		Animation outtoRight = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, +1.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f);
+		outtoRight.setDuration(500);
+		outtoRight.setInterpolator(new LinearInterpolator());
+		return outtoRight;
+	}
+	//button "Save" Listener
+//	public void addListenerOnButton(){
+//    	butStart.setOnClickListener(new OnClickListener() {
+//    		@Override
+//    		public void onClick(View v){
+//    			Log.d("SaveClick: ", "saving..."+mQuoteView.getText());//+index+" to ");
 //
-//    			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[index]), "0", "Color", IDArray[index]);
-    			
-    			//Intent intent=new Intent(context, GameActivity.class);
-//    			Intent intent=new Intent(context, AboutActivity.class);
-//    			Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
-//    			intent.putExtra(EXTRA_RES_NUM, mCount);
+//    			//True Update Settings
+////    			DatabaseRating db=new DatabaseRating();
+////
+////    			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[index]), "0", "Color", IDArray[index]);
 //    			
-//    			onStop();
-//    			onDestroy();
-//    			startActivity(intent);
-    		}
-    	});
-    }
+//    			//Intent intent=new Intent(context, GameActivity.class);
+////    			Intent intent=new Intent(context, AboutActivity.class);
+////    			Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
+////    			intent.putExtra(EXTRA_RES_NUM, mCount);
+////    			
+////    			onStop();
+////    			onDestroy();
+////    			startActivity(intent);
+//    		}
+//    	});
+//    }
 	// Called to create the content view for this Fragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,7 +262,7 @@ public class FragmentGameSettings extends Fragment {
 		//02/05/2014
 	}
 
-	// Set up some information about the mQuoteView TextView 
+	// Set up some information about the Players Settings
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -165,12 +270,17 @@ public class FragmentGameSettings extends Fragment {
 		mQuoteArrLen = FragmentGameActivity.QuoteArray.length;
 		
 		//02/06 Завершающая стадия редактирования Фрагмента для Бэта
-		butStart = (Button) getActivity().findViewById(R.id.playerFlipbutStart);
+//		butStart = (Button) getActivity().findViewById(R.id.playerFlipbutStart);
 		mFlipper = (ViewFlipper) getActivity().findViewById(R.id.playerFlipview_flipper);
 		mTextView1 = (TextView) getActivity().findViewById(R.id.playerFliptextView1);
 		mTextView2 = (TextView) getActivity().findViewById(R.id.playerFliptextView2);
+		
 
-		//02/09
+		//02/12 update
+		mFlipper.invalidate();
+		
+		
+	//	mCount=0;
 
 
 	}
@@ -198,14 +308,29 @@ public class FragmentGameSettings extends Fragment {
 
 		case R.id.detail_menu_item_main:
 			Toast.makeText(getActivity().getApplicationContext(),
-					"This action provided by the QuoteFragment",
+					"Hi-Hi! Good Gamer! Result saved) ",
 					Toast.LENGTH_SHORT).show();
+			/*** Start open database ***/
+    		Log.d("Insert: ", "Inserting...");
+    		
+    		//DatabaseRating.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), TitleArray[howindex], "Color", IDArray[howindex]);
+    		//02/12
+//    		DatabaseRating db=new DatabaseRating();
+//    		db.updateUserRatingData_byID(FragmentGameActivity.TitleArray[mCurrIdx], FragmentGameActivity.QuoteArray[mCurrIdx],"Winner", db.getUserRating(FragmentGameActivity.TitleArray[mCurrIdx]));
+    		//___
+    		DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.TitleArray[mCurrIdx], mCount,"Winner"));
+    		//DatabaseRating.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[index]), "0", "Color", IDArray[index]);
+    		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
+    		/*** End Open Database ***/
+    		
 			return true;
 
 		case R.id.detail_menu_item_secondary:
 			Toast.makeText(getActivity().getApplicationContext(),
 					"This action is also provided by the QuoteFragment",
 					Toast.LENGTH_SHORT).show();
+			
+
 			return true;
 
 		default:

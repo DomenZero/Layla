@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">Layla game</string>
+    <string name="app_name_rating">Layla game: Rating Players</string>
+    <string name="app_name_num_players">Layla game: How many add Players?</string>
+    
+    
     <string name="menu_play">Play</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_rating">Rating</string>
@@ -14,6 +18,8 @@
 	    </string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="menu_hello">Hi, I Layla</string>
+    
     <string name="action_settings">Settings</string>
     
     <string name="input_pname">Input Player Name</string>
@@ -29,9 +35,10 @@
     
     
     <string name="activity_item">ActivityAction</string>
-    <string name="secondary_item">SecondarySettingsAction</string>
-    <string name="quote_item">SettingsAction</string>
     <string name="title_item">PlayersAction</string>
+        
+    <string name="quote_item">Winner!</string>
+    <string name="secondary_item">Time</string>
        
 
     <string-array name="Titles">
