@@ -21,6 +21,8 @@
    
     </RelativeLayout>
         
+
+            
     <RelativeLayout 
             android:id="@+id/center"
             android:layout_width="match_parent"
@@ -33,14 +35,22 @@
             android:layout_height="fill_parent"
             android:id="@+id/scrollViewTrue"
             android:fillViewport="true">
-        <GridView
-            android:id="@+id/gridGame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="auto_fit"
-            android:horizontalSpacing="10dp" >
             
-        </GridView>
+                <TextView 
+            android:textSize="20dp"
+                    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+            android:text="@string/help_game_txt"            
+            ></TextView>
+<!--         <GridView -->
+<!--             android:id="@+id/gridGame" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:numColumns="auto_fit" -->
+<!--             android:horizontalSpacing="10dp" > -->
+            
+<!--         </GridView> -->
         
         </ScrollView>
         
@@ -54,27 +64,27 @@
         android:gravity="center"
         android:layout_alignParentBottom="true" >
         
-    <Button
-        android:id="@+id/butUp"
-        android:layout_width="150dp" 
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="Update" />
+<!--     <Button -->
+<!--         android:id="@+id/butUp" -->
+<!--         android:layout_width="150dp"  -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:gravity="left" -->
+<!--         android:text="Update" /> -->
     
     <TextView 
         android:id="@+id/butText"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Tralala"/>
+        android:text="Конец"/>
     
-    <EditText
-        android:id="@+id/edit_nPlayer"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="4" 
-        android:hint="@string/edit_nplayer">
-    </EditText>
+<!--     <EditText -->
+<!--         android:id="@+id/edit_nPlayer" -->
+<!--         android:layout_width="150dp" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:ems="10" -->
+<!--         android:inputType="number" -->
+<!--         android:text="4"  -->
+<!--         android:hint="@string/edit_nplayer"> -->
+<!--     </EditText> -->
     </LinearLayout>
 </RelativeLayout>

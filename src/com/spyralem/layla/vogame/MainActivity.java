@@ -85,7 +85,7 @@ public class MainActivity extends Activity
     	button1.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View arg0){
-    			Intent intent=new Intent(context, AboutActivity.class);
+    			Intent intent=new Intent(context, GameActivity.class);
     			startActivity(intent);
     		}
     	});

@@ -46,6 +46,11 @@ public class FragmentGameSettings extends Fragment {
 		return mCurrIdx;
 	}
 
+	// Return level
+	public int wtisLevel(){
+		return mCount;
+	}
+	
 	// Show the Quote string at position newIndex
 	public void showQuoteAtIndex(int newIndex) {
 		if (newIndex < 0 || newIndex >= mQuoteArrLen)
@@ -318,7 +323,10 @@ public class FragmentGameSettings extends Fragment {
 //    		DatabaseRating db=new DatabaseRating();
 //    		db.updateUserRatingData_byID(FragmentGameActivity.TitleArray[mCurrIdx], FragmentGameActivity.QuoteArray[mCurrIdx],"Winner", db.getUserRating(FragmentGameActivity.TitleArray[mCurrIdx]));
     		//___
-    		DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.TitleArray[mCurrIdx], mCount,"Winner"));
+    	//	if (DatabaseRating.getUserRating(FragmentGameActivity.TitleArray[mCurrIdx])>0)
+    			DatabaseRating.updatePlayersData_byName(FragmentGameActivity.TitleArray[mCurrIdx], String.valueOf(mCount), "Color", mCurrIdx);
+    		//else
+    			//DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.TitleArray[mCurrIdx], mCount,"Winner"));
     		//DatabaseRating.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[index]), "0", "Color", IDArray[index]);
     		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
     		/*** End Open Database ***/

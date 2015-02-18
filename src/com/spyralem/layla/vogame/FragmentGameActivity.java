@@ -179,14 +179,14 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 
 			// Show a Toast Message. Toast Messages are discussed in the lesson on user interface classes
 			Toast.makeText(getApplicationContext(),
-					"This action provided by the QuoteViewerActivity "+howindex, Toast.LENGTH_SHORT)
+					"This action provided by the QuoteViewerActivity "+TitleArray[howindex], Toast.LENGTH_SHORT)
 					.show();
 			
 //			//02/06 определение номера игрока в листе Следует добавить запись из левел поля
 //			//обновление, верхнее меню
-//			DatabaseRating db=new DatabaseRating();
-//			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), TitleArray[howindex], "Color", IDArray[howindex]);
-//			mainWindow();
+			DatabaseRating db=new DatabaseRating();
+			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), mDetailsFragment.wtisLevel(), "Color", IDArray[howindex]); ///Integer.parseInt(FragmentGameActivity.TitleArray[howindex])
+			mainWindow();
 			
 //			//02/12 update
 //			mFragmentManager.popBackStack(null, mFragmentManager.POP_BACK_STACK_INCLUSIVE);

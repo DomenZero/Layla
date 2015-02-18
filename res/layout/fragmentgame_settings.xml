@@ -20,7 +20,8 @@
                 android:layout_height="wrap_content"
                 android:minHeight="40dp"
                 android:textSize="20sp"
-                android:text="Please, select num Player's"/>
+                android:text="@string/num_players_text"
+                />
 <!--             <Button -->
 <!--                 android:id="@+id/playerFlipbutStart" -->
 <!--                 android:layout_width="150dp"  -->

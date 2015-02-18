@@ -26,7 +26,7 @@ public class DatabaseRating {
 		
 	//create database
 	private static final String DATABASE_NAME="dbLayla.db";
-	private static final int DATABASE_VERSION=7;
+	private static final int DATABASE_VERSION=8;
 	
 	//create table
 	private static final String RATING_TABLE="rating";
@@ -195,7 +195,7 @@ public class DatabaseRating {
 		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
 	}
 	/*** Players Data update function ***/
-	public void updatePlayersData_byID(String nameval, String levelval, String color, int id) {
+	public void updatePlayersData_byID(String nameval, Integer levelval, String color, int id) {
 		
 		//Open DB Read/Write
 		
@@ -221,12 +221,42 @@ public class DatabaseRating {
 		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
 	}
 	
+	/*** Players Data update ot 02/17 function ***/
+	public static void updatePlayersData_byName(String nameval, String levelval, String color, int id) {
+		
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=read();
+	    int numPlayer=getUserRating(nameval);
+		
+		
+		String[] pin=new String[]{ String.valueOf(numPlayer)};
+		
+		ContentValues values=new ContentValues();
+		
+		//uData.setUserLevel(7);
+		
+		//values.put(USER_NAME_COLUMN, name);
+		values.put(USER_NAME_COLUMN, nameval);
+		values.put(USER_RATING_COLUMN, levelval);
+		values.put(USER_STATUS_COLUMN, color);
+		//values.put(USER_COLOR_COLUMN, color);
+//		
+//		String[] any=new String[1];
+//		any[0]=uData.getUserName();
+		db.update(RATING_TABLE, values, ID_COLUMN+"= ?", pin);
+		//db.update(RATING_TABLE, values, ID_COLUMN+" like ?", pin);
+		db.close();
+		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+	}
+
+	
 	/*** User Rating Data getting single contact 02/12***/
 	public static Integer getUserRating(String name) {
 		SQLiteDatabase db=read();
 		
 		String[] pin=new String[]{ name};
-		String selectQuery="SELECT "+USER_NAME_COLUMN+" FROM "+RATING_TABLE+" WHERE "+USER_NAME_COLUMN+"=?";
+		String selectQuery="SELECT "+USER_NAME_COLUMN+" FROM "+RATING_TABLE+" WHERE "+ID_COLUMN+"=?";
 		
 		Cursor c=db.rawQuery(selectQuery, pin);
 	

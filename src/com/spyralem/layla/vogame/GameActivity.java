@@ -95,7 +95,7 @@ public class GameActivity extends Activity {
 
 
 
-        setupViews();
+    //    setupViews();
 
         
 
@@ -122,48 +122,48 @@ public class GameActivity extends Activity {
 //		spinner.setAdapter(adapterSp);
 		//end Spinner
 		
-        gridGame.setOnItemClickListener(new OnItemClickListener() {
-        	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        		//editT=(EditText) findViewById(R.id.edit_nPlayer);
-        		//Toast.makeText(GameActivity.this, "Pos "+position, Toast.LENGTH_LONG).show();
-        		//Toast.makeText(getApplicationContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
-        		Toast.makeText(GameActivity.this, "hkgjhghjgjh "+position, Toast.LENGTH_SHORT).show();
-        		//butText.setText("haha"); 
-			}
-		});
-
-        butUp.setOnClickListener(new Button.OnClickListener(){
-        	@Override
-			public void onClick(View click){
-//        		//butText=(TextView) findViewById(R.id.butText);
-        		//Act II
-                Intent intent=getIntent();
-                int nPlayer=intent.getIntExtra("NUM", num);
-               
-                Toast.makeText(GameActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
-                //--
-        		//nPlayer=Integer.parseInt(editT.getText().toString());
-        		//Toast.makeText(GameActivity.this, "Please. Click 'Enter' "+nPlayer, Toast.LENGTH_LONG).show();
-
-        		//Toast.makeText(GameActivity.this, nPlayer, Toast.LENGTH_LONG).show();
-//        		Toast.makeText(GameActivity.this, "onSaveInstanceState\n "+"save ="+editT.getText().toString(), Toast.LENGTH_LONG).show();
-        	}
-        });
-        
-        butOver.setOnClickListener(new Button.OnClickListener(){
-        	@Override
-        	public void onClick(View click){
-        		DatabaseRating.init(GameActivity.this);
-        		Log.d("Insert: ", "Inserting...");
-        		
-        		//DatabaseRating.addUserData(new UserRatingData("LaylaTest",1,"Best"));
-        		DatabaseRating.addUserData(new UserRatingData(editText.getText().toString(),1,"Best"));
-        		
-        		//Input data in table
-        		//Log.d("Insert: ", "Inserting...");
-        		//DatabaseRating.addUserData(new UserRatingData("Layla",1,"Best"));
-        	}
-        });
+//        gridGame.setOnItemClickListener(new OnItemClickListener() {
+//        	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//        		//editT=(EditText) findViewById(R.id.edit_nPlayer);
+//        		//Toast.makeText(GameActivity.this, "Pos "+position, Toast.LENGTH_LONG).show();
+//        		//Toast.makeText(getApplicationContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+//        		Toast.makeText(GameActivity.this, "hkgjhghjgjh "+position, Toast.LENGTH_SHORT).show();
+//        		//butText.setText("haha"); 
+//			}
+//		});
+//
+//        butUp.setOnClickListener(new Button.OnClickListener(){
+//        	@Override
+//			public void onClick(View click){
+////        		//butText=(TextView) findViewById(R.id.butText);
+//        		//Act II
+//                Intent intent=getIntent();
+//                int nPlayer=4;//intent.getIntExtra("NUM", num);
+//               
+//                Toast.makeText(GameActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+//                //--
+//        		//nPlayer=Integer.parseInt(editT.getText().toString());
+//        		//Toast.makeText(GameActivity.this, "Please. Click 'Enter' "+nPlayer, Toast.LENGTH_LONG).show();
+//
+//        		//Toast.makeText(GameActivity.this, nPlayer, Toast.LENGTH_LONG).show();
+////        		Toast.makeText(GameActivity.this, "onSaveInstanceState\n "+"save ="+editT.getText().toString(), Toast.LENGTH_LONG).show();
+//        	}
+//        });
+//        
+//        butOver.setOnClickListener(new Button.OnClickListener(){
+//        	@Override
+//        	public void onClick(View click){
+//        		DatabaseRating.init(GameActivity.this);
+//        		Log.d("Insert: ", "Inserting...");
+//        		
+//        		//DatabaseRating.addUserData(new UserRatingData("LaylaTest",1,"Best"));
+//        		DatabaseRating.addUserData(new UserRatingData(editText.getText().toString(),1,"Best"));
+//        		
+//        		//Input data in table
+//        		//Log.d("Insert: ", "Inserting...");
+//        		//DatabaseRating.addUserData(new UserRatingData("Layla",1,"Best"));
+//        	}
+//        });
         
 	}
 	
@@ -354,91 +354,40 @@ public class GameActivity extends Activity {
 	public void setupViews() {
         //Act II
         Intent intent=getIntent();
-        int nPlayer=intent.getIntExtra("NUM", num);
+        int nPlayer=4;//intent.getIntExtra("NUM", num);
        
         Toast.makeText(GameActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
         //--
+//        
+//        gridGame=(GridView) findViewById(R.id.gridGame);
+//        gridGame.setAdapter(new GridAdapter(this,mThumbIdsFlowers,nPlayer));
+//        registerForContextMenu(gridGame);
         
-        gridGame=(GridView) findViewById(R.id.gridGame);
-        gridGame.setAdapter(new GridAdapter(this,mThumbIdsFlowers,nPlayer));
-        registerForContextMenu(gridGame);
+//     // Set an setOnItemClickListener on the GridView
+//     		gridGame.setOnItemClickListener(new OnItemClickListener() {
+//     			public void onItemClick(AdapterView<?> parent, View v,
+//     					int position, long id) {
+//     				
+//     				//Create an Intent to start the ImageViewActivity
+//     				Intent intent = new Intent(GameActivity.this,
+//     						AdapterViewActivity.class);
+//     				
+//     				// Add the ID of the thumbnail to display as an Intent Extra
+//     				intent.putExtra(EXTRA_RES_ID, (int) id);
+//     				
+//     				// Start the ImageViewActivity
+//     				startActivity(intent);
+//     			}
+//     		});
+//        
         
-     // Set an setOnItemClickListener on the GridView
-     		gridGame.setOnItemClickListener(new OnItemClickListener() {
-     			public void onItemClick(AdapterView<?> parent, View v,
-     					int position, long id) {
-     				
-     				//Create an Intent to start the ImageViewActivity
-     				Intent intent = new Intent(GameActivity.this,
-     						AdapterViewActivity.class);
-     				
-     				// Add the ID of the thumbnail to display as an Intent Extra
-     				intent.putExtra(EXTRA_RES_ID, (int) id);
-     				
-     				// Start the ImageViewActivity
-     				startActivity(intent);
-     			}
-     		});
-        
-        
-        editT=(EditText) findViewById(R.id.edit_nPlayer);
-        butUp=(Button) findViewById(R.id.butUp);
-        butOver=(Button) findViewById(R.id.butOver);
+//        editT=(EditText) findViewById(R.id.edit_nPlayer);
+//        butUp=(Button) findViewById(R.id.butUp);
+//        butOver=(Button) findViewById(R.id.butOver);
         
 	}
 	
 	private void settingsGrid() {
 		gridGame.setBackgroundColor(Color.parseColor("#7000D4"));
-	}
-
-	public void onClick(View v){
-//		//butText=(TextView) findViewById(R.id.butText);
-//		//butText.setText(editT.getText().toString());
-		Toast.makeText(GameActivity.this, "onSaveInstanceState\n "+"save ="+editT.getText().toString(), Toast.LENGTH_LONG).show();
-	}
-		
-	private void howNumEdit(){
-		
-	}
-	@Override
-	protected void onSaveInstanceState(Bundle outState){
-		super.onSaveInstanceState(outState);
-//		String sSaved=editT.getText().toString();
-//		outState.putString("saved_state", sSaved);
-//		
-		
-		
-//		String sSaved=editT.getText().toString();
-//		outState.putString("saved_state", sSaved);
-//		Toast.makeText(GameActivity.this, "onSaveInstanceState\n "+"save ="+sSaved, Toast.LENGTH_LONG).show();
-//		
-		//EditText editText=(EditText) findViewById(R.id.editText1);
-		
-		//CharSequence text=editText.getText();
-		
-		//outState.putCharSequence("text", text);
-		//outState.putString("text", text);
-		//outState.putSerializable(key, value)("text", editText);
-		//outState.putInt("Level", level);
-	}
-	
-	@Override
-	protected void onRestoreInstanceState(Bundle savedState){
-		super.onRestoreInstanceState(savedState);
-//		String sSaved=savedState.getString("saved_state");
-//		
-//		if (sSaved==null) {
-//			Toast.makeText(GameActivity.this, " no onRestoreInstance saved", Toast.LENGTH_LONG).show();
-//			
-//		}else {
-//			Toast.makeText(GameActivity.this, "onRestoreInstance "+sSaved, Toast.LENGTH_LONG).show();
-//			editT.setText(sSaved);
-//		}
-		
-		//text=savedState.getString("text");
-		//final EditText editText=(EditText) findViewById(R.id.editText1);
-		//CharSequence text=savedState.getCharSequence("text");
-		//editText.setText(text);
-		
 	}
 }
