@@ -2,7 +2,7 @@ package com.spyralem.layla.managelist;
 
 import java.util.List;
 
-import com.spyralem.layla.vogame.AboutActivity;
+import com.spyralem.layla.vogame.ControlActivity;
 import com.spyralem.layla.vogame.R;
 
 import android.annotation.SuppressLint;

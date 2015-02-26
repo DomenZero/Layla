@@ -14,25 +14,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-//Several Activity and Fragment lifecycle methods are instrumented to emit LogCat output
-//so you can follow the class' lifecycle
+/*** Fragment UI-panel Players
+Connecting with PlayersData (there model of table for save & load players)
+***/
 
 public class FragmentGamePlayers extends ListFragment{
 	ListSelectionListener mListener = null;
 	int mCurrIdx = -1;
 
-	// Callback interface that allows this Fragment to notify the QuoteViewerActivity when  
-	// user clicks on a List Item  
+	// Callback interface that allows this Fragment to notify the FragmentGameSettings
+	// when user clicks on a ListItem  
 	public interface ListSelectionListener {
 		public void onListSelection(int index);
 	}
 
+	// Called when the user selects an item from the List 
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try {
 
-			// Set the ListSelectionListener for communicating with the QuoteViewerActivity
+			// Set the ListSelectionListener for communicating with the FragmentGameSettings
 			mListener = (ListSelectionListener) activity;
 		
 		} catch (ClassCastException e) {
@@ -45,7 +47,7 @@ public class FragmentGamePlayers extends ListFragment{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// This Fragment will add items to the ActionBar  
+		// add items to the ActionBar  
 		setHasOptionsMenu(true);
 		
 		// Retain this Fragment across Activity Reconfigurations
@@ -57,9 +59,8 @@ public class FragmentGamePlayers extends ListFragment{
 		super.onActivityCreated(savedState);
 
 		// Set the list adapter for the ListView 
-		// Discussed in more detail in the user interface classes lesson  
 		setListAdapter(new ArrayAdapter<String>(getActivity(),
-				R.layout.fragmentgame_players, FragmentGameActivity.TitleArray));
+				R.layout.fragmentgame_players, FragmentGameActivity.PlayersArray));
 
 		// If a title has already been selected in the past, reset the selection state now
 		if (mCurrIdx != FragmentGameActivity.UNSELECTED) {
@@ -75,8 +76,6 @@ public class FragmentGamePlayers extends ListFragment{
 		// Indicates the selected item has been checked
 		getListView().setItemChecked(pos, true);
 		
-
-		
 		// Inform the QuoteViewerActivity that the item in position pos has been selected
 		mListener.onListSelection(pos);
 	}
@@ -84,22 +83,23 @@ public class FragmentGamePlayers extends ListFragment{
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-		// Inflate the options Menu using title_menu.xml
+		// Inflate the options Menu using players_menu.xml
 		inflater.inflate(R.menu.players_menu, menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
 		switch (item.getItemId()) {
 		
 		case R.id.title_menu_item:
 
-			// Show a Toast Message. Toast Messages are discussed in the lesson on user interface classes
+			// Show a Toast Message. Arrrh! Disable before release
 			Toast.makeText(getActivity().getApplicationContext(),
-					"This action provided by the TitlesFragment",
+					"This action provided by FragmentGamePlayers",
 					Toast.LENGTH_SHORT).show();
 			
-			// return value true indicates that the menu click has been handled
+			// that the menu click has been handled, then return value true indicates 
 			return true;
 		
 		default:

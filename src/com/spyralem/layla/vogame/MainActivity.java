@@ -85,7 +85,7 @@ public class MainActivity extends Activity
     	button1.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View arg0){
-    			Intent intent=new Intent(context, GameActivity.class);
+    			Intent intent=new Intent(context, AboutActivity.class);
     			startActivity(intent);
     		}
     	});
@@ -108,7 +108,7 @@ public class MainActivity extends Activity
     {
     	onStop();
     	onDestroy();
-    	Intent myintent=new Intent(MainActivity.this, AboutActivity.class);
+    	Intent myintent=new Intent(MainActivity.this, ControlActivity.class);
 		//myintent.putExtra("key", value);
     	
     	MainActivity.this.startActivity(myintent);

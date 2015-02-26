@@ -4,8 +4,9 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game_fone"
     tools:context=".ListViewActivity" >
+<!--     android:background="@drawable/game_fone" -->
+    
     <Button
         android:id="@+id/EnterPlayers_addPlayers"
         android:layout_width="wrap_content"

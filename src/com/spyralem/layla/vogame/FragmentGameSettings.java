@@ -56,27 +56,16 @@ public class FragmentGameSettings extends Fragment {
 		if (newIndex < 0 || newIndex >= mQuoteArrLen)
 			return;
 		mCurrIdx = newIndex;
-		//mQuoteView.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
-		mQuoteView.setText("Player №"+(newIndex+1)+"   Name: "+FragmentGameActivity.TitleArray[mCurrIdx]);
-		mCount=Integer.parseInt(FragmentGameActivity.QuoteArray[mCurrIdx]);
+		//mQuoteView.setText(FragmentGameActivity.SettingsArray[mCurrIdx]);
+		mQuoteView.setText("Player №"+(newIndex+1)+"   Name: "+FragmentGameActivity.PlayersArray[mCurrIdx]);
+		mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mCurrIdx]);
 		//02/06 Завершающая стадия редактирования Фрагмента для Бэта
-	//	butStart.setText(FragmentGameActivity.QuoteArray[mCurrIdx]);
-//		addListenerOnButton();
 		
-		//02/09
-		//mTextView1.setText(String.valueOf(2));
 		mCurrentLayoutState = 0;
 		
-		//02/12 update level
-//		mFlipper.invalidate();
-//		
-//		//mTextView2.setText(String.valueOf(mCount));
-//		switchLayoutStateIn(mCount);
-
-//		switchLayoutStateOut(mCount-1);
-//		switchLayoutStateTo(mCurrentLayoutState);
+		//02/12 update Setting Level
 		mTextView2.setText(String.valueOf(mCount));
-		mTextView1.setText(String.valueOf(mCount));//String.valueOf(FragmentGameActivity.QuoteArray[mCurrIdx]));//FragmentGameActivity.QuoteArray[mCurrIdx]));
+		mTextView1.setText(String.valueOf(mCount));
 		
 		mGestureDetector = new GestureDetector(getActivity(),
 		//final GestureDetector gesture = new GestureDetector(getActivity(),
@@ -121,7 +110,6 @@ public class FragmentGameSettings extends Fragment {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-			//	return gesture.onTouchEvent(event);
 				return mGestureDetector.onTouchEvent(event);
 				
 			}
@@ -145,6 +133,7 @@ public class FragmentGameSettings extends Fragment {
 	public void switchLayoutStateTo(int switchTo) {
 		mCurrentLayoutState = switchTo;
 
+		//push Animation
 //		mFlipper.setInAnimation(inFromRightAnimation());
 //		mFlipper.setOutAnimation(outToLeftAnimation());
 
@@ -220,29 +209,8 @@ public class FragmentGameSettings extends Fragment {
 		outtoRight.setInterpolator(new LinearInterpolator());
 		return outtoRight;
 	}
-	//button "Save" Listener
-//	public void addListenerOnButton(){
-//    	butStart.setOnClickListener(new OnClickListener() {
-//    		@Override
-//    		public void onClick(View v){
-//    			Log.d("SaveClick: ", "saving..."+mQuoteView.getText());//+index+" to ");
-//
-//    			//True Update Settings
-////    			DatabaseRating db=new DatabaseRating();
-////
-////    			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[index]), "0", "Color", IDArray[index]);
-//    			
-//    			//Intent intent=new Intent(context, GameActivity.class);
-////    			Intent intent=new Intent(context, AboutActivity.class);
-////    			Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
-////    			intent.putExtra(EXTRA_RES_NUM, mCount);
-////    			
-////    			onStop();
-////    			onDestroy();
-////    			startActivity(intent);
-//    		}
-//    	});
-//    }
+
+	
 	// Called to create the content view for this Fragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -272,22 +240,17 @@ public class FragmentGameSettings extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mQuoteView = (TextView) getActivity().findViewById(R.id.playerFlipquoteView);
-		mQuoteArrLen = FragmentGameActivity.QuoteArray.length;
+		mQuoteArrLen = FragmentGameActivity.SettingsArray.length;
 		
 		//02/06 Завершающая стадия редактирования Фрагмента для Бэта
 //		butStart = (Button) getActivity().findViewById(R.id.playerFlipbutStart);
 		mFlipper = (ViewFlipper) getActivity().findViewById(R.id.playerFlipview_flipper);
 		mTextView1 = (TextView) getActivity().findViewById(R.id.playerFliptextView1);
 		mTextView2 = (TextView) getActivity().findViewById(R.id.playerFliptextView2);
-		
 
 		//02/12 update
 		mFlipper.invalidate();
 		
-		
-	//	mCount=0;
-
-
 	}
 
 	@Override
@@ -316,19 +279,20 @@ public class FragmentGameSettings extends Fragment {
 					"Hi-Hi! Good Gamer! Result saved) ",
 					Toast.LENGTH_SHORT).show();
 			/*** Start open database ***/
-    		Log.d("Insert: ", "Inserting...");
-    		
-    		//DatabaseRating.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), TitleArray[howindex], "Color", IDArray[howindex]);
-    		//02/12
-//    		DatabaseRating db=new DatabaseRating();
-//    		db.updateUserRatingData_byID(FragmentGameActivity.TitleArray[mCurrIdx], FragmentGameActivity.QuoteArray[mCurrIdx],"Winner", db.getUserRating(FragmentGameActivity.TitleArray[mCurrIdx]));
-    		//___
-    	//	if (DatabaseRating.getUserRating(FragmentGameActivity.TitleArray[mCurrIdx])>0)
-    			DatabaseRating.updatePlayersData_byName(FragmentGameActivity.TitleArray[mCurrIdx], String.valueOf(mCount), "Color", mCurrIdx);
-    		//else
-    			//DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.TitleArray[mCurrIdx], mCount,"Winner"));
-    		//DatabaseRating.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[index]), "0", "Color", IDArray[index]);
-    		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
+			//02/18 GetPlayers
+			if ((DatabaseRating.getPlayerFromRating(FragmentGameActivity.PlayersArray[mCurrIdx]))!= null)
+			{
+				int level=DatabaseRating.getLevelFromRating(FragmentGameActivity.PlayersArray[mCurrIdx])+1;
+				DatabaseRating.updateLevelData_byID(FragmentGameActivity.PlayersArray[mCurrIdx], level, "Winner"); ///Integer.parseInt(FragmentGameActivity.TitleArray[howindex])
+				Log.d("Read: ", "Level= "+level);
+			}
+			else
+			{
+				Log.d("Insert: ", "Inserting... "+FragmentGameActivity.PlayersArray[mCurrIdx]);
+				//DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.TitleArray[mCurrIdx], mCount,"Winner"));
+				DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.PlayersArray[mCurrIdx], 1,"Winner"));
+			}
+			
     		/*** End Open Database ***/
     		
 			return true;

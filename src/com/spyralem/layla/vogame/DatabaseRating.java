@@ -170,7 +170,7 @@ public class DatabaseRating {
 //	}
 
 	/*** UserRating Data update function ***/
-	public void updateUserRatingData_byID(String name, String rating, String status, int id) {
+	public void updateUserRatingData_byID(String name, Integer rating, String status, int id) {
 		//Open DB Read/Write
 		
 		final SQLiteDatabase db=read();
@@ -222,7 +222,7 @@ public class DatabaseRating {
 	}
 	
 	/*** Players Data update ot 02/17 function ***/
-	public static void updatePlayersData_byName(String nameval, String levelval, String color, int id) {
+	public static void updatePlayersData_byName(String nameval, Integer rating, String color, int id) {
 		
 		//Open DB Read/Write
 		
@@ -238,7 +238,7 @@ public class DatabaseRating {
 		
 		//values.put(USER_NAME_COLUMN, name);
 		values.put(USER_NAME_COLUMN, nameval);
-		values.put(USER_RATING_COLUMN, levelval);
+		values.put(USER_RATING_COLUMN, rating);
 		values.put(USER_STATUS_COLUMN, color);
 		//values.put(USER_COLOR_COLUMN, color);
 //		
@@ -250,6 +250,32 @@ public class DatabaseRating {
 		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
 	}
 
+	/*** Rating Players Data update function ***/
+	public static void updateLevelData_byID(String nameval, Integer levelval, String color) {
+		
+		//Open DB Read/Write
+		
+		final SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ nameval};
+		
+		ContentValues values=new ContentValues();
+		
+		//uData.setUserLevel(7);
+		
+		//values.put(USER_NAME_COLUMN, name);
+//		values.put(USER_NAME_COLUMN, nameval);
+		values.put(USER_RATING_COLUMN, levelval);
+		values.put(USER_STATUS_COLUMN, color);
+		//values.put(USER_COLOR_COLUMN, color);
+//		
+//		String[] any=new String[1];
+//		any[0]=uData.getUserName();
+		
+		db.update(RATING_TABLE, values, USER_NAME_COLUMN+" like ?", pin);
+		db.close();
+		//return db.update(PLAYERS_TABLE, values, ID_COLUMN+"=?"+id, new String []{String.valueOf(uData.getID())});
+	}
 	
 	/*** User Rating Data getting single contact 02/12***/
 	public static Integer getUserRating(String name) {
@@ -264,6 +290,64 @@ public class DatabaseRating {
 		//String index=String.valueOf(c.getColumnIndex(USER_NAME_COLUMN));
 		//return index;//c.getString(c.getColumnIndex(id));
 		int index=c.getColumnIndex(USER_NAME_COLUMN);
+		return index;
+	}
+	
+	/*** Rating Data getting single contact 02/18***/
+	public static String getPlayerFromRating(String name) {
+		SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ name};
+		String selectQuery="SELECT "+USER_NAME_COLUMN+" FROM "+RATING_TABLE+" WHERE "+USER_NAME_COLUMN+" = ?";
+		Log.i(LOG_TAG, "error");
+		Cursor c=db.rawQuery(selectQuery, pin);
+		Log.i(LOG_TAG, "error2");
+		
+		String index=null;
+		if (c!=null){
+			if (c.moveToFirst()){
+				index=c.getString(c.getColumnIndex(USER_NAME_COLUMN));
+				c.close();
+			}
+			else
+				Log.i(LOG_TAG, "MoveFirst Error in getPlayerFromRating");
+		} else
+			Log.i(LOG_TAG, "error");
+		
+		
+		
+		//String index=String.valueOf(c.getColumnIndex(USER_NAME_COLUMN));
+		//return index;//c.getString(c.getColumnIndex(id));
+		return index;
+	}
+	
+	/*** Rating Data get Level 02/19***/
+	public static Integer getLevelFromRating(String name) {
+		SQLiteDatabase db=read();
+		
+		String[] pin=new String[]{ name};
+		String selectQuery="SELECT "+USER_RATING_COLUMN+" FROM "+RATING_TABLE+" WHERE "+USER_NAME_COLUMN+" = ?";
+		Log.i(LOG_TAG, "1error");
+		Cursor c=db.rawQuery(selectQuery, pin);
+		Log.i(LOG_TAG, "1error2");
+		
+		Integer index=null;
+		if (c!=null){
+			if (c.moveToFirst()){
+				index=c.getInt(c.getColumnIndex(USER_RATING_COLUMN));
+				Log.i(LOG_TAG, "Get Level: "+index);
+				c.close();
+				
+			}
+			else
+				Log.i(LOG_TAG, "MoveFirst Error in getPlayerFromRating" );
+		} else
+			Log.i(LOG_TAG, "error");
+		
+		
+		
+		//String index=String.valueOf(c.getColumnIndex(USER_NAME_COLUMN));
+		//return index;//c.getString(c.getColumnIndex(id));
 		return index;
 	}
 

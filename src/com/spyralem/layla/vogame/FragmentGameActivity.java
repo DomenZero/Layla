@@ -35,8 +35,8 @@ import com.spyralem.layla.vogame.FragmentGamePlayers.ListSelectionListener;
 
 public class FragmentGameActivity extends Activity implements ListSelectionListener{
 
-	public static String[] TitleArray;
-	public static String[] QuoteArray;
+	public static String[] PlayersArray;
+	public static String[] SettingsArray;
 	
 	private final FragmentGamePlayers mTitlesFragment = new FragmentGamePlayers();
 	private final FragmentGameSettings mDetailsFragment = new FragmentGameSettings();
@@ -90,7 +90,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 //		//02/12 clear Fragment
 //		mFragmentManager.popBackStack(null, mFragmentManager.POP_BACK_STACK_INCLUSIVE);
 //		mDetailsFragment.showQuoteAtIndex(index);
-		
+	//	mTitlesFragment.		
 		//01/28 Test BD Update
 		Log.d("Update: ", "ing..."+index+" to ");
 
@@ -153,6 +153,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 			mDetailsFragment.showQuoteAtIndex(index);
 		
 		}
+
 		
 		//mainWindow();
 		
@@ -179,7 +180,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 
 			// Show a Toast Message. Toast Messages are discussed in the lesson on user interface classes
 			Toast.makeText(getApplicationContext(),
-					"This action provided by the QuoteViewerActivity "+TitleArray[howindex], Toast.LENGTH_SHORT)
+					"This action provided by the QuoteViewerActivity "+PlayersArray[howindex], Toast.LENGTH_SHORT)
 					.show();
 			
 //			//02/06 определение номера игрока в листе Следует добавить запись из левел поля
@@ -247,9 +248,9 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		/***EndT***/
 		// Get the string arrays with the titles and qutoes
 		//TitleArray = getResources().getStringArray(R.array.Titles);
-		TitleArray = arrmas;
+		PlayersArray = arrmas;
 		
-		QuoteArray = levelmas;
+		SettingsArray = levelmas;
 		
 		IDArray = idmas;
 
