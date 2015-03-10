@@ -1,19 +1,26 @@
 package com.spyralem.layla.model;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * Model for Table "Players" - there Settings user save/update/delete
+ */
+
 public class PlayersData {
 	
-	//private var
+	// Private variable
 	int _id;
 	String _user_name;
 	Integer _user_level;
 	String _user_color;
 	
-	//empty constructor
+	// Empty constructor
 	public PlayersData(){
 		
 	}
 
-	//constructors
+	// Constructors
 	public PlayersData(int id, String name, Integer level, String color){
 		this._id=id;
 		this._user_name=name;
@@ -27,42 +34,42 @@ public class PlayersData {
 		this._user_color=color;
 	}
 	
-	//getting ID
+	// Getting ID
 	public int getID() {
 		return this._id;		
 	}
 	
-	//setting ID
+	// Setting ID
 	public void setID(int id){
 		this._id=id;
 	}
 	
-	//getting USER NAME
+	// Getting USER NAME
 	public String getUserName() {
 		return this._user_name;		
 	}
 	
-	//setting USER NAME
+	// setting USER NAME
 	public void setUserName(String name){
 		this._user_name=name;
 	}
 	
-	//getting USER LEVEL
+	// Getting USER LEVEL
 	public Integer getUserLevel() {
 		return this._user_level;		
 	}
 	
-	//setting USER LEVEL
+	// setting USER LEVEL
 	public void setUserLevel(Integer level){
 		this._user_level=level;
 	}
 	
-	//getting USER COLOR
+	// Getting USER COLOR
 	public String getUserColor() {
 		return this._user_color;		
 	}
 	
-	//setting USER COLOR
+	// setting USER COLOR
 	public void setUserColor(String color){
 		this._user_color=color;
 	}

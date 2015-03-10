@@ -25,6 +25,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
+
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * Adapter data's set
+ */
+
 public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 
 	protected static final String LOG_TAG = DataListAdapter.class.getSimpleName();
@@ -78,11 +86,6 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 		holder.name = (TextView)row.findViewById(R.id.atomPay_name);
 		setNameTextChangeListener(holder,position, row);
 
-		
-//		holder.value = (TextView)row.findViewById(R.id.atomPay_value);
-//		setValueTextListeners(holder);
-
-		
 		row.setTag(holder);
 
 		setupItem(holder);
@@ -97,7 +100,7 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 	public static class PlayersHolder {
 		DataListAdapterSet infoPlayers;
 		TextView name;
-		//TextView value;
+
 		ImageButton removePaymentButton;
 		ImageButton addPaymentButton;
 	}
@@ -122,53 +125,7 @@ public class DataListAdapter extends ArrayAdapter<DataListAdapterSet> {
 			}
 			
 		});
-		
-
-//		holder.name.setOnTouchListener(new OnTouchListener() {
-//
-//			@Override
-//			public boolean onTouch(View row, MotionEvent arg1) {
-//				// TODO Auto-generated method stub
-//				Log.e(LOG_TAG, "Kill Bill: " + position);
-//				return false;
-//			}
-//			
-//		});
-		
-	}
-//
-//	private void setValueTextListeners(final AtomPaymentHolder holder) {
-//		holder.value.addTextChangedListener(new TextWatcher() {
-//
-//			@Override
-//			public void onTextChanged(CharSequence s, int start, int before, int count) {
-//				try{
-//					holder.atomPayment.setValue(Double.parseDouble(s.toString()));
-//				}catch (NumberFormatException e) {
-//					Log.e(LOG_TAG, "error reading double value: " + s.toString());
-//				}
-//			}
-//
-//			@Override
-//			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-//
-//			@Override
-//			public void afterTextChanged(Editable s) { }
-//		});
-//	}
-	
-//	//------------------------------------
-//	private void getValueTextListeners(final PlayersHolder holder) {
-//		holder.value.setOnTouchListener(new OnTouchListener() {
-//			
-//			@Override
-//			public boolean onTouch(View v, MotionEvent event) {
-//				// TODO Auto-generated method stub
-//				Log.e(LOG_TAG, "!!!!!!!!!!!!!!! " + holder.value.toString());
-//				return false;
-//			}
-//		});
-//		}
 
 
+}
 }

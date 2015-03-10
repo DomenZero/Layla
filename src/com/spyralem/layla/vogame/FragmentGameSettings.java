@@ -1,6 +1,5 @@
 package com.spyralem.layla.vogame;
 
-import com.spyralem.layla.model.PlayersData;
 import com.spyralem.layla.model.UserRatingData;
 
 import android.app.Fragment;
@@ -27,11 +26,15 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 
+/*** Fragment UI-panel Settings
+Connecting with UserRatingData (there model of table for save & load players)
+***/
+
 public class FragmentGameSettings extends Fragment {
 
-	private TextView mQuoteView = null;
+	private TextView mSettingsView = null;
 	private int mCurrIdx = FragmentGameActivity.UNSELECTED;
-	private int mQuoteArrLen = 0;
+	private int mSettingsArrLen = 0;
 	//02/05/2015
 	private ViewFlipper mFlipper;
 	private TextView mTextView1, mTextView2;
@@ -51,15 +54,18 @@ public class FragmentGameSettings extends Fragment {
 		return mCount;
 	}
 	
-	// Show the Quote string at position newIndex
-	public void showQuoteAtIndex(int newIndex) {
-		if (newIndex < 0 || newIndex >= mQuoteArrLen)
+	// Show Settings at position newIndex
+	public void showSettingsAtIndex(int newIndex) {
+		if (newIndex < 0 || newIndex >= mSettingsArrLen)
 			return;
+		// Index 
 		mCurrIdx = newIndex;
-		//mQuoteView.setText(FragmentGameActivity.SettingsArray[mCurrIdx]);
-		mQuoteView.setText("Player №"+(newIndex+1)+"   Name: "+FragmentGameActivity.PlayersArray[mCurrIdx]);
+		
+		// Players info string
+		mSettingsView.setText("Player №"+(newIndex+1)+"   Name: "+FragmentGameActivity.PlayersArray[mCurrIdx]);
+		
+		// Getting Integer level
 		mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mCurrIdx]);
-		//02/06 Завершающая стадия редактирования Фрагмента для Бэта
 		
 		mCurrentLayoutState = 0;
 		
@@ -67,8 +73,12 @@ public class FragmentGameSettings extends Fragment {
 		mTextView2.setText(String.valueOf(mCount));
 		mTextView1.setText(String.valueOf(mCount));
 		
+		//Der Fruhling 03/02
+		mTextView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		mTextView2.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		
+		// Slide level
 		mGestureDetector = new GestureDetector(getActivity(),
-		//final GestureDetector gesture = new GestureDetector(getActivity(),
 				new GestureDetector.SimpleOnGestureListener() {
 					@Override
 					public boolean onDown(MotionEvent e){
@@ -109,7 +119,7 @@ public class FragmentGameSettings extends Fragment {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
+				// Touch-touch
 				return mGestureDetector.onTouchEvent(event);
 				
 			}
@@ -120,6 +130,13 @@ public class FragmentGameSettings extends Fragment {
 		});
 	}
 
+	/***
+	 * 
+	 * @param switchIn - current layout state
+	 * 
+	 * Animation flip module
+	 */
+	
 	public void switchLayoutStateIn(int switchIn) {
 		mCurrentLayoutState = switchIn;
 		mFlipper.setInAnimation(inFromRightAnimation());
@@ -209,15 +226,22 @@ public class FragmentGameSettings extends Fragment {
 		outtoRight.setInterpolator(new LinearInterpolator());
 		return outtoRight;
 	}
-
+   
+	/*
+	 * 
+	 * @ Ended Animation module
+	 * 	 
+	 * Fragment create module, there managed FragmentGameSettings
+	 * 
+	 */
 	
 	// Called to create the content view for this Fragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Inflate the layout defined in quote_fragment.xml
-		// The last parameter is false because the returned view does not need to be attached to the container ViewGroup
+		// Inflate the layout defined in fragmentgame_settings.xml
+		// !!!The last parameter is false because the returned view does not need to be attached to the container ViewGroup
 		return inflater.inflate(R.layout.fragmentgame_settings, container, false);
 	}
 
@@ -231,24 +255,21 @@ public class FragmentGameSettings extends Fragment {
 		
 		// This Fragment adds options to the ActionBar
 		setHasOptionsMenu(true);
-		
-		//02/05/2014
 	}
 
-	// Set up some information about the Players Settings
+	// Set information about the Settings
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mQuoteView = (TextView) getActivity().findViewById(R.id.playerFlipquoteView);
-		mQuoteArrLen = FragmentGameActivity.SettingsArray.length;
+		mSettingsView = (TextView) getActivity().findViewById(R.id.playerFlipquoteView);
+		mSettingsArrLen = FragmentGameActivity.SettingsArray.length;
 		
-		//02/06 Завершающая стадия редактирования Фрагмента для Бэта
-//		butStart = (Button) getActivity().findViewById(R.id.playerFlipbutStart);
+		//butStart = (Button) getActivity().findViewById(R.id.playerFlipbutStart);
 		mFlipper = (ViewFlipper) getActivity().findViewById(R.id.playerFlipview_flipper);
 		mTextView1 = (TextView) getActivity().findViewById(R.id.playerFliptextView1);
 		mTextView2 = (TextView) getActivity().findViewById(R.id.playerFliptextView2);
 
-		//02/12 update
+		// Cancelled mFlipper info
 		mFlipper.invalidate();
 		
 	}
@@ -262,7 +283,7 @@ public class FragmentGameSettings extends Fragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-		// Inflate the options Menu using quote_menu.xml
+		// Inflate the options Menu settings_menu.xml
 		inflater.inflate(R.menu.settings_menu, menu);
 	
 	}
@@ -271,38 +292,37 @@ public class FragmentGameSettings extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 
-		// Show Toast Messages. Toast Messages are discussed in the lesson on user interface classes
-		// return value true indicates that the menu click has been handled
+		// Show Toast Messages.
+		// Return value true indicates that the menu click has been handled
 
 		case R.id.detail_menu_item_main:
 			Toast.makeText(getActivity().getApplicationContext(),
 					"Hi-Hi! Good Gamer! Result saved) ",
 					Toast.LENGTH_SHORT).show();
 			/*** Start open database ***/
-			//02/18 GetPlayers
+			// GetPlayers 
+			// If Winner has in table, that +1, else create new Winner 
 			if ((DatabaseRating.getPlayerFromRating(FragmentGameActivity.PlayersArray[mCurrIdx]))!= null)
 			{
 				int level=DatabaseRating.getLevelFromRating(FragmentGameActivity.PlayersArray[mCurrIdx])+1;
-				DatabaseRating.updateLevelData_byID(FragmentGameActivity.PlayersArray[mCurrIdx], level, "Winner"); ///Integer.parseInt(FragmentGameActivity.TitleArray[howindex])
+				DatabaseRating.updateLevelData_byID(FragmentGameActivity.PlayersArray[mCurrIdx], level, "Winner"); 
 				Log.d("Read: ", "Level= "+level);
 			}
 			else
 			{
 				Log.d("Insert: ", "Inserting... "+FragmentGameActivity.PlayersArray[mCurrIdx]);
-				//DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.TitleArray[mCurrIdx], mCount,"Winner"));
 				DatabaseRating.addUserData(new UserRatingData(FragmentGameActivity.PlayersArray[mCurrIdx], 1,"Winner"));
 			}
 			
     		/*** End Open Database ***/
-    		
-			return true;
+    		return true;
 
+    	// anyButton - haven't action
 		case R.id.detail_menu_item_secondary:
 			Toast.makeText(getActivity().getApplicationContext(),
-					"This action is also provided by the QuoteFragment",
+					"This action is also provided by the SettingsFragment. Not action",
 					Toast.LENGTH_SHORT).show();
 			
-
 			return true;
 
 		default:

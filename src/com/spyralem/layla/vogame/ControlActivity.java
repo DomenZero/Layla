@@ -42,250 +42,207 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 
+/***
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * UI Add/Delete Players from table "players"
+ ***/
+
 public class ControlActivity extends Activity {
+	
 
-		private DataListAdapter adapter;
-		private int num;
-		private int nPlayer;
+	protected static final String EXTRA_RES_NUM = "NUM";
+	final String LOG_TAG="Log prog";
+	
+	private DataListAdapter adapter;
+	private int num;
+	private int nPlayer;
 
-		ListView NewPlayersListView;
-		final String LOG_TAG="Log prog";
-		String fName="players";
-		String pString="";
-		protected static final String EXTRA_RES_NUM = "NUM";
+	ListView NewPlayersListView;
+	
+	String fName="players";
+	String pString="";		
+	int savePlayers=0;
 		
-		int savePlayers=0;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.about);
 		
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.about);
-			
-			//
-			
-			
-			setupListViewAdapter();
-			setupPlayersInListView();
-		//	for (int i=0;i<4;i++){
-			//	adapter.insert(new DataListAdapterSet("", 0), 0);
-			//}
-			
-			
-			setupAddButton();
-//			if (nPlayer==0){
-//				setupStartGameButton();
-//			}
-			
-			this.deleteFile(fName);
-			File file = new File(this.getFilesDir(),fName);
-			//---
-			setupStartGameButton();
-		}
-
-		public void removeAtomPayOnClickHandler(View v) {
-			DataListAdapterSet itemToDel = (DataListAdapterSet)v.getTag();
-
-			pString="";
-			
-			//Act III —табилизаци€ изменени€ параметра nPlayer на форме
-			nPlayer--;
-			Toast.makeText(ControlActivity.this, "ClickActivity 2="+itemToDel.getName(), Toast.LENGTH_LONG).show();
-			//itemToRemove.getName();
-			//pString=pString+" "+itemToSave.getName();
-			
-			pString=itemToDel.getName();
-			
-			//add Players in file
-			//if (nPlayer==0){
-			try{
-				//OutputStreamWriter fOut=(fName, AboutActivity.MODE_PRIVATE);
-				OutputStreamWriter fOut=new OutputStreamWriter(openFileOutput(fName, ControlActivity.MODE_APPEND));
-				//fOut.write(pString.getBytes());
-				/*** Start open database ***/
-        		DatabaseRating.init(ControlActivity.this);
-        		Log.d("deliting: ", "deliting...");
-        		
-        		DatabaseRating.delPlayersData(pString);
-//        		DatabaseRating.delPlayersData_byID(1);
-//        		DatabaseRating.delPlayersData_byID(1);
-        		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
-        		/*** End Open Database ***/
-				fOut.write(pString);
-				fOut.write('\n');
-				fOut.close();
-			} catch (Exception e){
-				e.printStackTrace();
-			}
-			//}
-			//
-			adapter.remove(itemToDel);
-//			DataListAdapterSet itemToRemove = (DataListAdapterSet)v.getTag();
-//			
-//			//Act III —табилизаци€ изменени€ параметра nPlayer на форме
-//			nPlayer--;
-//			Toast.makeText(AboutActivity.this, "ClickActivity 2="+itemToRemove, Toast.LENGTH_LONG).show();
-//			
-//			adapter.remove(itemToRemove);
-		}
-
-		public void saveAtomPayOnClickHandler(View v) {
-			DataListAdapterSet itemToSave = (DataListAdapterSet)v.getTag();
-
-			
-			//Act III —табилизаци€ изменени€ параметра nPlayer на форме
-			nPlayer--;
-			Toast.makeText(ControlActivity.this, "ClickActivity 2="+itemToSave.getName(), Toast.LENGTH_LONG).show();
-			//itemToRemove.getName();
-			//pString=pString+" "+itemToSave.getName();
-			
-			pString=itemToSave.getName();
-			
-			//add Players in file
-			//if (nPlayer==0){
-			try{
-				//OutputStreamWriter fOut=(fName, AboutActivity.MODE_PRIVATE);
-				OutputStreamWriter fOut=new OutputStreamWriter(openFileOutput(fName, ControlActivity.MODE_APPEND));
-				//fOut.write(pString.getBytes());
-				/*** Start open database ***/
-        		DatabaseRating.init(ControlActivity.this);
-        		Log.d("Insert: ", "Inserting...");
-        		
-        		DatabaseRating.addPlayersData(new PlayersData(pString,1,"Color"));
-        		
-        		//DatabaseRating.addUserData(new UserRatingData(pString,1,"Best"));
-        		/*** End Open Database ***/
-				fOut.write(pString);
-				fOut.write('\n');
-				fOut.close();
-			} catch (Exception e){
-				e.printStackTrace();
-			}
-			//}
-			//
-			adapter.remove(itemToSave);
-		}
+		setupListViewAdapter();
+		setupPlayersInListView();
+		setupAddButton();	
 		
-		private void setupListViewAdapter() {
+		this.deleteFile(fName);
+		//File file = new File(this.getFilesDir(),fName);
+		//---
+		setupStartGameButton();
+	}
 
-	        
-			//adapter = new DataListAdapter(AboutActivity.this, R.layout.listitem, new ArrayList<DataListAdapterSet>());
-	        adapter = new DataListAdapter(this, R.layout.listitem, new ArrayList<DataListAdapterSet>());
-	        NewPlayersListView = (ListView)findViewById(R.id.EnterPlayers_PlayersList);
-			
-	        NewPlayersListView.setAdapter(adapter);
-			
+	// Delete element from table if pressed button 
+	public void removeAtomPayOnClickHandler(View v) {
+		DataListAdapterSet itemToDel = (DataListAdapterSet)v.getTag();
 
+		pString="";
+
+		// Delete element on UI Form
+		nPlayer--;
+		Toast.makeText(ControlActivity.this, "ClickActivity 2="+itemToDel.getName(), Toast.LENGTH_LONG).show();
+
+		pString=itemToDel.getName();
+
+		//add Players in file
+		try{
+			OutputStreamWriter fOut=new OutputStreamWriter(openFileOutput(fName, ControlActivity.MODE_APPEND));
 			
+			/*** Start open database ***/
+			DatabaseRating.init(ControlActivity.this);
+			Log.d("deliting: ", "deliting...");
+
+			DatabaseRating.delPlayersData(pString);
+			
+			/*** End Open Database ***/
+			fOut.write(pString);
+			fOut.write('\n');
+			fOut.close();
+		} catch (Exception e){
+			e.printStackTrace();
 		}
-		
-		private void setupPlayersInListView(){
-			//Act II ѕолучение параметра nPlayer на форму
-	        Intent intent=getIntent();
-	        nPlayer=intent.getIntExtra("NUM", num);
-	        Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+		adapter.remove(itemToDel);
+	}
 
-			//Inser Num from Activity1 
-			for (int i=0;i<nPlayer;i++){
+	// Save element IN table if pressed button
+	public void saveAtomPayOnClickHandler(View v) {
+		DataListAdapterSet itemToSave = (DataListAdapterSet)v.getTag();
+
+		nPlayer--;
+		Toast.makeText(ControlActivity.this, "ClickActivity 2="+itemToSave.getName(), Toast.LENGTH_LONG).show();
+		
+		pString=itemToSave.getName();
+
+		try{
+			OutputStreamWriter fOut=new OutputStreamWriter(openFileOutput(fName, ControlActivity.MODE_APPEND));
+			
+			/*** Start open database ***/
+			DatabaseRating.init(ControlActivity.this);
+			Log.d("Insert: ", "Inserting...");
+
+			DatabaseRating.addPlayersData(new PlayersData(pString,1,"Color"));
+			/*** End Open Database ***/
+			
+			fOut.write(pString);
+			fOut.write('\n');
+			fOut.close();
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		adapter.remove(itemToSave);
+	}
+	
+	/*** Private element save/delete/create ***/
+	// Created Insert player form
+	private void setupListViewAdapter() {
+
+		adapter = new DataListAdapter(this, R.layout.listitem, new ArrayList<DataListAdapterSet>());
+		NewPlayersListView = (ListView)findViewById(R.id.EnterPlayers_PlayersList);
+
+		NewPlayersListView.setAdapter(adapter);
+	}
+
+	private void setupPlayersInListView(){
+		
+		Intent intent=getIntent();
+		nPlayer=intent.getIntExtra("NUM", num);
+		Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+
+		// Insert Number from Activity1 
+		for (int i=0;i<nPlayer;i++){
+			adapter.insert(new DataListAdapterSet("", 0), 0);
+		}
+	}
+
+	// Button, there add new form PlayersAdd on Screen
+	private void setupAddButton() {
+		findViewById(R.id.EnterPlayers_addPlayers).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				nPlayer++;
+				Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+
 				adapter.insert(new DataListAdapterSet("", 0), 0);
-			}
-			
 
-			
-		}
-		
-		private void setupAddButton() {
-			findViewById(R.id.EnterPlayers_addPlayers).setOnClickListener(new OnClickListener() {
+			}
+		});
+	}
+
+	// Start Game =)
+	private void setupStartGameButton() {
+
+		findViewById(R.id.EnterPlayers_StartGame).setOnClickListener(new OnClickListener() {
+			final Context context=ControlActivity.this;
+			@Override
+			public void onClick(View v) {
 				
-				@Override
-				public void onClick(View v) {
-						
-					//Act III —табилизаци€ изменени€ параметра nPlayer на форме
-					nPlayer++;
-					Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
-					
-					adapter.insert(new DataListAdapterSet("", 0), 0);
+				// Save Data
+				Save_Data(fName);
+				
+				// Start GameActivity
+				Intent intent=new Intent(context, FragmentGameActivity.class);
+				Toast.makeText(ControlActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
+				intent.putExtra(EXTRA_RES_NUM, savePlayers);
 
-				}
-			});
-		}
-		
-		private void setupStartGameButton() {
-			
-			findViewById(R.id.EnterPlayers_StartGame).setOnClickListener(new OnClickListener() {
-				final Context context=ControlActivity.this;
-				@Override
-				public void onClick(View v) {
-					//Read_Data
-					Save_Data(fName);
-					//Start GameActivity
-	    			//Intent intent=new Intent(context, GameActivity.class);
-					Intent intent=new Intent(context, FragmentGameActivity.class);
-	    			Toast.makeText(ControlActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
-	    			intent.putExtra(EXTRA_RES_NUM, savePlayers);
-	    			
-
-	    			
-	    			onStop();
-	    			onDestroy();
-	    			startActivity(intent);
-
-					
-//					//Act IV запуск стартовой формы
-//					Toast.makeText(AboutActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
-//	    			onStop();
-//	    			onDestroy();
-//	    			Intent intent=new Intent(context, AboutActivity.class);
-//	    			startActivity(intent);
-	    			
-				}
-			});
-		}
-		
-		//write in file
-		public void Save_Data(String fileName){
-			Log.d("Players", "Save List");
-			
-			
-			StringBuilder text=new StringBuilder();
-			try{
-				InputStream fIn=openFileInput(fileName);
-				if (fIn!=null){
-					//prepare to read players
-					InputStreamReader inputreader=new InputStreamReader(fIn);
-					BufferedReader bufferedreader=new BufferedReader(inputreader);
-					
-					int c;
-					String line=null;
-					
-					while ((line=bufferedreader.readLine())!=null) {
-						//temp = temp+Character.toString((char)c);
-						text.append(line);
-						text.append('\n');
-						//savePlayers++;
-					}
-					Log.e(LOG_TAG, "Text: " + text);
-					}
-			}catch (Exception e){
+				onStop();
+				onDestroy();
+				startActivity(intent);
 			}
+		});
+	}
+
+	/*** Public vois ***/
+	// Write insert Data in file
+	public void Save_Data(String fileName){
+		Log.d("Players", "Save List");
+
+		StringBuilder text=new StringBuilder();
+		try{
+			InputStream fIn=openFileInput(fileName);
+			if (fIn!=null){
+				// Prepare to read players
+				InputStreamReader inputreader=new InputStreamReader(fIn);
+				BufferedReader bufferedreader=new BufferedReader(inputreader);
+
+				int c;
+				String line=null;
+
+				while ((line=bufferedreader.readLine())!=null) {
+					text.append(line);
+					text.append('\n');
+				}
+				Log.e(LOG_TAG, "Text: " + text);
+			}
+		}catch (Exception e){
 		}
-		
-		public void writeListToFile() {
-			
-		}
-		
-//		@Override
-//		protected void onSaveInstanceState(Bundle outState){
-//			super.onSaveInstanceState(outState);
-//			ListAdapter values=NewPlayersListView.getAdapter();
-////			outState.
-//		}
-		
-		/*** Action in ListView***/
-		
-//		
-//		@Override
-//		protected void onRestoreInstanceState(Bundle savedState){
-//			super.onRestoreInstanceState(savedState);
+	}
+
+	/*** Not released Save, if turning screen***/
+//	public void writeListToFile() {
 //
-//		}
+//	}
+//
+//	@Override
+//	protected void onSaveInstanceState(Bundle outState){
+//		super.onSaveInstanceState(outState);
+//		ListAdapter values=NewPlayersListView.getAdapter();
+//	}
+//
+//	@Override
+//	protected void onRestoreInstanceState(Bundle savedState){
+//		super.onRestoreInstanceState(savedState);
+//
+//	}
+//	
+	
 }

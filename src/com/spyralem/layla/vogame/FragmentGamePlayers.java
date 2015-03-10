@@ -4,6 +4,8 @@ import com.spyralem.layla.model.PlayersData;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,7 +17,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 /*** Fragment UI-panel Players
-Connecting with PlayersData (there model of table for save & load players)
 ***/
 
 public class FragmentGamePlayers extends ListFragment{
@@ -62,6 +63,7 @@ public class FragmentGamePlayers extends ListFragment{
 		setListAdapter(new ArrayAdapter<String>(getActivity(),
 				R.layout.fragmentgame_players, FragmentGameActivity.PlayersArray));
 
+		
 		// If a title has already been selected in the past, reset the selection state now
 		if (mCurrIdx != FragmentGameActivity.UNSELECTED) {
 			setSelection(mCurrIdx);
@@ -76,7 +78,7 @@ public class FragmentGamePlayers extends ListFragment{
 		// Indicates the selected item has been checked
 		getListView().setItemChecked(pos, true);
 		
-		// Inform the QuoteViewerActivity that the item in position pos has been selected
+		// Inform the SeettingsViewerActivity that the item in position has been selected
 		mListener.onListSelection(pos);
 	}
 
@@ -89,16 +91,19 @@ public class FragmentGamePlayers extends ListFragment{
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		//final Context context=this;
 		
 		switch (item.getItemId()) {
 		
 		case R.id.title_menu_item:
-
+//			Intent intent=new Intent(this, RatingActivity.class);
+//			this.startActivity(intent);
+			
 			// Show a Toast Message. Arrrh! Disable before release
 			Toast.makeText(getActivity().getApplicationContext(),
 					"This action provided by FragmentGamePlayers",
 					Toast.LENGTH_SHORT).show();
-			
+
 			// that the menu click has been handled, then return value true indicates 
 			return true;
 		

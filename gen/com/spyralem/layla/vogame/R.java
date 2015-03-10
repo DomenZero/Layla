@@ -9,8 +9,6 @@ package com.spyralem.layla.vogame;
 
 public final class R {
     public static final class array {
-        public static final int Quotes=0x7f050002;
-        public static final int Titles=0x7f050001;
         public static final int level_array=0x7f050000;
     }
     public static final class attr {
@@ -82,10 +80,11 @@ public final class R {
         public static final int playerFliptextView1=0x7f080014;
         public static final int playerFliptextView2=0x7f080015;
         public static final int playerFlipview_flipper=0x7f080011;
-        public static final int quote_fragment_container=0x7f08000b;
+        public static final int players_fragment_container=0x7f08000a;
         public static final int scrollView=0x7f08002d;
         public static final int scrollView1=0x7f080016;
         public static final int scrollViewTrue=0x7f08001a;
+        public static final int settings_fragment_container=0x7f08000b;
         public static final int tableLayout =0x7f080030;
         public static final int tableRow1=0x7f080005;
         public static final int tableRow2=0x7f080006;
@@ -94,7 +93,6 @@ public final class R {
         public static final int teView=0x7f08002f;
         public static final int textView1=0x7f080009;
         public static final int textView2=0x7f080031;
-        public static final int title_fragment_container=0x7f08000a;
         public static final int title_menu_item=0x7f080034;
         public static final int view_flipper=0x7f08002a;
     }

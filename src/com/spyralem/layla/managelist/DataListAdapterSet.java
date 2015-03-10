@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 public class DataListAdapterSet implements Serializable {
 	
+	/*
+	 * @author Merkulov Maksim (DomenZero) 
+	 * <wardomenmax@gmail.com>
+	 * 
+	 * Adapter data
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name = "";
 
 

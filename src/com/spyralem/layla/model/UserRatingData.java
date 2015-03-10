@@ -1,19 +1,26 @@
 package com.spyralem.layla.model;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * Model for Table "Rating" - only rating Winner-user
+ */
+
 public class UserRatingData {
 	
-	//private var
+	// private variable
 	int _id;
 	String _user_name;
 	Integer _user_rating;
 	String _user_status;
 	
-	//empty constructor
+	// empty constructor
 	public UserRatingData(){
 		
 	}
 
-	//constructors
+	// constructors
 	public UserRatingData(int id, String name, Integer rating, String status){
 		this._id=id;
 		this._user_name=name;
@@ -27,42 +34,42 @@ public class UserRatingData {
 		this._user_status=status;
 	}
 	
-	//getting ID
+	// getting ID
 	public int getID() {
 		return this._id;		
 	}
 	
-	//setting ID
+	// setting ID
 	public void setID(int id){
 		this._id=id;
 	}
 	
-	//getting USER NAME
+	// getting USER NAME
 	public String getUserName() {
 		return this._user_name;		
 	}
 	
-	//setting USER NAME
+	// setting USER NAME
 	public void setUserName(String name){
 		this._user_name=name;
 	}
 	
-	//getting USER RATING
+	// getting USER RATING
 	public Integer getUserRating() {
 		return this._user_rating;		
 	}
 	
-	//setting USER RATING
+	// setting USER RATING
 	public void setUserRating(Integer rating){
 		this._user_rating=rating;
 	}
 	
-	//getting USER STATUS
+	// getting USER STATUS
 	public String getUserStatus() {
 		return this._user_status;		
 	}
 	
-	//setting USER STATUS
+	// setting USER STATUS
 	public void setUserStatus(String status){
 		this._user_status=status;
 	}

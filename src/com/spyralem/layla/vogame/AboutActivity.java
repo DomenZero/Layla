@@ -1,30 +1,41 @@
 package com.spyralem.layla.vogame;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * Instruction. How Layla used?
+ */
 
 public class AboutActivity extends Activity{
 
 	EditText editT;
 	AutoCompleteTextView editText;
+	private Button Update;
 	
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		
         setContentView(R.layout.game);
+        addListenerOnButton();
 	}
 	
 	/*** Punkt 1. Menu ***/
@@ -66,7 +77,7 @@ public class AboutActivity extends Activity{
 	}
 	
 
-	//menu position selected
+	// Menu position selected
 	@Override
 	public boolean onContextItemSelected(MenuItem item){
 		AdapterView.AdapterContextMenuInfo info=
@@ -75,7 +86,7 @@ public class AboutActivity extends Activity{
 		String[] menuItems={};
 		String CmdName=menuItems[menuItemIndex];
 
-		//check Event Command
+		// Check Event Command
 		if (menuItems[menuItemIndex].equals(CmdName)) {		
 			
 			editText=(AutoCompleteTextView) findViewById(R.id.itemEdit);
@@ -85,4 +96,18 @@ public class AboutActivity extends Activity{
 		return true;
 		
 	}
+	
+	// Button Listener
+    public void addListenerOnButton(){
+    	final Context context=this;
+    	Update=(Button) findViewById(R.id.butOver);
+    	Update.setOnClickListener(new OnClickListener() {
+    		@Override
+    		public void onClick(View v){
+    			
+    			DatabaseRating.delPlayersData_All();
+    		}
+    	});
+    }
+
 }

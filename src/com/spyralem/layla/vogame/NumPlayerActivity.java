@@ -16,14 +16,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * Touched element Flipper
+ */
+
 public class NumPlayerActivity extends Activity {
+	
 	private ViewFlipper mFlipper;
 	private TextView mTextView1, mTextView2;
 	private int mCurrentLayoutState, mCount;
 	private GestureDetector mGestureDetector;
 	private Button butStart;
 	protected static final String EXTRA_RES_NUM = "NUM";
-
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,12 +39,19 @@ public class NumPlayerActivity extends Activity {
 
 		mCurrentLayoutState = 0;
 
+		// Elements on Form
 		mFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
 		mTextView1 = (TextView) findViewById(R.id.textView1);
 		mTextView2 = (TextView) findViewById(R.id.textView2);
+		
+		//Der Fruhling 03/02
+		mTextView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		mTextView2.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
+		// First element from mCount
 		mTextView1.setText(String.valueOf(mCount));
 
+		// Left/Right animation
 		mGestureDetector = new GestureDetector(this,
 				new GestureDetector.SimpleOnGestureListener() {
 					@Override
@@ -60,6 +74,7 @@ public class NumPlayerActivity extends Activity {
 		addListenerOnButton();
 	}
 
+	// Button Listener
     public void addListenerOnButton(){
     	final Context context=this;
     	butStart=(Button) findViewById(R.id.butStart);
@@ -78,7 +93,7 @@ public class NumPlayerActivity extends Activity {
     		}
     	});
     }
-    
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		return mGestureDetector.onTouchEvent(event);
@@ -118,6 +133,7 @@ public class NumPlayerActivity extends Activity {
 		mFlipper.showPrevious();
 	}
 
+	 /*** Animation flip module ***/
 	private Animation inFromRightAnimation() {
 		Animation inFromRight = new TranslateAnimation(
 				Animation.RELATIVE_TO_PARENT, +1.0f,

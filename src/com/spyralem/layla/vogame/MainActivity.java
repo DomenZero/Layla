@@ -12,6 +12,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * In future Del Element or Intro element
+ */
+
 public class MainActivity extends Activity
 {
 	Button button1;
@@ -19,7 +26,8 @@ public class MainActivity extends Activity
 	Button button3;
 	Button button2;
 	Button button4;
-    /** Called when the activity is first created. */
+    
+	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
@@ -27,36 +35,23 @@ public class MainActivity extends Activity
         setContentView(R.layout.main);
         addListenerOnButton();
 
-        //button1=(Button) findViewById(R.id.button1);
-        // Set main.xml as user interface layout
-
-        //@SuppressWarnings("unused")
-		//OnClickListener button1=new OnClickListener() {
-			
-			//@Override
-			//public void onClick(DialogInterface arg0, int arg1) {
-				// TODO Auto-generated method stub
-				
-			//}
-		//};
 	}
+    
     public void addListenerOnButton(){
     	final Context context=this;
 
-    	
+    	// Start game
     	button4=(Button) findViewById(R.id.button4);
     	button4.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View arg0){
-//    			Intent intent=new Intent(context, GameActivity.class);
-//    			startActivity(intent);
     			Intent intent=new Intent(context, FragmentGameActivity.class);
     			startActivity(intent);
     			
     		}
     	});
     	
-    	
+    	// Options game
       	button3 = (Button) findViewById(R.id.button3);
     	button3.setOnClickListener(new OnClickListener() {
     		DatabaseRating db;
@@ -65,12 +60,10 @@ public class MainActivity extends Activity
     			
     			Intent intent=new Intent(context, NumPlayerActivity.class);
     			startActivity(intent);
-    		//	db=new DatabaseRating(this, "dbLayla", null, 1);
-    		//	SQLiteDatabase sdb;
-    		//	sdb=db.getReadableDatabase();
     		}
     	});
     	
+    	// Rating button
     	button2 = (Button) findViewById(R.id.button2);
     	button2.setOnClickListener(new OnClickListener() {
     		DatabaseRating db;
@@ -81,6 +74,7 @@ public class MainActivity extends Activity
     		}
     	});
     	
+    	// About button
     	button1=(Button) findViewById(R.id.button1);
     	button1.setOnClickListener(new OnClickListener() {
     		@Override
@@ -90,6 +84,7 @@ public class MainActivity extends Activity
     		}
     	});
     	
+    	// Exit Button
     	button0 = (Button) findViewById(R.id.button0);
     	button0.setOnClickListener(new OnClickListener() {
     		@Override
@@ -114,11 +109,5 @@ public class MainActivity extends Activity
     	MainActivity.this.startActivity(myintent);
     	
     }
-    
-    public void onClickE(View v)
-    {
-    
-    }
-    
     
 }

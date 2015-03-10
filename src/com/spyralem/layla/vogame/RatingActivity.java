@@ -15,6 +15,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * 
+ * Trivial printed Table 
+ */
+
 public class RatingActivity extends Activity {
 	Button button2;
 
@@ -32,12 +39,9 @@ public class RatingActivity extends Activity {
 		for (UserRatingData dt:data) {
 			String log=" Id: "+dt.getID()+" User Name: "+dt.getUserName()+" Rating: "+dt.getUserRating()+" Status: "+dt.getUserStatus();
 			Log.d("User Name", log);
-			
-//   		 	TextView textView=(TextView)findViewById(R.id.teView);
-//   		 	textView.setText(" Id: "+dt.getID()+" User Name: "+dt.getUserName()+" Rating: "+dt.getUserRating()+" Status: "+dt.getUserStatus());
 		}
 		
-		 //table
+		 // Table
 		 int USER_ROWS=4;
 	     int USER_COLUMNS=4;	        
 	     
@@ -55,8 +59,7 @@ public class RatingActivity extends Activity {
 	    		 teView.setTextSize(18);
 	    		 teView.setTextColor(Color.parseColor("#7FFFD4"));
 	    		 teView.setText(" Id: "+dt.getID()+" User Name: "+dt.getUserName()+" Rating: "+dt.getUserRating()+" Status: "+dt.getUserStatus());
-	    		 tableRow.addView(teView);
-	        		
+	    		 tableRow.addView(teView);	        		
 	    	 }
 	        	
 	    	 tableLayout.addView(tableRow, 0);
