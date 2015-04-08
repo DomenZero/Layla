@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <item name="browndark" type="color">#370903</item>
+    <item name="darkblue" type="color">#FF0099CC</item>
+    <item name="brownbear" type="color">#835C3B</item>
+    <item name="cinnamon" type="color">#C58917</item>
+    
     <string-array name="level_array">
         <item>Zero</item>
         <item>One</item>

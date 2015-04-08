@@ -19,17 +19,21 @@ limitations under the License.
     android:gravity="center"
     android:orientation="vertical"
     android:id="@+id/LinearLayout1" >
+<!--     android:background="@drawable/background" -->
+    
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_hello"
-        android:id="@+id/TextView1" />
+        android:id="@+id/TextView1"/>
     <Button
         android:id="@+id/button4"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_play" />
+        android:text="@string/menu_play"
+        style="@style/StandartTheme"
+        android:background="@drawable/standart_button"/>
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"

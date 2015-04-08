@@ -32,6 +32,7 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
+        styleUtils.onActivitySetTheme(this);
         setContentView(R.layout.main);
         addListenerOnButton();
 
@@ -93,8 +94,11 @@ public class MainActivity extends Activity
     			intent.addCategory(Intent.CATEGORY_HOME);
     			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     			
-    			startActivity(intent);
-    			finish();
+    			styleUtils.changedTheme(MainActivity.this, styleUtils.THEME_DARK);
+    			
+
+    			//startActivity(intent);
+    			//finish();
     			//onDestroy();
     		}
     	});

@@ -35,8 +35,11 @@ public class NumPlayerActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		styleUtils.onActivitySetTheme(this);
+		
 		setContentView(R.layout.main_first);
-
+		styleUtils.onActivitySetTheme(this);
+		
 		mCurrentLayoutState = 0;
 
 		// Elements on Form
@@ -84,7 +87,7 @@ public class NumPlayerActivity extends Activity {
     			
     			//Intent intent=new Intent(context, GameActivity.class);
     			Intent intent=new Intent(context, ControlActivity.class);
-    			Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
+    			//Toast.makeText(NumPlayerActivity.this, "Click 1="+mCount, Toast.LENGTH_LONG).show();
     			intent.putExtra(EXTRA_RES_NUM, mCount);
     			
     			onStop();

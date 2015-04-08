@@ -68,7 +68,10 @@ public class ControlActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// style of Layla
+		styleUtils.onActivitySetTheme(this);
 		setContentView(R.layout.about);
+		
 		
 		setupListViewAdapter();
 		setupPlayersInListView();
@@ -117,7 +120,7 @@ public class ControlActivity extends Activity {
 		DataListAdapterSet itemToSave = (DataListAdapterSet)v.getTag();
 
 		nPlayer--;
-		Toast.makeText(ControlActivity.this, "ClickActivity 2="+itemToSave.getName(), Toast.LENGTH_LONG).show();
+		//Toast.makeText(ControlActivity.this, "ClickActivity 2="+itemToSave.getName(), Toast.LENGTH_LONG).show();
 		
 		pString=itemToSave.getName();
 
@@ -155,7 +158,7 @@ public class ControlActivity extends Activity {
 		
 		Intent intent=getIntent();
 		nPlayer=intent.getIntExtra("NUM", num);
-		Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+		//Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
 
 		// Insert Number from Activity1 
 		for (int i=0;i<nPlayer;i++){
@@ -170,7 +173,7 @@ public class ControlActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				nPlayer++;
-				Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
+				//Toast.makeText(ControlActivity.this, "ClickActivity 2="+nPlayer, Toast.LENGTH_LONG).show();
 
 				adapter.insert(new DataListAdapterSet("", 0), 0);
 
@@ -191,7 +194,7 @@ public class ControlActivity extends Activity {
 				
 				// Start GameActivity
 				Intent intent=new Intent(context, FragmentGameActivity.class);
-				Toast.makeText(ControlActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
+				//Toast.makeText(ControlActivity.this, "Click 1="+savePlayers, Toast.LENGTH_LONG).show();
 				intent.putExtra(EXTRA_RES_NUM, savePlayers);
 
 				onStop();

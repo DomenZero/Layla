@@ -64,7 +64,9 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		/***Test Permanento)))***/
 		DatabaseRating.init(this);
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.rating);
+		//load style
+		styleUtils.onActivitySetTheme(this);
+		setContentView(R.layout.rating);
 		
         mainWindow();
         

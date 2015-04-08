@@ -33,6 +33,8 @@ public class AboutActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		styleUtils.onActivitySetTheme(this);
+	
 		
         setContentView(R.layout.game);
         addListenerOnButton();
@@ -91,7 +93,7 @@ public class AboutActivity extends Activity{
 			
 			editText=(AutoCompleteTextView) findViewById(R.id.itemEdit);
 			editText.setText(menuItems[menuItemIndex]);
-			Toast.makeText(this, "Click 1=", Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, "Click 1=", Toast.LENGTH_LONG).show();
 		}  
 		return true;
 		

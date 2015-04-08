@@ -30,6 +30,8 @@ public class RatingActivity extends Activity {
        
 		DatabaseRating.init(this);
 		super.onCreate(savedInstanceState);
+		styleUtils.onActivitySetTheme(this);
+		
         setContentView(R.layout.rating);
 		
         //Reading All contacts

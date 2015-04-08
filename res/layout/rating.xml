@@ -28,7 +28,7 @@ limitations under the License.
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:textColor="#ADD8E6"/>
+            android:textColor="@color/darkblue"/>
 		
 		<TableLayout 
             android:layout_width="match_parent"

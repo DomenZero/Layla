@@ -18,37 +18,50 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListViewActivity" >
-<!--     android:background="@drawable/game_fone" -->
     
+    <TableLayout
+          android:id="@+id/EnterPlayers_topPanel"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_alignParentTop="true">
+        
+    <TableRow android:layout_weight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true">
     <Button
         android:id="@+id/EnterPlayers_addPlayers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:text="@string/EnterPlayers_addPPlayers"
         android:drawableLeft="@android:drawable/ic_input_add" />
-    
+   <Button
+        android:id="@+id/EnterPlayers_StartGame"
+        android:text="@string/EnterPlayers_startGame"
+        android:drawableLeft="@android:drawable/ic_media_play"/>
+        
+   </TableRow>
+   </TableLayout>
     <ListView
         android:id="@+id/EnterPlayers_PlayersList"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         tools:listitem="@layout/listitem"
-        android:layout_below="@+id/EnterPlayers_addPlayers" >
+        android:layout_below="@+id/EnterPlayers_topPanel" >
 
     </ListView>
     
 
-<RelativeLayout
-    android:id="@+id/LinearLayout2"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/EnterPlayers_StartGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/EnterPlayers_startGame"
-        android:drawableLeft="@android:drawable/ic_media_play"/>
+<!-- <RelativeLayout -->
+<!--     android:id="@+id/LinearLayout2" -->
+<!--     android:layout_width="wrap_content" -->
+<!--     android:layout_height="match_parent"> -->
+<!--     <Button -->
+<!--         android:id="@+id/EnterPlayers_StartGame" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="@string/EnterPlayers_startGame" -->
+<!--         android:drawableLeft="@android:drawable/ic_media_play"/> -->
      
-    </RelativeLayout>
+<!--     </RelativeLayout> -->
     </RelativeLayout>

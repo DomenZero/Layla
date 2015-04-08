@@ -19,53 +19,58 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-    <LinearLayout 
-        android:id="@+id/header"
-        android:layout_width="fill_parent"
-        android:gravity="center"
-        android:layout_height="50dp" 
-        android:layout_alignParentTop="true" >
+    
+     <TableLayout
+          android:id="@+id/header"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_alignParentTop="true">
+          
+          <TableRow
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" >
 
             <TextView
                 android:id="@+id/hello_text"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
-                android:textSize="20sp"
-                android:text="@string/num_players_text"/>
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/num_players_text" />
+
             <Button
                 android:id="@+id/butStart"
-                android:layout_width="150dp" 
-                android:layout_height="wrap_content"
-                android:gravity="right"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:text="@string/num_players_next" />
+
+   </TableRow>
+   </TableLayout>
    
-    </LinearLayout>
-    
     <RelativeLayout  
         android:id="@+id/center"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
         android:layout_below="@+id/header"
         >
     <ViewFlipper
     android:id="@+id/view_flipper"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <include
         android:id="@+id/include2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
         layout="@layout/first" >
     </include>
 
     <include
         android:id="@+id/include1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
         layout="@layout/second" >
     </include>
