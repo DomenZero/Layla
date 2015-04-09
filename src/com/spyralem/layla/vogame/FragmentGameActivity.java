@@ -17,9 +17,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -49,13 +52,20 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 	public static String[] SettingsArray;
 	
 	private final FragmentGamePlayers mPlayersFragment = new FragmentGamePlayers();
+	private final FragmentGameHistory mHistoryFragment = new FragmentGameHistory();
+	private final RatingActivity mRatingFragment = new RatingActivity();
+	
 	private final FragmentGameSettings mDetailsFragment = new FragmentGameSettings();
+//	private final FragmentGameHistory mHistoryFragment = new FragmentGameHistory();
 	
 	public static final int UNSELECTED = -1;
 	
 	private FragmentManager mFragmentManager;
+	private FragmentManager mFragmentManager2;
 
 	public static Integer[] IDArray;
+	
+	public static int NumberPlayers;
 	public static int howindex; 
 	
 	@Override
@@ -66,7 +76,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		super.onCreate(savedInstanceState);
 		//load style
 		styleUtils.onActivitySetTheme(this);
-		setContentView(R.layout.rating);
+		//setContentView(R.layout.rating);
 		
         mainWindow();
         
@@ -80,17 +90,31 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 				.beginTransaction();
 
 		// Add the PlayersFragment to the layout
-		fragmentTransaction.add(R.id.players_fragment_container, mPlayersFragment);
+		// 03/26 Reselect on History
+		fragmentTransaction.add(R.id.players_fragment_container, mHistoryFragment);
+		//fragmentTransaction.add(R.id.players_fragment_container, mPlayersFragment);
+
 		
 		// Commit the FragmentTransaction
 		fragmentTransaction.commit();
 		
-        //Input data in table
-//		//Reading All contacts
-		
-	
+//		//___________________03/24
+//		// Get a reference to the FragmentManager
+//		mFragmentManager2 = getFragmentManager();
+//
+//		// Start a new FragmentTransaction
+//		FragmentTransaction fragmentTransaction2 = mFragmentManager2
+//				.beginTransaction();
+//
+//		// Add the PlayersFragment to the layout
+//		fragmentTransaction.add(R.id.history_fragment_container, mHistoryFragment);
+//		
+//		// Commit the FragmentTransaction
+//		fragmentTransaction.commit();	
+//		
 	}
 
+	
 	// Called when the user selects an item in the PlayersFragment
 	@Override
 	public void onListSelection(int index) {
@@ -153,7 +177,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 
 			// Show a Toast Message.
 			Toast.makeText(getApplicationContext(),
-					"This action provided by the SettingsViewerActivity "+PlayersArray[howindex], Toast.LENGTH_SHORT)
+					"This action provided by the FragmentGameActivity "+PlayersArray[howindex], Toast.LENGTH_SHORT)
 					.show();
 			
 			//02/06 определение номера игрока в листе Следует добавить запись из левел поля
@@ -161,6 +185,7 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 			DatabaseRating db=new DatabaseRating();
 			db.updatePlayersData_byID(DatabaseRating.getPlayer(IDArray[howindex]), mDetailsFragment.wtisLevel(), "Color", IDArray[howindex]); ///Integer.parseInt(FragmentGameActivity.Array[howindex])
 			mainWindow();
+			
 			// return value true indicates that the menu click has been handled
 			return true;
 		
@@ -220,5 +245,8 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		
 		// And Id
 		IDArray = idmas;
+		
+		//Number Players
+		NumberPlayers=kol;
 	}
 }

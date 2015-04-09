@@ -11,6 +11,7 @@
     <string name="menu_rating">Рейтинг</string>
     <string name="menu_about">Обо всем</string>
     <string name="menu_exit">Выход</string>
+    <string name="menu_hint">Подсказка</string>
 
 	    
     <string name="title_activity_settings">Настройки</string>

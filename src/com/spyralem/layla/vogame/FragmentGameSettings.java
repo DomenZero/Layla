@@ -37,6 +37,7 @@ public class FragmentGameSettings extends Fragment {
 	private int mSettingsArrLen = 0;
 	//02/05/2015
 	private ViewFlipper mFlipper;
+	//public TextView mTextView1, mTextView2;
 	private TextView mTextView1, mTextView2;
 	private int mCurrentLayoutState=0, mCount=0;
 	private GestureDetector mGestureDetector;
@@ -67,11 +68,24 @@ public class FragmentGameSettings extends Fragment {
 		// Getting Integer level
 		mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mCurrIdx]);
 		
+
 		mCurrentLayoutState = 0;
+		//03/24 select true previous and next level
+		if (mCurrentLayoutState == 0) {
+			mTextView1.setText(String.valueOf(mCount));
+			//switchLayoutStateOut(mCurrentLayoutState);
+			
+		} else {
+			mTextView2.setText(String.valueOf(mCount));
+			//switchLayoutStateTo(mCurrentLayoutState);
+		}
+		
 		
 		//02/12 update Setting Level
-		mTextView2.setText(String.valueOf(mCount));
-		mTextView1.setText(String.valueOf(mCount));
+		//mTextView2.setText(String.valueOf(mCount));
+//		mTextView1.setText(String.valueOf(mCount));
+
+
 		
 		//Der Fruhling 03/02
 		mTextView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -94,8 +108,8 @@ public class FragmentGameSettings extends Fragment {
 						final int SWIPE_MAX_OFF_PATH=250;
 						final int SWIPE_THRESHOLD_VELOCITY=200;
 //						try{
-							if(Math.abs(e1.getY()-e2.getY())>SWIPE_MAX_OFF_PATH)
-								return false;
+//							if(Math.abs(e1.getY()-e2.getY())>SWIPE_MAX_OFF_PATH)
+//								return false;
 							if(e1.getX()-e2.getX()>SWIPE_MIN_DISTANCE && Math.abs(velocityX)>SWIPE_THRESHOLD_VELOCITY){
 								mCurrentLayoutState = mCurrentLayoutState == 0 ? 1
 										: 0;
@@ -150,12 +164,14 @@ public class FragmentGameSettings extends Fragment {
 	public void switchLayoutStateTo(int switchTo) {
 		mCurrentLayoutState = switchTo;
 
-		//push Animation
-//		mFlipper.setInAnimation(inFromRightAnimation());
-//		mFlipper.setOutAnimation(outToLeftAnimation());
+
 
 		mCount++;
 
+		//push Animation
+		mFlipper.setInAnimation(inFromRightAnimation());
+		mFlipper.setOutAnimation(outToLeftAnimation());
+		
 		if (switchTo == 0) {
 			mTextView1.setText(String.valueOf(mCount));
 		} else {
@@ -168,10 +184,12 @@ public class FragmentGameSettings extends Fragment {
 	public void switchLayoutStateOut(int switchOut) {
 		mCurrentLayoutState = switchOut;
 
-//		mFlipper.setInAnimation(inFromLeftAnimation());
-//		mFlipper.setOutAnimation(outToRightAnimation());
+
 
 		mCount--;
+		
+		mFlipper.setInAnimation(inFromLeftAnimation());
+		mFlipper.setOutAnimation(outToRightAnimation());
 		
 		if (switchOut == 0) {
 			mTextView1.setText(String.valueOf(mCount));
@@ -255,6 +273,14 @@ public class FragmentGameSettings extends Fragment {
 		
 		// This Fragment adds options to the ActionBar
 		setHasOptionsMenu(true);
+		
+		//02/24
+		
+//		switchLayoutStateIn(mCurrentLayoutState);
+		//push Animation
+		//mTextView2.setText(String.valueOf(mCount));
+		//mTextView1.setText(String.valueOf(mCount));
+//		switchLayoutStateTo(mCurrentLayoutState);
 	}
 
 	// Set information about the Settings

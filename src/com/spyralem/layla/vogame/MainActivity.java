@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 /*
  * @author Merkulov Maksim (DomenZero) 
@@ -26,6 +27,7 @@ public class MainActivity extends Activity
 	Button button3;
 	Button button2;
 	Button button4;
+	ToggleButton buttonHint;
     
 	/** Called when the activity is first created. */
     @Override
@@ -90,18 +92,39 @@ public class MainActivity extends Activity
     	button0.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View arg0){
-    			Intent intent=new Intent(Intent.ACTION_MAIN);
-    			intent.addCategory(Intent.CATEGORY_HOME);
-    			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    			Intent intent=new Intent(context, ListPlayerWithHistoryActivity.class);
+    			startActivity(intent);
     			
-    			styleUtils.changedTheme(MainActivity.this, styleUtils.THEME_DARK);
-    			
-
-    			//startActivity(intent);
-    			//finish();
-    			//onDestroy();
+//    			Intent intent=new Intent(Intent.ACTION_MAIN);
+//    			intent.addCategory(Intent.CATEGORY_HOME);
+//    			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//    			
+//    			
+//    			
+//
+//    			//startActivity(intent);
+//    			finish();
+//    			onDestroy();
     		}
     	});
+    	
+    	// Hint RadioButton
+    	buttonHint = (ToggleButton) findViewById(R.id.buttonHint);
+    	buttonHint.setOnClickListener(new OnClickListener() {
+    		@Override
+    		public void onClick(View arg0){
+    			
+    			// Toggle the Backgroung hints on/off
+    			if(buttonHint.isChecked()){
+    				styleUtils.changedTheme(MainActivity.this, styleUtils.THEME_DARK);
+    			} else{
+    				styleUtils.changedTheme(MainActivity.this, styleUtils.THEME_STANDART);
+    			}
+    			
+    		}
+    	});
+
+    	
     }
     public void onClickAbout(View v)
     {

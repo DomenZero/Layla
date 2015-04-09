@@ -24,6 +24,7 @@ limitations under the License.
     <string name="menu_rating">Rating</string>
     <string name="menu_about">About</string>
     <string name="menu_exit">Exit</string>
+    <string name="menu_hint">Hint</string>
     <string name="help_game_txt">
         Layla was a good girl.\n
 	    She scream: "Live birdy! Live!"\n
@@ -57,5 +58,16 @@ limitations under the License.
 
     <string name="num_players_text"> Please, select num Players </string>
     <string name="num_players_next"> Start </string>    
+    
+<!--     <array name="icons"> -->
+<!--         <item>@drawable/home</item> -->
+<!--         <item>@drawable/tutorials</item> -->
+<!--         <item>@drawable/app</item> -->
+<!--         <item>@drawable/os</item> -->
+<!--         <item>@drawable/tool</item> -->
+<!--         <item>@drawable/about</item> -->
+<!--     </array> -->
+    
+    <string name="imgdesc">imgdesc</string>
     
 </resources>

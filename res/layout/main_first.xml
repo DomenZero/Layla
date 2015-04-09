@@ -19,39 +19,36 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-    
-     <TableLayout
-          android:id="@+id/header"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
-          android:layout_alignParentTop="true">
+    <!--           android:id="@+id/header" -->
+<!--      <LinearLayout -->
+<!--          android:id="@+id/header"  -->
+<!--           android:layout_width="fill_parent" -->
+<!--           android:layout_height="70dp"  -->
+<!--           android:orientation="vertical"> -->
           
-          <TableRow
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/hello_text"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="@string/num_players_text" />
+<!--             <TextView -->
+<!--                 android:id="@+id/hello_text" -->
+<!--                 android:layout_alignParentTop="true" -->
+<!--                 android:layout_centerHorizontal="true" -->
+
+<!--                 android:text="@string/num_players_text" /> -->
 
             <Button
                 android:id="@+id/butStart"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                
                 android:text="@string/num_players_next" />
-
-   </TableRow>
-   </TableLayout>
-   
+<!--             </LinearLayout> -->
+<!--                      -->
     <RelativeLayout  
         android:id="@+id/center"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
-        android:layout_below="@+id/header"
+        android:layout_below="@+id/butStart"
         >
     <ViewFlipper
     android:id="@+id/view_flipper"
@@ -78,6 +75,6 @@ limitations under the License.
     </ViewFlipper>
     
     </RelativeLayout>
-    
+
 </RelativeLayout>
 

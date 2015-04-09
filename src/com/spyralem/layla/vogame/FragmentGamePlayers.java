@@ -48,11 +48,13 @@ public class FragmentGamePlayers extends ListFragment{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		
 		// add items to the ActionBar  
 		setHasOptionsMenu(true);
 		
 		// Retain this Fragment across Activity Reconfigurations
 		setRetainInstance(true);
+	
 	}
 
 	@Override
@@ -60,6 +62,8 @@ public class FragmentGamePlayers extends ListFragment{
 		super.onActivityCreated(savedState);
 
 		// Set the list adapter for the ListView 
+//		setListAdapter(new ArrayAdapter<String>(getActivity(),
+//				R.layout.fragmentgame_players, FragmentGameActivity.PlayersArray));
 		setListAdapter(new ArrayAdapter<String>(getActivity(),
 				R.layout.fragmentgame_players, FragmentGameActivity.PlayersArray));
 
@@ -77,6 +81,11 @@ public class FragmentGamePlayers extends ListFragment{
 
 		// Indicates the selected item has been checked
 		getListView().setItemChecked(pos, true);
+		
+		// 04/07 Update
+//		int mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mCurrIdx]);
+//		
+//		FragmentGameSettings.switchLayoutStateOut());//.setText(String.valueOf(mCount));
 		
 		// Inform the SeettingsViewerActivity that the item in position has been selected
 		mListener.onListSelection(pos);
