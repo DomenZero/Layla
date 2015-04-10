@@ -55,16 +55,7 @@ public class FragmentGameHistory extends ListFragment{
     
     // Array of integers points to images stored in /res/drawable/
     int[] flags = new int[]{
-    		R.drawable.india,
-    		R.drawable.pakistan,
-    		R.drawable.srilanka,
-    		R.drawable.china,
-    		R.drawable.bangladesh,
-    		R.drawable.nepal,
-    		R.drawable.afghanistan,
-    		R.drawable.nkorea,
-    		R.drawable.skorea,
-    		R.drawable.japan	
+    		R.drawable.test
     };
     
     // Array of strings to store currencies
@@ -159,6 +150,7 @@ public class FragmentGameHistory extends ListFragment{
 //		setListAdapter(new ArrayAdapter<String>(getActivity(),
 //				R.layout.fragmentgame_players, FragmentGameActivity.PlayersArray));
 		
+
 		unionBlock();
 	}
 
@@ -174,7 +166,7 @@ public class FragmentGameHistory extends ListFragment{
 	        	HashMap<String, String> hm = new HashMap<String,String>();
 	            hm.put("txt", "Name : " + FragmentGameActivity.PlayersArray[i]);
 	            hm.put("cur","Level : " + FragmentGameActivity.SettingsArray[i]);
-	            hm.put("flag", Integer.toString(flags[rand.nextInt(n-1)]) );            
+	            hm.put("flag", Integer.toString(flags[rand.nextInt(flags.length)]) );            
 	            aList.add(hm);        
 	        }
 	        
@@ -203,6 +195,9 @@ public class FragmentGameHistory extends ListFragment{
 
 		// Indicates the selected item has been checked
 		getListView().setItemChecked(pos, true);
+		
+		// temp union
+		unionBlock();
 		
 		// 04/07 Update
 //		int mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mCurrIdx]);
@@ -233,10 +228,12 @@ public class FragmentGameHistory extends ListFragment{
 //			this.startActivity(intent);
 			
 			// Show a Toast Message. Arrrh! Disable before release
-			Toast.makeText(getActivity().getApplicationContext(),
-					"This action provided by FragmentGamePlayers",
-					Toast.LENGTH_SHORT).show();
+//			Toast.makeText(getActivity().getApplicationContext(),
+//					"This action provided by FragmentGamePlayers",
+//					Toast.LENGTH_SHORT).show();
 
+			// temp union
+			unionBlock();
 			// that the menu click has been handled, then return value true indicates 
 			return true;
 		
