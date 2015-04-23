@@ -14,11 +14,14 @@ limitations under the License.
 
 <!-- Global Layla theme Styles -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="StandartTheme">
+<!--     <style name="StandartTheme" parent="android:Widget.Button"> -->
 <!--         <item name="android:textColor">#FF0000</item> -->
+<style name="ButtonStandartTheme" parent="android:Widget.Button">
         <item name="android:windowBackground">@drawable/background</item>
-        
+        <item name="android:background">@drawable/standart_button</item>
 <!--         Style on Button -->
+
+
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#F0E68C</item>
@@ -33,12 +36,24 @@ limitations under the License.
         
     </style>
     
-    <style name="DarkTheme">
+<style name="TableStandartTheme">
+        <item name="android:background">@drawable/border</item>
+<!--         Style on Table -->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>   
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>   
+        <item name="android:layout_margin">3dp</item>
+    </style>
+        
+ <style name="ButtonDarkTheme" parent="android:Widget.Button">
 <!--         <item name="android:windowBackground">#000000</item> -->
         
-<!--       	<item name="android:windowBackground">@drawable/background</item> -->
-        
+      	<item name="android:windowBackground">@drawable/background</item>
+        <item name="android:background">@drawable/standart_button</item>
 <!--         Style on Button -->
+
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#00FF00</item>

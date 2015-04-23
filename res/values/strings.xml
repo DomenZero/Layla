@@ -50,7 +50,7 @@ limitations under the License.
     
     
     <string name="activity_item">Save</string>
-    <string name="title_item">PlayersAction</string>
+    <string name="title_item">Update</string>
         
     <string name="quote_item">Winner!</string>
     <string name="secondary_item">Time</string>
@@ -59,6 +59,9 @@ limitations under the License.
     <string name="num_players_text"> Please, select num Players </string>
     <string name="num_players_next"> Start </string>    
     
+    <string name="fragment_game_number"> Player №</string>
+    <string name="fragment_game_name"> Name: </string>    
+    <string name="fragment_game_level"> Level: </string>
 <!--     <array name="icons"> -->
 <!--         <item>@drawable/home</item> -->
 <!--         <item>@drawable/tutorials</item> -->

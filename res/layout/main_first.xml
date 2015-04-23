@@ -11,70 +11,79 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-
-<RelativeLayout
-    
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-    <!--           android:id="@+id/header" -->
-<!--      <LinearLayout -->
-<!--          android:id="@+id/header"  -->
-<!--           android:layout_width="fill_parent" -->
-<!--           android:layout_height="70dp"  -->
-<!--           android:orientation="vertical"> -->
-          
 
-<!--             <TextView -->
-<!--                 android:id="@+id/hello_text" -->
-<!--                 android:layout_alignParentTop="true" -->
-<!--                 android:layout_centerHorizontal="true" -->
+    <!-- android:id="@+id/header" -->
+    <!-- <LinearLayout -->
+    <!-- android:id="@+id/header" -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="70dp" -->
+    <!-- android:orientation="vertical"> -->
 
-<!--                 android:text="@string/num_players_text" /> -->
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/hello_text" -->
+    <!-- android:layout_alignParentTop="true" -->
+    <!-- android:layout_centerHorizontal="true" -->
+
+
+    <!-- android:text="@string/num_players_text" /> -->
+
+    <TableLayout
+        android:id="@+id/NumPlayers_topPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <TableRow
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" >
 
             <Button
                 android:id="@+id/butStart"
-                          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:orientation="vertical"
-                
                 android:text="@string/num_players_next" />
-<!--             </LinearLayout> -->
-<!--                      -->
-    <RelativeLayout  
+        </TableRow>
+    </TableLayout>
+
+    <!-- </LinearLayout> -->
+    <!--  -->
+
+    <RelativeLayout
         android:id="@+id/center"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" 
-        android:layout_below="@+id/butStart"
-        >
-    <ViewFlipper
-    android:id="@+id/view_flipper"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <include
-        android:id="@+id/include2"
-        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="center_horizontal"
-        layout="@layout/first" >
-    </include>
+        android:layout_below="@+id/NumPlayers_topPanel" >
 
-    <include
-        android:id="@+id/include1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center_horizontal"
-        layout="@layout/second" >
-    </include>
-    
-    </ViewFlipper>
-    
+        <ViewFlipper
+            android:id="@+id/view_flipper"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <include
+                android:id="@+id/include2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                layout="@layout/first" >
+            </include>
+
+            <include
+                android:id="@+id/include1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                layout="@layout/second" >
+            </include>
+        </ViewFlipper>
     </RelativeLayout>
 
 </RelativeLayout>
-

@@ -37,7 +37,7 @@ limitations under the License.
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TableLayout
+        <TableLayout style="@style/TableStandartTheme"
             android:id="@+id/rating_tableLayout "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

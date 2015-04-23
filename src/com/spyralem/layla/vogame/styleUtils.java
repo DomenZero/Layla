@@ -7,8 +7,8 @@ public class styleUtils {
 	private static int theme;
 	
 	//constant name used theme
-	public final static int THEME_STANDART=0;
-	public final static int THEME_DARK=1;
+	public final static int THEME_STANDART=1;
+	public final static int THEME_DARK=0;
 	public final static int THEME_LIGHT=2;
 	
 	//set theme & restart activity 

@@ -35,10 +35,17 @@ public class NumPlayerActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//!Test Set SavedInstanceState element
+//				if (savedInstanceState!=null){
+//					int flipperPosition=savedInstanceState.getInt("PLAYERS_NUMBER");
+//					mFlipper.setDisplayedChild(flipperPosition);
+//				}
+//				//-------
+
+//		styleUtils.onActivitySetTheme(this);
 		styleUtils.onActivitySetTheme(this);
-		
 		setContentView(R.layout.main_first);
-		styleUtils.onActivitySetTheme(this);
+		
 		
 		mCurrentLayoutState = 0;
 
@@ -77,10 +84,18 @@ public class NumPlayerActivity extends Activity {
 		addListenerOnButton();
 	}
 
+	//!Test Saving View, when changing orientation  
+	@Override
+	public void onSaveInstanceState(Bundle savedInstanceState){
+		int position=mFlipper.getDisplayedChild();
+		savedInstanceState.putInt("PLAYERS_NUMBER", position);
+	}
+	
 	// Button Listener
     public void addListenerOnButton(){
     	final Context context=this;
     	butStart=(Button) findViewById(R.id.butStart);
+   
     	butStart.setOnClickListener(new OnClickListener() {
     		@Override
     		public void onClick(View v){

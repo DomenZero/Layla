@@ -150,8 +150,16 @@ public class FragmentGameActivity extends Activity implements ListSelectionListe
 		
 		if (mDetailsFragment.getShownIndex() != index) {
 
+			//!Test Set Update SettingsFrame 
+			mDetailsFragment.onMegadeath(index);
+			Log.d("Test: ", "Boom..."+index+" to ");
+			
 			// Tell the SettingsFragment to show the Settings at position index
 			mDetailsFragment.showSettingsAtIndex(index);
+			
+			
+
+
 		
 		}
 	}

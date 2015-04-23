@@ -17,8 +17,8 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@drawable/game_fone_fr_settings" >
-    
+    android:background="@android:color/transparent">
+<!--     android:background="@drawable/game_fone_fr_settings"  -->
     <LinearLayout 
         android:id="@+id/playerFlipheader"
         android:layout_width="fill_parent"

@@ -2,6 +2,7 @@ package com.spyralem.layla.vogame;
 
 import com.spyralem.layla.model.UserRatingData;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 
@@ -30,7 +32,7 @@ import android.view.animation.TranslateAnimation;
 Connecting with UserRatingData (there model of table for save & load players)
 ***/
 
-public class FragmentGameSettings extends Fragment {
+@SuppressLint("Assert") public class FragmentGameSettings extends Fragment {
 
 	private TextView mSettingsView = null;
 	private int mCurrIdx = FragmentGameActivity.UNSELECTED;
@@ -38,10 +40,11 @@ public class FragmentGameSettings extends Fragment {
 	//02/05/2015
 	private ViewFlipper mFlipper;
 	//public TextView mTextView1, mTextView2;
-	private TextView mTextView1, mTextView2;
+	private TextView mTextView1=null, mTextView2=null;
 	private int mCurrentLayoutState=0, mCount=0;
 	private GestureDetector mGestureDetector;
 	//private Button butStart;
+	private int huk=0;
 
 
 	
@@ -59,35 +62,24 @@ public class FragmentGameSettings extends Fragment {
 	public void showSettingsAtIndex(int newIndex) {
 		if (newIndex < 0 || newIndex >= mSettingsArrLen)
 			return;
-		// Index 
+		// Index
+		
 		mCurrIdx = newIndex;
 		
 		// Players info string
-		mSettingsView.setText("Player ¹"+(newIndex+1)+"   Name: "+FragmentGameActivity.PlayersArray[mCurrIdx]);
+		mSettingsView.setText(getString(R.string.fragment_game_number)+(newIndex+1)+" "+getString(R.string.fragment_game_name)+" "+FragmentGameActivity.PlayersArray[mCurrIdx]);
 		
 		// Getting Integer level
 		mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mCurrIdx]);
 		
 
-		mCurrentLayoutState = 0;
+
 		//03/24 select true previous and next level
-		if (mCurrentLayoutState == 0) {
-			mTextView1.setText(String.valueOf(mCount));
-			//switchLayoutStateOut(mCurrentLayoutState);
-			
-		} else {
-			mTextView2.setText(String.valueOf(mCount));
-			//switchLayoutStateTo(mCurrentLayoutState);
-		}
 		
-		
-		//02/12 update Setting Level
-		//mTextView2.setText(String.valueOf(mCount));
-//		mTextView1.setText(String.valueOf(mCount));
-
-
+		mTextView1.setText(String.valueOf(mCount));	
 		
 		//Der Fruhling 03/02
+
 		mTextView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		mTextView2.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		
@@ -142,6 +134,27 @@ public class FragmentGameSettings extends Fragment {
 			
 			
 		});
+		
+		mFlipper.post(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				if(mFlipper.getChildCount()<4)
+					return;
+				
+				mFlipper.setInAnimation(null);
+				mFlipper.setOutAnimation(null);
+				
+				while(mFlipper.getChildCount()>1)
+					mFlipper.removeViewAt(0);
+				
+				mFlipper.setInAnimation(null);
+				mFlipper.setOutAnimation(null);
+				
+				assert mFlipper.getChildCount()==1;
+			}
+		});
 	}
 
 	/***
@@ -151,13 +164,27 @@ public class FragmentGameSettings extends Fragment {
 	 * Animation flip module
 	 */
 	
-	public void switchLayoutStateIn(int switchIn) {
-		mCurrentLayoutState = switchIn;
+	public void switchLayoutStateIn(int mmm) {
 		mFlipper.setInAnimation(inFromRightAnimation());
 		mFlipper.setOutAnimation(outToLeftAnimation());
-		mTextView1.setText(String.valueOf(mCount));
-
-		mFlipper.showNext();
+		mCount=Integer.parseInt(FragmentGameActivity.SettingsArray[mmm]);
+		mTextView2.setText(String.valueOf(mCount));
+		
+		//!Test In Animation blink)
+//		Animation outtoRight = new TranslateAnimation(
+//				Animation.RELATIVE_TO_PARENT, 0.0f,
+//				Animation.RELATIVE_TO_PARENT, +1.0f,
+//				Animation.RELATIVE_TO_PARENT, 0.0f,
+//				Animation.RELATIVE_TO_PARENT, 0.0f);
+//		outtoRight.setDuration(500);
+		//outtoRight.setStartOffset(20);
+		//outtoRight.setRepeatMode(Animation.REVERSE);
+		//outtoRight.setRepeatCount(Animation.INFINITE);//setInterpolator(new LinearInterpolator());
+		
+		//mFlipper.showNext();
+		
+//		mTextView1.startAnimation(outtoRight);
+		
 	}
 	
 	
@@ -183,8 +210,6 @@ public class FragmentGameSettings extends Fragment {
 	
 	public void switchLayoutStateOut(int switchOut) {
 		mCurrentLayoutState = switchOut;
-
-
 
 		mCount--;
 		
@@ -306,6 +331,30 @@ public class FragmentGameSettings extends Fragment {
 		mCurrIdx = FragmentGameActivity.UNSELECTED;
 	}
 
+	public void onMegadeath(int mmm) {
+		super.onDetach();
+		switchLayoutStateIn(mmm);
+		mCurrIdx = FragmentGameActivity.UNSELECTED;
+		mFlipper.invalidate();
+		if(mFlipper.getChildCount()<4)
+			return;
+		
+		mFlipper.setInAnimation(null);
+		mFlipper.setOutAnimation(null);
+		
+		while(mFlipper.getChildCount()>1)
+			mFlipper.removeViewAt(0);
+		
+		mFlipper.setInAnimation(null);
+		mFlipper.setOutAnimation(null);
+		
+		assert mFlipper.getChildCount()==1;
+		
+		
+		
+
+	}
+	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
@@ -326,6 +375,7 @@ public class FragmentGameSettings extends Fragment {
 					"Hi-Hi! Good Gamer! Result saved) ",
 					Toast.LENGTH_SHORT).show();
 			/*** Start open database ***/
+			
 			// GetPlayers 
 			// If Winner has in table, that +1, else create new Winner 
 			if ((DatabaseRating.getPlayerFromRating(FragmentGameActivity.PlayersArray[mCurrIdx]))!= null)

@@ -33,7 +33,7 @@
     
     
     <string name="activity_item">Сохранить</string>
-    <string name="title_item">Рейтинг</string>
+    <string name="title_item">Обновить</string>
         
     <string name="quote_item">Победа?!</string>
     <string name="secondary_item">Время</string>
@@ -60,7 +60,15 @@
 	    При накоплении числа на счетчике (да, не автоматически, а "пальцем-пальцем"). \n
 	    Нажимаете "Победа?!". И всё, готово. (Да-Да-Да-ДАМ! )\n
 	    </string>
+	
+	<string name="fragment_game_number"> Игрок №</string>
+    <string name="fragment_game_name"> Имя: </string>
+    <string name="fragment_game_level"> Уровень: </string>
+    
+    <string name="help_game_menu_play">Начало игры</string>
+    <string name="help_game_menu_settings">Добавить/Удалить игроков</string>
+    <string name="help_game_menu_rating">Список записанных побед</string>
+    <string name="help_game_menu_about">Какой-то Хелп</string>
+    <string name="help_game_menu_exit">Итак понятно</string>
 
-    
-    
 </resources>
