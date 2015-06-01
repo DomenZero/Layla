@@ -20,7 +20,7 @@ limitations under the License.
 
     <fragment 
         android:id="@+id/country_fragment"
-        android:name="com.spyralem.layla.vogame.FragmentGameHistory"
+        android:name="com.lepotuli.layla.vogame.FragmentGameHistory"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 

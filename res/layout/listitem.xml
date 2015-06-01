@@ -40,13 +40,13 @@ limitations under the License.
 <!--         android:focusable="true" -->
 <!--         android:focusableInTouchMode="true" /> -->
 
-    <ImageButton
-        android:id="@+id/atomPay_removePay"
-        android:layout_width="@dimen/width_button"
-        android:layout_height="fill_parent"
-        android:contentDescription="@string/app_name"
-        android:onClick="removeAtomPayOnClickHandler"
-        android:src="@android:drawable/ic_menu_delete" />
+<!--     <ImageButton -->
+<!--         android:id="@+id/atomPay_removePay" -->
+<!--         android:layout_width="@dimen/width_button" -->
+<!--         android:layout_height="fill_parent" -->
+<!--         android:contentDescription="@string/app_name" -->
+<!--         android:onClick="removeAtomPayOnClickHandler" -->
+<!--         android:src="@android:drawable/ic_menu_delete" /> -->
     
     <ImageButton
         android:id="@+id/atomPay_savePay"

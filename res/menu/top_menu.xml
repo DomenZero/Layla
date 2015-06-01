@@ -11,12 +11,5 @@
     <item
         android:id="@+id/menu_play2"
         android:icon="@drawable/ic_menu_help"
-        android:title="@string/menu_play">
-        <menu>
-            <item
-                android:id="@+id/hello_world2"
-                android:title="@string/hello_world"/>
-        </menu>
-    </item>    
-
+        android:title="@string/menu_play"/>
 </menu>

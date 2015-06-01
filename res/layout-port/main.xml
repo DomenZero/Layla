@@ -26,70 +26,6 @@ limitations under the License.
         android:shrinkColumns="*">
 
 <!--         <TableRow android:layout_weight="1" > -->
-
-<TableRow 
-    android:id="@+id/ButtonRow1"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_width="fill_parent" >
-
-<!--     <ToggleButton -->
-<!--         android:id="@+id/buttonHint" -->
-<!--         android:layout_width="wrap_content" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_gravity="center_horizontal" -->
-<!--         android:text="@string/menu_hint" /> -->
-
-    <ImageButton
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
-        android:text="@string/menu_play"
-        android:scaleType="fitCenter"
-        android:background="@drawable/round_button" />
-
-        <ImageButton
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:text="@string/menu_settings"
-        android:scaleType="fitCenter"
-        android:background="@drawable/round_button" />
-        
-
-    <ImageButton
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:text="@string/menu_rating"
-        android:scaleType="fitCenter"
-        android:background="@drawable/round_button" 
-        
-         />
-
-    <ImageButton
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:text="@string/menu_about"
-                android:scaleType="fitCenter"
-        android:background="@drawable/round_button"  />
-
-    <ImageButton
-        android:id="@+id/button0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:text="@string/menu_exit" 
-        android:scaleType="fitCenter"
-        android:background="@drawable/round_button" />
-
-        </TableRow>
-        
 <TableRow 
     android:id="@+id/ButtonRow2"
     android:layout_height="wrap_content"
@@ -123,6 +59,104 @@ limitations under the License.
        	android:textStyle="normal"
         android:text="@string/help_game_menu_rating" />
     </TableRow>
+<TableRow 
+    android:id="@+id/ButtonRow1"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="fill_parent" >
+
+<!--     <ToggleButton -->
+<!--         android:id="@+id/buttonHint" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_gravity="center_horizontal" -->
+<!--         android:text="@string/menu_hint" /> -->
+
+    <ImageButton
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:text="@string/menu_play"
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" />
+        
+
+        <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:text="@string/menu_settings"
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" />
+
+
+
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:text="@string/menu_rating"
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" 
+        
+         />
+    
+            </TableRow>
+            
+            <TableRow 
+    android:id="@+id/ButtonRow4"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="fill_parent" >
+                     <TextView
+        android:id="@+id/ButtonHelpTextView4"
+         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:textSize="20dp"
+       	android:textStyle="normal"
+        android:text="@string/help_game_menu_about" />
+                        
+                                                <TextView
+        android:id="@+id/ButtonHelpTextView5"
+         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:textSize="20dp"
+       	android:textStyle="normal"
+        android:text="@string/help_game_menu_exit" />
+    </TableRow>
+    
+<TableRow 
+    android:id="@+id/ButtonRow3"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="fill_parent" >
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:text="@string/menu_about"
+                android:scaleType="fitCenter"
+        android:background="@drawable/round_button"  />
+
+    <ImageButton
+        android:id="@+id/button0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:text="@string/menu_exit" 
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" />
+
+        </TableRow>
+        
+
     
     
 </TableLayout>

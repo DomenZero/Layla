@@ -11,27 +11,36 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical">
-	
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RealativeMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <TableLayout 
-    
     android:id="@+id/TableButtonLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:stretchColumns="*"
-        android:shrinkColumns="*">
+        android:shrinkColumns="*"
+        android:scaleType="fitCenter">
 
 <!--         <TableRow android:layout_weight="1" > -->
-
+<!-- <LinearLayout -->
+<!--     android:orientation="horizontal" -->
+<!--     android:layout_gravity="center|center_horizontal"> -->
+<!--     <LinearLayout  -->
+<!--             android:id="@+id/ButtonRow1" -->
+<!--     android:layout_height="wrap_content" -->
+<!--     android:layout_width="wrap_content" -->
+<!--     android:orientation="horizontal" -->
+<!--     android:layout_gravity="center" > -->
+    
 <TableRow 
     android:id="@+id/ButtonRow1"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
-    android:layout_width="wrap_content" >
+    android:layout_width="fill_parent" >
 
 <!--     <ToggleButton -->
 <!--         android:id="@+id/buttonHint" -->
@@ -39,83 +48,139 @@ limitations under the License.
 <!--         android:layout_height="wrap_content" -->
 <!--         android:layout_gravity="center_horizontal" -->
 <!--         android:text="@string/menu_hint" /> -->
-
+<!--         android:layout_width="100dip" -->
+<!--         android:layout_height="100dip" -->
     <ImageButton
         android:id="@+id/button4"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_gravity="center|center_horizontal"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
         android:text="@string/menu_play"
         android:scaleType="fitCenter"
         android:background="@drawable/round_button" />
-
+    </TableRow>
+    
+    <TableRow 
+    android:id="@+id/ButtonRow1_1"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="fill_parent" >
+    
+<!--     <LinearLayout -->
+<!--     android:orientation="vertical"> -->
+<!--     <LinearLayout  -->
+<!--             android:id="@+id/ButtonRow2" -->
+<!--     android:layout_height="wrap_content" -->
+<!--     android:layout_width="wrap_content" -->
+<!--     android:orientation="horizontal" -->
+<!--     android:layout_gravity="center" > -->
+    <TextView
+        android:id="@+id/ButtonHelpView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+       	android:textStyle="normal"
+        android:text="@string/help_game_menu_play" />
+</TableRow>
+    </TableLayout>
+    
+    <TableLayout 
+    android:id="@+id/TableButtonLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:stretchColumns="*"
+        android:shrinkColumns="*"
+        android:scaleType="fitCenter"
+           android:layout_below="@+id/TableButtonLayout">
+<TableRow 
+    android:id="@+id/ButtonRow2"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="fill_parent"
+  >  
     <ImageButton
         android:id="@+id/button3"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
         android:text="@string/menu_settings"
         android:scaleType="fitCenter"
         android:background="@drawable/round_button" />
 
+        <ImageButton
+        android:id="@+id/buttonMenu_del"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:text="@string/menu_settings"
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" />
+        
     <ImageButton
         android:id="@+id/button2"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        
         android:text="@string/menu_rating"
         android:scaleType="fitCenter"
         android:background="@drawable/round_button" />
 
     <ImageButton
         android:id="@+id/button1"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+       
         android:text="@string/menu_about"
         android:scaleType="fitCenter"
         android:background="@drawable/round_button" />
+            </TableRow>
 
-    <ImageButton
-        android:id="@+id/button0"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="@string/menu_exit"
-        android:scaleType="fitCenter"
-        android:background="@drawable/round_button" />
-
-        </TableRow>
-        
 <TableRow 
-    android:id="@+id/ButtonRow2"
-    android:layout_height="wrap_content"
+    android:id="@+id/ButtonRow3"
+    android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
-    android:layout_width="wrap_content" >
+    android:layout_width="fill_parent" >
     
-    <TextView
-        android:id="@+id/ButtonHelpView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
-        android:textSize="20dp"
-       	android:textStyle="normal"
-        android:text="@string/help_game_menu_play" />
+<!--     <LinearLayout -->
+<!--     android:orientation="vertical"> -->
+<!--     <LinearLayout  -->
+<!--             android:id="@+id/ButtonRow2" -->
+<!--     android:layout_height="wrap_content" -->
+<!--     android:layout_width="wrap_content" -->
+<!--     android:orientation="horizontal" -->
+<!--     android:layout_gravity="center" > -->
+<!--     <TextView -->
+<!--         android:id="@+id/ButtonHelpView1" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+       
+<!--         android:textSize="20dp" -->
+<!--        	android:textStyle="normal" -->
+<!--         android:text="@string/help_game_menu_play" /> -->
     
+      
         <TextView
         android:id="@+id/ButtonHelpView2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:textSize="20dp"
        	android:textStyle="normal"
         android:text="@string/help_game_menu_settings" />
         
             <TextView
+        android:id="@+id/textMenu_del"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+       	android:textStyle="normal"
+        android:text="@string/help_game_menu_del" />
+            
+            <TextView
         android:id="@+id/ButtonHelpTextView3"
          android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:textSize="20dp"
        	android:textStyle="normal"
         android:text="@string/help_game_menu_rating" />
@@ -124,21 +189,50 @@ limitations under the License.
         android:id="@+id/ButtonHelpTextView4"
          android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:textSize="20dp"
        	android:textStyle="normal"
         android:text="@string/help_game_menu_about" />
                         
-                                                <TextView
+<!--                                                 </LinearLayout> -->
+<!-- </LinearLayout> -->
+    </TableRow>
+    
+<TableRow 
+    android:id="@+id/ButtonRow31"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="fill_parent" >
+    <ImageButton
+        android:id="@+id/button0"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+       
+        android:text="@string/menu_exit"
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" />
+
+<!-- </LinearLayout> -->
+        </TableRow>
+<!--       </LinearLayout>   -->
+                                             
+<TableRow 
+    android:id="@+id/ButtonRow32"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="wrap_content" >
+	<TextView
         android:id="@+id/ButtonHelpTextView5"
-         android:layout_width="fill_parent"
+         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
+       android:layout_gravity="center_horizontal"
         android:textSize="20dp"
        	android:textStyle="normal"
         android:text="@string/help_game_menu_exit" />
+<!--                                                 </LinearLayout> -->
+<!-- </LinearLayout> -->
     </TableRow>
     
     
 </TableLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -9,7 +9,7 @@
     <item
         android:id="@+id/detail_menu_item_secondary"
         android:showAsAction="never"
-        android:title="@string/secondary_item">
+        android:title="@string/help_game_menu_rating">
     </item>
 
 </menu>

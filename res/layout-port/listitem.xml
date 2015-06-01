@@ -17,7 +17,7 @@ limitations under the License.
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
 
-    <EditText
+    Text
         android:id="@+id/atomPay_name"
         android:layout_width="0sp"
         android:layout_height="fill_parent"

@@ -19,20 +19,28 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <RelativeLayout 
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" 
-            android:layout_alignParentTop="true"
-            >
-            <Button
-                android:id="@+id/butOver"
-                android:layout_width="150dp" 
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Update" />
+<!--     <RelativeLayout  -->
+<!--             android:id="@+id/header" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:gravity="center" -->
+<!--             android:layout_height="300dp"  -->
+<!--             android:layout_alignParentTop="true" -->
+<!--             > -->
+<!--             <Button -->
+<!--                 android:id="@+id/butdelRating" -->
+<!--                 android:layout_width="wrap_content"  -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:gravity="center" -->
+<!--                 android:text="@string/clear_menu_button_Rating" /> -->
+                        
+<!--             <Button -->
+<!--                 android:id="@+id/butdelPlayers" -->
+<!--                 android:layout_width="150dp"  -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:gravity="center" -->
+<!--                 android:text="@string/clear_menu_button_Players" /> -->
    
-    </RelativeLayout>
+<!--     </RelativeLayout> -->
         
 
             
@@ -41,11 +49,13 @@ limitations under the License.
             android:layout_width="match_parent"
             android:layout_height="fill_parent" 
             android:layout_above="@+id/footer"
-            android:layout_below="@+id/header"
+
             >
+<!--             android:layout_below="@+id/header" -->
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:scrollbars="vertical"
             android:id="@+id/scrollViewTrue"
             android:fillViewport="true">
             

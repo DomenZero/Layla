@@ -14,9 +14,9 @@ limitations under the License.
 
 <resources>
 
-    <string name="app_name">Layla game</string>
-    <string name="app_name_rating">Layla game: Rating Players</string>
-    <string name="app_name_num_players">Layla game: How many add Players?</string>
+    <string name="app_name">Layla - intellectual counter. V 1.0 </string>
+    <string name="app_name_rating">Layla: Rating Players</string>
+    <string name="app_name_num_players">Layla: How many add Players?</string>
     
     
     <string name="menu_play">Play</string>
@@ -53,7 +53,7 @@ limitations under the License.
     <string name="title_item">Update</string>
         
     <string name="quote_item">Winner!</string>
-    <string name="secondary_item">Time</string>
+    <string name="secondary_item">Settings</string>
        
 
     <string name="num_players_text"> Please, select num Players </string>
@@ -72,5 +72,36 @@ limitations under the License.
 <!--     </array> -->
     
     <string name="imgdesc">imgdesc</string>
+
+    <string name="help_game_menu_play">Play game</string>
+    <string name="help_game_menu_settings">Insert Players</string>
+    <string name="help_game_menu_rating">Rating</string>
+    <string name="help_game_menu_about">Help</string>
+    <string name="help_game_menu_del">Delete Payers</string>
+    <string name="help_game_menu_exit">Exit</string>
+
+    <string name="clear_menu_button_Rating">Clear Rating Table</string>
+    <string name="clear_menu_button_Players">Clear Players Table</string>
     
+    <string name="clear_menu_string_Rating">Yes! Cleared!</string>
+    <string name="clear_menu_string_Players">Cleared!</string>
+    
+    <string name="word_del_Player">Player </string>
+    <string name="word_del_Clear">spaced out! </string>
+   	<string name="word_save_Save">Saved </string>
+
+   	<string name="saved">Saved </string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Saved </string>
+    <string name="no">No</string>
+    <string name="exit">Exit</string>
+    <string name="exit_data">Confirm exit</string>
+    <string name="del">Clear </string>
+    <string name="del_data">Confirm clear</string>
+    <string name="empty_list">Players list on add</string>
+     <string name="del_list">Players list on delete</string>
+        <string name="name">Players</string>
+    <string name="rating">Rating</string>
+    
+    <string name="text_winner">Hi-Hi! Good Gamer! Result saved) </string>
 </resources>

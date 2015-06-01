@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Layla - интеллектуальный счётчик</string>
+    <string name="app_name">Layla - интеллектуальный счётчик. Версия 1.0</string>
     <string name="app_name_rating">Layla game: Рейтинг игроков</string>
     <string name="app_name_num_players">Layla game: Сколько игроков добавить?</string>
     
@@ -36,7 +36,7 @@
     <string name="title_item">Обновить</string>
         
     <string name="quote_item">Победа?!</string>
-    <string name="secondary_item">Время</string>
+    <string name="secondary_item">Настройки</string>
        
 
     <string name="num_players_text">Please, определите количество игроков</string>
@@ -44,7 +44,7 @@
     
     <string name="help_game_txt">
         1. Если нет БД с игроками. (а её при первом запуске НЕТ) Необходимо:\n
-	    1.1 Нажать "Настройки".\n
+	    1.1 Нажать "Добавить игроков".\n
 	    1.2 Выбрать количество игроков.\n
 	    1.3 Нажать "Ввод"\n
 	    1.4 Вводить Имена(Ники) игроков и завершать ввод нажатием дискетки\n
@@ -66,9 +66,33 @@
     <string name="fragment_game_level"> Уровень: </string>
     
     <string name="help_game_menu_play">Начало игры</string>
-    <string name="help_game_menu_settings">Добавить/Удалить игроков</string>
-    <string name="help_game_menu_rating">Список записанных побед</string>
-    <string name="help_game_menu_about">Какой-то Хелп</string>
-    <string name="help_game_menu_exit">Итак понятно</string>
+    <string name="help_game_menu_settings">Добавить игроков</string>
+    <string name="help_game_menu_rating">Рейтинг</string>
+    <string name="help_game_menu_about">Помощь</string>
+    <string name="help_game_menu_del">Удалить игроков</string>
+    <string name="help_game_menu_exit">Выход</string>
 
+    <string name="clear_menu_button_Rating">Очистить Рейтинг</string>
+    <string name="clear_menu_button_Players">Очистить Список игроков</string>
+    
+    <string name="clear_menu_string_Rating">Да! Очищено!</string>
+    <string name="clear_menu_string_Players">Игроки удалены!</string>
+    
+    <string name="word_del_Player">Игрок </string>
+    <string name="word_del_Clear">удален </string>
+    
+    <string name="saved">Сохранено </string>
+    <string name="cancel">Отмена</string>
+    <string name="yes">Сохранено </string>
+    <string name="no">Отмена</string>
+    <string name="exit">Выход </string>
+    <string name="exit_data">Подтвердите выход</string>
+    <string name="del">Очистка </string>
+    <string name="del_data">Подтвердите очистку</string>
+    <string name="empty_list">Список игроков на добавление</string>
+    <string name="del_list">Список игроков для удаления</string>
+    <string name="name">Игроки</string>
+    <string name="rating">Победы</string>
+    
+    <string name="text_winner">Встречайте ПОБЕДИТЕЛЯ! СЛАВА ГЕРОЮ!) </string>
 </resources>
