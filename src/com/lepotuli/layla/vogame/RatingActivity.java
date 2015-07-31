@@ -22,6 +22,7 @@ import android.widget.TextView;
 /*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Trivial printed Table 
  */

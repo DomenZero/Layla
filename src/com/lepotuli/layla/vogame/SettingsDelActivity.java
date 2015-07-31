@@ -21,6 +21,13 @@ import com.lepotuli.layla.managelist.DataListAdapterSet_DelSettings;
 import com.lepotuli.layla.managelist.DataListAdapter_DelSettings;
 import com.lepotuli.layla.model.PlayersData;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * lepotuli.com
+ * 
+ */
+
 public class SettingsDelActivity extends Activity{
 
 	//-------
@@ -80,11 +87,13 @@ public class SettingsDelActivity extends Activity{
 //			Toast.makeText(getApplicationContext(), "you've been helped",
 //					Toast.LENGTH_SHORT).show();
 			DatabaseRating.delPlayersDataAll_Rating();
+			reset();
 			return true;
 		case R.id.menu_del_players:
 //			Toast.makeText(getApplicationContext(), "you've been helped more",
 //					Toast.LENGTH_SHORT).show();
 			DatabaseRating.delPlayersDataAll_Players();
+			reset();
 			return true;
 		default:
 			return false;
@@ -219,5 +228,12 @@ public class SettingsDelActivity extends Activity{
 		finish();
 		Intent myintent=new Intent(SettingsDelActivity.this, MainActivity.class);
 		startActivity(myintent);
+	}
+	
+	public void reset(){
+		Intent intent = new Intent(getApplicationContext(), SettingsDelActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		
+		startActivity(intent);
 	}
 }

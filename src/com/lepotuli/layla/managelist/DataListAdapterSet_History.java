@@ -5,6 +5,7 @@ public class DataListAdapterSet_History {
 	/*
 	 * @author Merkulov Maksim (DomenZero) 
 	 * <wardomenmax@gmail.com>
+	 * lepotuli.com
 	 * 
 	 * Adapter data
 	 */

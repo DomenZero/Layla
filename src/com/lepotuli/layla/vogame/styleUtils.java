@@ -3,6 +3,12 @@ package com.lepotuli.layla.vogame;
 import android.app.Activity;
 import android.content.Intent;
 import com.lepotuli.layla.vogame.R;
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * lepotuli.com
+ * 
+ */
 
 public class styleUtils {
 	private static int theme;

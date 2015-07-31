@@ -29,6 +29,7 @@ import android.widget.AdapterView.OnItemClickListener;
 /*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Adapter data's set
  */

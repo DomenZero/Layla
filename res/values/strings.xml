@@ -24,13 +24,22 @@ limitations under the License.
     <string name="menu_rating">Rating</string>
     <string name="menu_about">About</string>
     <string name="menu_exit">Exit</string>
-    <string name="menu_hint">Hint</string>
-    <string name="help_game_txt">
-        Layla was a good girl.\n
-	    She scream: "Live birdy! Live!"\n
-	    But, bird was dead.\n
-	    Padap-dop-dop)\n
+    <string name="menu_hint">Hint</string>	
+           <string name="help_game_txt">
+               How to Start. \n
+        1. If havent database and null param in table, then you see "Please. Insert player":
+        \n
+        1.1 Select "Insert Players". \n
+	    1.2 Select number Players. \n
+	    1.3 Click "Enter" or "Start".\n
+	    1.4 Write names of Players. In the end click image "Save disk" \n
+	    1.5 Click "Start" \n
+	    P.S. \n
+	    If you have any questions or recomendations for project, \n
+	    please go on website lepotuli.com or write to lepotuli@gmail.com\n
 	    </string>
+	
+	    
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_hello">Hi, I Layla</string>
@@ -103,5 +112,16 @@ limitations under the License.
         <string name="name">Players</string>
     <string name="rating">Rating</string>
     
+    <string name="extra_attention">Not Players!</string>
+    <string name="extra_insert">Please, adding Players ;)</string>
+    <string name="extra_yes">Good!</string>
+    
+   	<string name="extra_attention_num"> Selected number players</string>
+    <string name="extra_insert_num"> Slide screen right or left. And confirm selected</string>
+    <string name="extra_yes_num">Good!</string>
+    
+            <string name="extra_attention_control"> Insert all players name</string>
+    <string name="extra_insert_control">Enter the name of the player in entry field and save by pressing the disk. </string>
+    <string name="extra_yes_control">Good!</string>
     <string name="text_winner">Hi-Hi! Good Gamer! Result saved) </string>
 </resources>

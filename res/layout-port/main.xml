@@ -81,6 +81,13 @@ limitations under the License.
         android:scaleType="fitCenter"
         android:background="@drawable/round_button" />
         
+        <ImageButton
+        android:id="@+id/buttonMenu_del"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:text="@string/menu_settings"
+        android:scaleType="fitCenter"
+        android:background="@drawable/round_button" />
 
         <ImageButton
         android:id="@+id/button3"

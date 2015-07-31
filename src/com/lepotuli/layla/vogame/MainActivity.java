@@ -4,8 +4,10 @@ import com.lepotuli.layla.vogame.R;
 
 import android.R.drawable;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,6 +27,7 @@ import android.widget.ToggleButton;
 /*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * In future Del Element or Intro element
  */
@@ -55,13 +58,39 @@ public class MainActivity extends Activity
 		// Set CoachMark
         if (DatabaseRating.determine_Table()==false){        
         	Log.d("Clear: ", "Table= ");
+        	AlertDialog.Builder clearDialog = new AlertDialog.Builder(MainActivity.this);
+        	clearDialog.setTitle(this.getString(R.string.extra_attention))
+        						.setMessage(this.getString(R.string.extra_insert))
+        						.setIcon(R.drawable.ic_launcher)
+        						.setCancelable(false)
+        						.setNegativeButton(this.getString(R.string.extra_yes), 
+        								new DialogInterface.OnClickListener() {
+											
+											@Override
+											public void onClick(DialogInterface dialog, int id) {
+												// TODO Auto-generated method stub
+												dialog.cancel();												
+											}
+										});
+        	AlertDialog coach=clearDialog.create();
+        	coach.show();
         	}
+        
+        
         
         styleUtils.onActivitySetTheme(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         
         setContentView(R.layout.main);
-        addListenerOnButton();
+      //30.07
+      //  if (savedInstanceState == null) {
+        	addListenerOnButton();
+    //    }
+        
+        
+        //----------------
+        
+        
         
         
 
@@ -88,9 +117,9 @@ public class MainActivity extends Activity
     	});
     	
     	// Options Del Players
-       	buttonMenu_del = (ImageButton) findViewById(R.id.buttonMenu_del);
-       	buttonMenu_del.setImageResource(R.drawable.d2);
-       	buttonMenu_del.setOnClickListener(new OnClickListener() {
+    	buttonMenu_del = (ImageButton) findViewById(R.id.buttonMenu_del);
+    	buttonMenu_del.setImageResource(R.drawable.d2);
+    	buttonMenu_del.setOnClickListener(new OnClickListener() {
     		DatabaseRating db;
     		@Override
     		public void onClick(View v){

@@ -1,5 +1,6 @@
 package com.lepotuli.layla.vogame;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment.SavedState;
 import android.os.Bundle;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ListView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -43,12 +45,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 
-/***
+/*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * UI Add/Delete Players from table "players"
- ***/
+ */
 
 public class ControlActivity extends Activity {
 	
@@ -70,6 +73,26 @@ public class ControlActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// style of Layla
+		// Set CoachMark
+        if (DatabaseRating.determine_Table()==false){        
+        	Log.d("Clear: ", "Table= ");
+        	AlertDialog.Builder clearDialog = new AlertDialog.Builder(ControlActivity.this);
+        	clearDialog.setTitle(this.getString(R.string.extra_attention_control))
+        						.setMessage(this.getString(R.string.extra_insert_control))
+        						.setIcon(R.drawable.ic_launcher)
+        						.setCancelable(false)
+        						.setNegativeButton(this.getString(R.string.extra_yes_control), 
+        								new DialogInterface.OnClickListener() {
+											
+											@Override
+											public void onClick(DialogInterface dialog, int id) {
+												// TODO Auto-generated method stub
+												dialog.cancel();												
+											}
+										});
+        	AlertDialog coach=clearDialog.create();
+        	coach.show();
+        	}
 		styleUtils.onActivitySetTheme(this);
 		setContentView(R.layout.about);
 		

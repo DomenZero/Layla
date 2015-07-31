@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2015 Maksim Merkulov (DomenZero)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<RelativeLayout
+    
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<!--     <RelativeLayout  -->
+<!--             android:id="@+id/header" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:gravity="center" -->
+<!--             android:layout_height="300dp"  -->
+<!--             android:layout_alignParentTop="true" -->
+<!--             > -->
+<!--             <Button -->
+<!--                 android:id="@+id/butdelRating" -->
+<!--                 android:layout_width="wrap_content"  -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:gravity="center" -->
+<!--                 android:text="@string/clear_menu_button_Rating" /> -->
+                        
+<!--             <Button -->
+<!--                 android:id="@+id/butdelPlayers" -->
+<!--                 android:layout_width="150dp"  -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:gravity="center" -->
+<!--                 android:text="@string/clear_menu_button_Players" /> -->
+   
+<!--     </RelativeLayout> -->
+        
+
+            
+    <RelativeLayout 
+            android:id="@+id/center"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" 
+            android:layout_above="@+id/footer"
+
+            >
+<!--             android:layout_below="@+id/header" -->
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="vertical"
+            android:id="@+id/scrollViewTrue"
+            android:fillViewport="true">
+            
+                <TextView 
+            android:textSize="20dp"
+                    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_horizontal"
+            android:text="@string/help_game_txt"            
+            ></TextView>
+<!--         <GridView -->
+<!--             android:id="@+id/gridGame" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:numColumns="auto_fit" -->
+<!--             android:horizontalSpacing="10dp" > -->
+            
+<!--         </GridView> -->
+        
+        </ScrollView>
+        
+    </RelativeLayout>
+
+    
+    <LinearLayout 
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentBottom="true" >
+        
+<!--     <Button -->
+<!--         android:id="@+id/butUp" -->
+<!--         android:layout_width="150dp"  -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:gravity="left" -->
+<!--         android:text="Update" /> -->
+    
+    <TextView 
+        android:id="@+id/butText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"/>
+    
+<!--     <EditText -->
+<!--         android:id="@+id/edit_nPlayer" -->
+<!--         android:layout_width="150dp" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:ems="10" -->
+<!--         android:inputType="number" -->
+<!--         android:text="4"  -->
+<!--         android:hint="@string/edit_nplayer"> -->
+<!--     </EditText> -->
+    </LinearLayout>
+</RelativeLayout>

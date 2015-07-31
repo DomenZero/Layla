@@ -87,8 +87,7 @@ limitations under the License.
     <TextView 
         android:id="@+id/butText"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Конец"/>
+        android:layout_height="wrap_content"/>
     
 <!--     <EditText -->
 <!--         android:id="@+id/edit_nPlayer" -->

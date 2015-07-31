@@ -39,6 +39,7 @@ import android.widget.Toast;
 /***
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Activity Fragment UI-panel 
  * 

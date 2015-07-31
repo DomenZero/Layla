@@ -24,7 +24,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
-
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * lepotuli.com
+ * 
+ */
 public class DataListAdapter_DelSettings extends ArrayAdapter<DataListAdapterSet_DelSettings> {
 
 	protected static final String LOG_TAG = DataListAdapter_DelSettings.class.getSimpleName();

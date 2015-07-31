@@ -29,9 +29,14 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 
-/*** Fragment UI-panel Settings
-Connecting with UserRatingData (there model of table for save & load players)
-***/
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * lepotuli.com
+ * 
+ *  Fragment UI-panel Settings
+ *  Connecting with UserRatingData (there model of table for save & load players)
+*/
 
 @SuppressLint("Assert") public class FragmentGameSettings extends Fragment {
 
@@ -321,6 +326,9 @@ Connecting with UserRatingData (there model of table for save & load players)
 		mTextView1 = (TextView) getActivity().findViewById(R.id.playerFliptextView1);
 		mTextView2 = (TextView) getActivity().findViewById(R.id.playerFliptextView2);
 
+		//31.07.2015 Size
+//				mTextView1.setTextSize(100);
+//				mTextView2.setTextSize(100);
 		// Cancelled mFlipper info
 		mFlipper.invalidate();
 		

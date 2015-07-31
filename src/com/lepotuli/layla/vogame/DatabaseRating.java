@@ -21,6 +21,7 @@ import android.util.Log;
 /*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Library for Database (dbLayla.db) & all table (rating; players)
  */

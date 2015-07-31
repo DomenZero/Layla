@@ -3,6 +3,7 @@ package com.lepotuli.layla.model;
 /*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Model for Table "Players" - there Settings user save/update/delete
  */

@@ -26,7 +26,12 @@ import android.widget.Toast;
  * Instruction. How Layla used?
  */
 import com.lepotuli.layla.vogame.R;
-
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * lepotuli.com
+ * 
+ */
 public class AboutActivity extends Activity{
 
 	EditText editT;

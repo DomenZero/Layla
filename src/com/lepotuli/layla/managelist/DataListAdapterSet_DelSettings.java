@@ -7,6 +7,7 @@ public class DataListAdapterSet_DelSettings implements Serializable{
 	/*
 	 * @author Merkulov Maksim (DomenZero) 
 	 * <wardomenmax@gmail.com>
+	 * lepotuli.com
 	 * 
 	 * Adapter data
 	 */

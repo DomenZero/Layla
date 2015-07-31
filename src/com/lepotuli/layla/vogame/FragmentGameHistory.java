@@ -38,6 +38,13 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+ * @author Merkulov Maksim (DomenZero) 
+ * <wardomenmax@gmail.com>
+ * lepotuli.com
+ * 
+ */
+
 //public class FragmentGameHistory extends ListFragment implements OnItemClickListener{
 public class FragmentGameHistory extends ListFragment{
     

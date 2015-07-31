@@ -11,6 +11,7 @@ import android.view.View;
 /***
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Manage data from/in File 
  * on Device

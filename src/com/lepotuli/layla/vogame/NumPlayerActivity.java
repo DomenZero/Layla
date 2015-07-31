@@ -1,10 +1,13 @@
 package com.lepotuli.layla.vogame;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +24,7 @@ import com.lepotuli.layla.vogame.R;
 /*
  * @author Merkulov Maksim (DomenZero) 
  * <wardomenmax@gmail.com>
+ * lepotuli.com
  * 
  * Touched element Flipper
  */
@@ -37,6 +41,26 @@ public class NumPlayerActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// Set CoachMark
+        if (DatabaseRating.determine_Table()==false){        
+        	Log.d("Clear: ", "Table= ");
+        	AlertDialog.Builder clearDialog = new AlertDialog.Builder(NumPlayerActivity.this);
+        	clearDialog.setTitle(this.getString(R.string.extra_attention_num))
+        						.setMessage(this.getString(R.string.extra_insert_num))
+        						.setIcon(R.drawable.ic_launcher)
+        						.setCancelable(false)
+        						.setNegativeButton(this.getString(R.string.extra_yes_num), 
+        								new DialogInterface.OnClickListener() {
+											
+											@Override
+											public void onClick(DialogInterface dialog, int id) {
+												// TODO Auto-generated method stub
+												dialog.cancel();												
+											}
+										});
+        	AlertDialog coach=clearDialog.create();
+        	coach.show();
+        	}
 		//!Test Set SavedInstanceState element
 //				if (savedInstanceState!=null){
 //					int flipperPosition=savedInstanceState.getInt("PLAYERS_NUMBER");
@@ -56,7 +80,9 @@ public class NumPlayerActivity extends Activity {
 		mFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
 		mTextView1 = (TextView) findViewById(R.id.textView1);
 		mTextView2 = (TextView) findViewById(R.id.textView2);
-		
+		//31.07.2015 Size
+//		mTextView1.setTextSize(100);
+//		mTextView2.setTextSize(100);
 		//Der Fruhling 03/02
 		mTextView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		mTextView2.setLayerType(View.LAYER_TYPE_SOFTWARE, null);

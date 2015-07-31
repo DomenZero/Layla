@@ -79,7 +79,8 @@
     <string name="clear_menu_string_Players">Игроки удалены!</string>
     
     <string name="word_del_Player">Игрок </string>
-    <string name="word_del_Clear">удален </string>
+    <string name="word_del_Clear">удален! </string>
+   	<string name="word_save_Save">Сохранено </string>
     
     <string name="saved">Сохранено </string>
     <string name="cancel">Отмена</string>
@@ -93,6 +94,18 @@
     <string name="del_list">Список игроков для удаления</string>
     <string name="name">Игроки</string>
     <string name="rating">Победы</string>
+    
+    <string name="extra_attention">Таблица игроков пуста!</string>
+    <string name="extra_insert">Пожалуйста, добавьте игроков. ;)</string>
+    <string name="extra_yes">Хорошо!</string>
+    
+    <string name="extra_attention_num"> Необходимо определить количество игроков</string>
+    <string name="extra_insert_num">Пальцем влево вправо по экрану. И подтвердить ввод</string>
+    <string name="extra_yes_num">Хорошо!</string>
+    
+        <string name="extra_attention_control"> Осталось ввести имя каждого игрока</string>
+    <string name="extra_insert_control">Вводите имя игрока в поле ввода и сохраняйте нажатием на дискетку. </string>
+    <string name="extra_yes_control">Хорошо!</string>
     
     <string name="text_winner">Встречайте ПОБЕДИТЕЛЯ! СЛАВА ГЕРОЮ!) </string>
 </resources>
